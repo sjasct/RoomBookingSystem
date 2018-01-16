@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Main_RBS
 {
@@ -73,6 +74,50 @@ namespace Main_RBS
 
 			return returnedData;
 
+		}
+
+		public void insertBooking(int roomID, string date, int period, int userID, string notes)
+		{
+
+			//string newdt = date.ToShortDateString();
+
+			using (connection = new SqlConnection(getCString()))
+			{
+
+				/*
+				 * this doesn't work
+				 * at all.
+				 * 
+				 * no errors. just no 
+				 * data is actually 
+				 * inserted into the table.
+				 * 
+				 * why? f*** knows.
+				 * 
+				 */
+
+				connection.Open();
+
+				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, PeriodBegin, PeriodEnd, UserID, Notes) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {2}, {3}, '{4}')", roomID.ToString(), date, period, userID.ToString(), notes); 
+				
+				SqlCommand logincommand = new SqlCommand(command, connection);
+
+				try
+				{
+					logincommand.ExecuteNonQuery();
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show(ex.ToString());
+				}
+				finally
+				{
+					connection.Close();
+				}
+
+				
+
+			}
 		}
 
 	}

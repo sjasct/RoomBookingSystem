@@ -39,6 +39,7 @@
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.lblUserHeader = new System.Windows.Forms.Label();
 			this.btnLogOut = new System.Windows.Forms.Button();
+			this.btnTestBooking = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -148,11 +149,22 @@
 			this.btnLogOut.UseVisualStyleBackColor = true;
 			this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
 			// 
+			// btnTestBooking
+			// 
+			this.btnTestBooking.Location = new System.Drawing.Point(167, 87);
+			this.btnTestBooking.Name = "btnTestBooking";
+			this.btnTestBooking.Size = new System.Drawing.Size(149, 23);
+			this.btnTestBooking.TabIndex = 12;
+			this.btnTestBooking.Text = "Insert test booking";
+			this.btnTestBooking.UseVisualStyleBackColor = true;
+			this.btnTestBooking.Click += new System.EventHandler(this.btnTestBooking_Click);
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(685, 329);
+			this.Controls.Add(this.btnTestBooking);
 			this.Controls.Add(this.btnLogOut);
 			this.Controls.Add(this.lblUserHeader);
 			this.Controls.Add(this.btnRefresh);
@@ -188,6 +200,7 @@
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.Label lblUserHeader;
 		private System.Windows.Forms.Button btnLogOut;
+		private System.Windows.Forms.Button btnTestBooking;
 	}
 }
 

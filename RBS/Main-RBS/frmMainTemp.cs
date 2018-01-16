@@ -148,6 +148,8 @@ namespace Main_RBS
 			{
 			}
 
+			db.popBookings();
+
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
@@ -181,6 +183,23 @@ namespace Main_RBS
 			}
 
 
+		}
+
+		private void btnTestBooking_Click(object sender, EventArgs e)
+		{
+
+			DateTime date = new DateTime(2018, 1, 16);
+
+			string niceFormat = date.ToString("yyyyMMdd");
+
+			
+			
+
+			MessageBox.Show(niceFormat);
+
+			db.insertBooking(2, niceFormat, 5, 1, "wow");
+
+			//refreshForm();
 		}
 	}
 }
