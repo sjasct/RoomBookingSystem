@@ -12,6 +12,9 @@ namespace Main_RBS
 {
 	public partial class frmLogin : Form
 	{
+
+		DatabaseHelper db;
+
 		public frmLogin()
 		{
 			InitializeComponent();
@@ -20,6 +23,19 @@ namespace Main_RBS
 		private void btnLoginCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void btnLoginEnter_Click(object sender, EventArgs e)
+		{
+			string username = txtLoginUsername.Text;
+			string password = txtLoginPassword.Text;
+
+			MessageBox.Show(db.checkLoginDetails(username, password).ToString());
+		}
+
+		private void frmLogin_Load(object sender, EventArgs e)
+		{
+			db = new DatabaseHelper();
 		}
 	}
 }

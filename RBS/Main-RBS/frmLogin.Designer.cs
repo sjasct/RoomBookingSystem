@@ -97,6 +97,7 @@
 			this.btnLoginEnter.TabIndex = 6;
 			this.btnLoginEnter.Text = "Login";
 			this.btnLoginEnter.UseVisualStyleBackColor = true;
+			this.btnLoginEnter.Click += new System.EventHandler(this.btnLoginEnter_Click);
 			// 
 			// btnLoginCancel
 			// 
@@ -124,6 +125,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "frmLogin";
 			this.Text = "frmLogin";
+			this.Load += new System.EventHandler(this.frmLogin_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

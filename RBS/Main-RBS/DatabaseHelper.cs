@@ -43,21 +43,33 @@ namespace Main_RBS
 		}
 
 		// not void for now
-		public void checkLoginDetails(string username, string pass)
+		public bool checkLoginDetails(string username, string pass)
 		{
+
+			bool success = false;
 
 			// SELECT * FROM tblUsers WHERE username = "{username}" AND pass = "{pass}"
 			using (connection = new SqlConnection(getCString()))
 			{
 
-				SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection);
+				connection.Open();
 
-				DataTable bookTable = new DataTable();
-				adapter.Fill(bookTable);
+				string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
+				
 
-				//return bookTable;
+				SqlCommand logincommand = new SqlCommand(command, connection);
+					SqlDataReader reader = logincommand.ExecuteReader();
+
+				if (reader.Read())
+				{
+					success = true;
+				}
+
+				
 
 			}
+
+			return success;
 
 		}
 
