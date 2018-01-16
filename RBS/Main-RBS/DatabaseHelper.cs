@@ -74,31 +74,7 @@ namespace Main_RBS
 
 		}
 
-		public string getNameFromId(int id)
-		{
-			using (connection = new SqlConnection(getCString()))
-			{
-				connection.Open();
 
-				string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
-
-				SqlCommand logincommand = new SqlCommand(command, connection);
-				SqlDataReader reader = logincommand.ExecuteReader();
-
-				if (reader.Read())
-				{
-					returnedData.success = true;
-					//returnedData.userID = Int32.Parse(reader.GetString(0));
-					returnedData.userID = reader.GetInt32(0);
-				}
-
-
-
-			}
-
-			return returnedData;
-
-		}
 
 	}
 }
