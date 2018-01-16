@@ -81,6 +81,18 @@ namespace Main_RBS
 		{
 			DatabaseHelper db = new DatabaseHelper();
 			MessageBox.Show(db.test);
+
+			
+		}
+
+		private void button1_Click_1(object sender, EventArgs e)
+		{
+			MessageBox.Show(session.userID.ToString());
+		}
+
+		private void btnRefresh_Click(object sender, EventArgs e)
+		{
+			lblUserHeader.Text = "refreshed";
 		}
 	}
 }

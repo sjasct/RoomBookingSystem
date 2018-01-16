@@ -35,6 +35,9 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.lstBookings = new System.Windows.Forms.ListBox();
 			this.btnHomeLogin = new System.Windows.Forms.Button();
+			this.btnShowID = new System.Windows.Forms.Button();
+			this.btnRefresh = new System.Windows.Forms.Button();
+			this.lblUserHeader = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -78,7 +81,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(299, 13);
+			this.label3.Location = new System.Drawing.Point(374, 58);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 5;
@@ -88,7 +91,7 @@
 			// lstBookings
 			// 
 			this.lstBookings.FormattingEnabled = true;
-			this.lstBookings.Location = new System.Drawing.Point(302, 29);
+			this.lstBookings.Location = new System.Drawing.Point(167, 74);
 			this.lstBookings.Name = "lstBookings";
 			this.lstBookings.Size = new System.Drawing.Size(272, 108);
 			this.lstBookings.TabIndex = 6;
@@ -104,11 +107,44 @@
 			this.btnHomeLogin.UseVisualStyleBackColor = true;
 			this.btnHomeLogin.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// btnShowID
+			// 
+			this.btnShowID.Location = new System.Drawing.Point(12, 145);
+			this.btnShowID.Name = "btnShowID";
+			this.btnShowID.Size = new System.Drawing.Size(149, 23);
+			this.btnShowID.TabIndex = 8;
+			this.btnShowID.Text = "Show Logged In User ID";
+			this.btnShowID.UseVisualStyleBackColor = true;
+			this.btnShowID.Click += new System.EventHandler(this.button1_Click_1);
+			// 
+			// btnRefresh
+			// 
+			this.btnRefresh.Location = new System.Drawing.Point(32, 174);
+			this.btnRefresh.Name = "btnRefresh";
+			this.btnRefresh.Size = new System.Drawing.Size(101, 23);
+			this.btnRefresh.TabIndex = 9;
+			this.btnRefresh.Text = "Refresh Data";
+			this.btnRefresh.UseVisualStyleBackColor = true;
+			this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+			// 
+			// lblUserHeader
+			// 
+			this.lblUserHeader.AutoSize = true;
+			this.lblUserHeader.Location = new System.Drawing.Point(252, 9);
+			this.lblUserHeader.Name = "lblUserHeader";
+			this.lblUserHeader.Size = new System.Drawing.Size(76, 13);
+			this.lblUserHeader.TabIndex = 10;
+			this.lblUserHeader.Text = "Not logged in..";
+			this.lblUserHeader.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(618, 169);
+			this.ClientSize = new System.Drawing.Size(459, 210);
+			this.Controls.Add(this.lblUserHeader);
+			this.Controls.Add(this.btnRefresh);
+			this.Controls.Add(this.btnShowID);
 			this.Controls.Add(this.btnHomeLogin);
 			this.Controls.Add(this.lstBookings);
 			this.Controls.Add(this.label3);
@@ -135,6 +171,9 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ListBox lstBookings;
 		private System.Windows.Forms.Button btnHomeLogin;
+		private System.Windows.Forms.Button btnShowID;
+		private System.Windows.Forms.Button btnRefresh;
+		private System.Windows.Forms.Label lblUserHeader;
 	}
 }
 

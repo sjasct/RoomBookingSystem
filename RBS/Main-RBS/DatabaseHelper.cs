@@ -43,10 +43,10 @@ namespace Main_RBS
 		}
 
 		// not void for now
-		public bool checkLoginDetails(string username, string pass)
+		public loginReturnedData checkLoginDetails(string username, string pass)
 		{
 
-			bool success = false;
+			loginReturnedData returnedData = new loginReturnedData();
 
 			// SELECT * FROM tblUsers WHERE username = "{username}" AND pass = "{pass}"
 			using (connection = new SqlConnection(getCString()))
@@ -55,21 +55,48 @@ namespace Main_RBS
 				connection.Open();
 
 				string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
-				
 
 				SqlCommand logincommand = new SqlCommand(command, connection);
-					SqlDataReader reader = logincommand.ExecuteReader();
+				SqlDataReader reader = logincommand.ExecuteReader();
 
 				if (reader.Read())
 				{
-					success = true;
+					returnedData.success = true;
+					//returnedData.userID = Int32.Parse(reader.GetString(0));
+					returnedData.userID = reader.GetInt32(0);
 				}
 
-				
+
 
 			}
 
-			return success;
+			return returnedData;
+
+		}
+
+		public string getNameFromId(int id)
+		{
+			using (connection = new SqlConnection(getCString()))
+			{
+				connection.Open();
+
+				string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
+
+				SqlCommand logincommand = new SqlCommand(command, connection);
+				SqlDataReader reader = logincommand.ExecuteReader();
+
+				if (reader.Read())
+				{
+					returnedData.success = true;
+					//returnedData.userID = Int32.Parse(reader.GetString(0));
+					returnedData.userID = reader.GetInt32(0);
+				}
+
+
+
+			}
+
+			return returnedData;
 
 		}
 

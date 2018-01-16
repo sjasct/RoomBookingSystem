@@ -27,15 +27,33 @@ namespace Main_RBS
 
 		private void btnLoginEnter_Click(object sender, EventArgs e)
 		{
+
+			int userID = -1;
+
 			string username = txtLoginUsername.Text;
 			string password = txtLoginPassword.Text;
 
-			MessageBox.Show(db.checkLoginDetails(username, password).ToString());
+			//MessageBox.Show(db.checkLoginDetails(username, password).ToString());
+
+			loginReturnedData loginData = db.checkLoginDetails(username, password);
+
+			if (loginData.success)
+			{
+				MessageBox.Show(loginData.userID.ToString());
+				session.userID = loginData.userID;
+				MessageBox.Show(session.userID.ToString());
+			}
+			else
+			{
+				lblLoginError.Text = "login failed";
+				txtLoginPassword.Text = String.Empty;
+			}
 		}
 
 		private void frmLogin_Load(object sender, EventArgs e)
 		{
 			db = new DatabaseHelper();
+			lblLoginError.Text = String.Empty;
 		}
 	}
 }
