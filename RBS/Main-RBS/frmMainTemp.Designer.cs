@@ -34,6 +34,7 @@
 			this.btnOwnBookings = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.lstBookings = new System.Windows.Forms.ListBox();
+			this.btnHomeLogin = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -92,11 +93,22 @@
 			this.lstBookings.TabIndex = 6;
 			this.lstBookings.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
+			// btnHomeLogin
+			// 
+			this.btnHomeLogin.Location = new System.Drawing.Point(12, 116);
+			this.btnHomeLogin.Name = "btnHomeLogin";
+			this.btnHomeLogin.Size = new System.Drawing.Size(149, 23);
+			this.btnHomeLogin.TabIndex = 7;
+			this.btnHomeLogin.Text = "Open Login Form";
+			this.btnHomeLogin.UseVisualStyleBackColor = true;
+			this.btnHomeLogin.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(814, 324);
+			this.Controls.Add(this.btnHomeLogin);
 			this.Controls.Add(this.lstBookings);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.btnOwnBookings);
@@ -119,6 +131,7 @@
 		private System.Windows.Forms.Button btnOwnBookings;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.ListBox lstBookings;
+		private System.Windows.Forms.Button btnHomeLogin;
 	}
 }
 

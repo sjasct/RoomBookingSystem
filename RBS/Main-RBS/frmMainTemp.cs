@@ -37,6 +37,8 @@ namespace Main_RBS
 			using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection))
 			{
 
+				// TODO: ALL DB STUFF IN SEPERATE CLASS
+
 				DataTable bookTable = new DataTable();
 				adapter.Fill(bookTable);
 
@@ -56,6 +58,12 @@ namespace Main_RBS
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			frmLogin loginForm = new frmLogin();
+			loginForm.ShowDialog();
 		}
 	}
 }
