@@ -15,38 +15,49 @@ namespace Main_RBS
 	public partial class frmMainTemp : Form
 	{
 
-		string connectionString;
+		//string connectionString;
 
-		SqlConnection connection; 
+		//SqlConnection connection; 
+
+		DatabaseHelper db;
 
 		public frmMainTemp()
 		{
 			InitializeComponent();
 
-			connectionString = ConfigurationManager.ConnectionStrings["Main_RBS.Properties.Settings.dbConnectionString"].ConnectionString;
+			
 		}
 
 		private void frmMainTemp_Load(object sender, EventArgs e)
 		{
+
+			db = new DatabaseHelper();
 			popBookings();
 		}
 
 		private void popBookings()
 		{
-			using (connection = new SqlConnection(connectionString))
-			using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection))
+
+			DataTable dt = null;
+			try
 			{
-
-				// TODO: ALL DB STUFF IN SEPERATE CLASS
-
-				DataTable bookTable = new DataTable();
-				adapter.Fill(bookTable);
-
-				lstBookings.DisplayMember = "Date";
-				lstBookings.ValueMember = "Id";
-				lstBookings.DataSource = bookTable;
-
+				dt = db.popBookings();
 			}
+			catch
+			{
+				MessageBox.Show("oops");
+			}
+			finally
+			{
+				//MessageBox.Show(adapter.ToString());
+			}
+
+			
+
+			lstBookings.DisplayMember = "Date";
+			lstBookings.ValueMember = "Id";
+			lstBookings.DataSource = dt;
+
 
 		}
 
@@ -64,6 +75,12 @@ namespace Main_RBS
 		{
 			frmLogin loginForm = new frmLogin();
 			loginForm.ShowDialog();
+		}
+
+		private void btnOwnBookings_Click(object sender, EventArgs e)
+		{
+			DatabaseHelper db = new DatabaseHelper();
+			MessageBox.Show(db.test);
 		}
 	}
 }

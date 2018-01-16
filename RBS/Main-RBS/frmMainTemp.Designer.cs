@@ -73,6 +73,7 @@
 			this.btnOwnBookings.TabIndex = 4;
 			this.btnOwnBookings.Text = "Your Bookings";
 			this.btnOwnBookings.UseVisualStyleBackColor = true;
+			this.btnOwnBookings.Click += new System.EventHandler(this.btnOwnBookings_Click);
 			// 
 			// label3
 			// 
@@ -107,7 +108,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(814, 324);
+			this.ClientSize = new System.Drawing.Size(618, 169);
 			this.Controls.Add(this.btnHomeLogin);
 			this.Controls.Add(this.lstBookings);
 			this.Controls.Add(this.label3);
@@ -115,6 +116,8 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnNewBook);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "frmMainTemp";
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.frmMainTemp_Load);

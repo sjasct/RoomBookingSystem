@@ -121,6 +121,7 @@
 			this.Controls.Add(this.lblLoginUsername);
 			this.Controls.Add(this.txtLoginUsername);
 			this.Controls.Add(this.lblLoginHead);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "frmLogin";
 			this.Text = "frmLogin";
 			this.ResumeLayout(false);
