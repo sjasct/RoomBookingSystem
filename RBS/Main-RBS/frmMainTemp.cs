@@ -117,11 +117,70 @@ namespace Main_RBS
 				lblUserHeader.Text = String.Format("Welcome {0}!", name);
 			}
 
+		
+			// buttons
+			if (string.IsNullOrEmpty(session.group))
+			{
+				btnNewBook.Enabled = false;
+				btnOwnBookings.Enabled = false;
+				btnLogOut.Enabled = false;
+				btnHomeLogin.Enabled = true;
+			}
+			else if (session.group == "Student")
+			{
+
+
+				btnNewBook.Enabled = false;
+				btnOwnBookings.Enabled = false;
+				btnLogOut.Enabled = true;
+				btnHomeLogin.Enabled = false;
+			}
+			else if(session.group == "Teacher" || session.group == "Admin")
+			{
+
+
+				btnNewBook.Enabled = true;
+				btnOwnBookings.Enabled = true;
+				btnLogOut.Enabled = true;
+				btnHomeLogin.Enabled = false;
+			}
+			else
+			{
+			}
+
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
 		{
 			refreshForm();
+		}
+
+		private void btnLogOut_Click(object sender, EventArgs e)
+		{
+			bool success = false;
+
+			try
+			{
+				session.loggedIn = false;
+				session.userID = -1;
+				session.username = null;
+				session.name = new string[] { "", "" };
+				session.group = null;
+				session.email = null;
+				success = true;
+			}
+			catch
+			{
+				MessageBox.Show("Log out failed!");
+			}
+
+			if (success)
+			{
+				MessageBox.Show("Logged out!");
+				refreshForm();
+			}
+
+
 		}
 	}
 }

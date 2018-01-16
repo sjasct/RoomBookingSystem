@@ -38,6 +38,7 @@
 			this.btnShowID = new System.Windows.Forms.Button();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.lblUserHeader = new System.Windows.Forms.Label();
+			this.btnLogOut = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -81,7 +82,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(374, 58);
+			this.label3.Location = new System.Drawing.Point(608, 58);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 5;
@@ -91,7 +92,7 @@
 			// lstBookings
 			// 
 			this.lstBookings.FormattingEnabled = true;
-			this.lstBookings.Location = new System.Drawing.Point(167, 74);
+			this.lstBookings.Location = new System.Drawing.Point(401, 74);
 			this.lstBookings.Name = "lstBookings";
 			this.lstBookings.Size = new System.Drawing.Size(272, 108);
 			this.lstBookings.TabIndex = 6;
@@ -137,11 +138,22 @@
 			this.lblUserHeader.Text = "Not logged in..";
 			this.lblUserHeader.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
+			// btnLogOut
+			// 
+			this.btnLogOut.Location = new System.Drawing.Point(167, 58);
+			this.btnLogOut.Name = "btnLogOut";
+			this.btnLogOut.Size = new System.Drawing.Size(149, 23);
+			this.btnLogOut.TabIndex = 11;
+			this.btnLogOut.Text = "Log Out";
+			this.btnLogOut.UseVisualStyleBackColor = true;
+			this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(459, 210);
+			this.ClientSize = new System.Drawing.Size(685, 329);
+			this.Controls.Add(this.btnLogOut);
 			this.Controls.Add(this.lblUserHeader);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnShowID);
@@ -175,6 +187,7 @@
 		private System.Windows.Forms.Button btnShowID;
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.Label lblUserHeader;
+		private System.Windows.Forms.Button btnLogOut;
 	}
 }
 
