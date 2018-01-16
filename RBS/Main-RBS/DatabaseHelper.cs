@@ -74,7 +74,36 @@ namespace Main_RBS
 
 		}
 
+		public string[] getNameFromId(int id)
+		{
 
+			string[] returnedData = new string[] { "", "" };
+
+			using (connection = new SqlConnection(getCString()))
+			{
+				connection.Open();
+
+				string command = String.Format("SELECT Firstname, Secondname FROM tblUsers WHERE Id = {0}", id);
+
+				
+
+				SqlCommand logincommand = new SqlCommand(command, connection);
+				SqlDataReader reader = logincommand.ExecuteReader();
+
+				if (reader.Read())
+				{
+					//returnedData.userID = Int32.Parse(reader.GetString(0));
+					returnedData[0] = reader.GetString(0);
+					returnedData[1] = reader.GetString(1);
+				}
+
+
+
+			}
+
+			return returnedData;
+
+		}
 
 	}
 }

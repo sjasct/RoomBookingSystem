@@ -156,6 +156,7 @@
 			this.MaximizeBox = false;
 			this.Name = "frmMainTemp";
 			this.Text = "Form1";
+			this.Activated += new System.EventHandler(this.frmMainTemp_Activated);
 			this.Load += new System.EventHandler(this.frmMainTemp_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

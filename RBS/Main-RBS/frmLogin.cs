@@ -39,9 +39,11 @@ namespace Main_RBS
 
 			if (loginData.success)
 			{
-				MessageBox.Show(loginData.userID.ToString());
+				//MessageBox.Show(loginData.userID.ToString());
 				session.userID = loginData.userID;
-				MessageBox.Show(session.userID.ToString());
+				//MessageBox.Show(session.userID.ToString());
+				//MessageBox.Show(db.getNameFromId(session.userID)[0]);
+				this.Close();
 			}
 			else
 			{

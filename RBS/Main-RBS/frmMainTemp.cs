@@ -92,7 +92,26 @@ namespace Main_RBS
 
 		private void btnRefresh_Click(object sender, EventArgs e)
 		{
-			lblUserHeader.Text = "refreshed";
+			refreshForm();
+		}
+
+		private void refreshForm()
+		{
+			// header
+			string name = db.getNameFromId(session.userID)[0];
+			//MessageBox.Show(name);
+			if (string.IsNullOrEmpty(name) || name == "")
+			{
+				lblUserHeader.Text = "Not logged in..";
+			}
+			lblUserHeader.Text = String.Format("Welcome {0}!", name);
+
+
+		}
+
+		private void frmMainTemp_Activated(object sender, EventArgs e)
+		{
+			refreshForm();
 		}
 	}
 }
