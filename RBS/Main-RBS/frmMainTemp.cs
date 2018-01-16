@@ -97,15 +97,25 @@ namespace Main_RBS
 
 		private void refreshForm()
 		{
-			// header
-			string name = db.getNameFromId(session.userID)[0];
-			//MessageBox.Show(name);
+
+			// Header
+			string name;
+			try
+			{
+				name = session.name[0];
+			}
+			catch
+			{
+				name = "";
+			}
 			if (string.IsNullOrEmpty(name) || name == "")
 			{
 				lblUserHeader.Text = "Not logged in..";
 			}
-			lblUserHeader.Text = String.Format("Welcome {0}!", name);
-
+			else
+			{
+				lblUserHeader.Text = String.Format("Welcome {0}!", name);
+			}
 
 		}
 

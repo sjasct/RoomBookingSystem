@@ -27,22 +27,21 @@ namespace Main_RBS
 
 		private void btnLoginEnter_Click(object sender, EventArgs e)
 		{
-
-			int userID = -1;
-
+			
 			string username = txtLoginUsername.Text;
 			string password = txtLoginPassword.Text;
-
-			//MessageBox.Show(db.checkLoginDetails(username, password).ToString());
 
 			loginReturnedData loginData = db.checkLoginDetails(username, password);
 
 			if (loginData.success)
 			{
-				//MessageBox.Show(loginData.userID.ToString());
 				session.userID = loginData.userID;
-				//MessageBox.Show(session.userID.ToString());
-				//MessageBox.Show(db.getNameFromId(session.userID)[0]);
+				session.username = loginData.username;
+				session.name = loginData.name;
+				session.group = loginData.group;
+				session.email = loginData.email;
+				string wowlol = String.Format("Username:{0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}", session.username, session.name[0], session.name[1], session.group, session.email);
+				MessageBox.Show(wowlol);
 				this.Close();
 			}
 			else
