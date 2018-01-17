@@ -169,6 +169,7 @@ namespace Main_RBS
 			// buttons
 			if (string.IsNullOrEmpty(session.group))
 			{
+				btnDeleteAll.Enabled = false;
 				btnNewBook.Enabled = false;
 				btnOwnBookings.Enabled = false;
 				btnLogOut.Enabled = false;
@@ -177,16 +178,25 @@ namespace Main_RBS
 			}
 			else if (session.group == "Student")
 			{
-
+				btnDeleteAll.Enabled = false;
 				btnShowID.Enabled = true;
 				btnNewBook.Enabled = false;
 				btnOwnBookings.Enabled = false;
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
 			}
-			else if(session.group == "Teacher" || session.group == "Admin")
+			else if(session.group == "Teacher")
 			{
-
+				btnDeleteAll.Enabled = false;
+				btnShowID.Enabled = true;
+				btnNewBook.Enabled = true;
+				btnOwnBookings.Enabled = true;
+				btnLogOut.Enabled = true;
+				btnHomeLogin.Enabled = false;
+			}
+			else if (session.group == "Admin")
+			{
+				btnDeleteAll.Enabled = true;
 				btnShowID.Enabled = true;
 				btnNewBook.Enabled = true;
 				btnOwnBookings.Enabled = true;
@@ -194,7 +204,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
 			}
 
-			foreach(ListViewItem item in listNewBookThingy.Items)
+			foreach (ListViewItem item in listNewBookThingy.Items)
 			{
 				item.Remove();
 			}
@@ -204,7 +214,7 @@ namespace Main_RBS
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
 		{
-			//refreshForm();
+			refreshForm();
 		}
 
 		private void btnLogOut_Click(object sender, EventArgs e)
@@ -259,17 +269,17 @@ namespace Main_RBS
 
 		private void frmMainTemp_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			MessageBox.Show(e.KeyChar.ToString());
-			if (e.KeyChar == (char)Keys.F5)
-			{
-				MessageBox.Show("refreshing..");
-				refreshForm();
-			}
+
 		}
 
 		private void btnNewBook_Click(object sender, EventArgs e)
 		{
 			new frmNewBook().Show();
+		}
+
+		private void btnDeleteAll_Click(object sender, EventArgs e)
+		{
+			db.removeAllBookings();
 		}
 	}
 }

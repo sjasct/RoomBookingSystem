@@ -44,6 +44,7 @@
 			this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.btnDeleteAll = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -187,11 +188,22 @@
 			// 
 			this.clmUser.Text = "UserID";
 			// 
+			// btnDeleteAll
+			// 
+			this.btnDeleteAll.Location = new System.Drawing.Point(448, 116);
+			this.btnDeleteAll.Name = "btnDeleteAll";
+			this.btnDeleteAll.Size = new System.Drawing.Size(149, 23);
+			this.btnDeleteAll.TabIndex = 14;
+			this.btnDeleteAll.Text = "Delete All Bookings";
+			this.btnDeleteAll.UseVisualStyleBackColor = true;
+			this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(609, 399);
+			this.Controls.Add(this.btnDeleteAll);
 			this.Controls.Add(this.listNewBookThingy);
 			this.Controls.Add(this.btnTestBooking);
 			this.Controls.Add(this.btnLogOut);
@@ -236,6 +248,7 @@
 		private System.Windows.Forms.ColumnHeader clmDate;
 		private System.Windows.Forms.ColumnHeader clmPeriod;
 		private System.Windows.Forms.ColumnHeader clmUser;
+		private System.Windows.Forms.Button btnDeleteAll;
 	}
 }
 

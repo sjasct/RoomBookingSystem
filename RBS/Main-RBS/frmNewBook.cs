@@ -33,9 +33,9 @@ namespace Main_RBS
 
 			DateTime date = Convert.ToDateTime(dtDate.Text);
 
-			MessageBox.Show(date.Day.ToString());
-
 			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
+
+			this.Close();
 
 		}
 	}

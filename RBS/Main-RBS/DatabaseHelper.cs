@@ -69,22 +69,8 @@ namespace Main_RBS
 
 			string newdt = date.ToShortDateString();
 
-			MessageBox.Show(newdt);
-
 			using (connection = new SqlConnection(getCString()))
 			{
-
-				/*
-				 * this doesn't work
-				 * at all.
-				 * 
-				 * no errors. just no 
-				 * data is actually 
-				 * inserted into the table.
-				 * 
-				 * why? f*** knows.
-				 * 
-				 */
 
 				connection.Open();
 
@@ -105,6 +91,35 @@ namespace Main_RBS
 				}
 
 				
+
+			}
+		}
+
+		public void removeAllBookings()
+		{
+
+			using (connection = new SqlConnection(getCString()))
+			{
+
+				connection.Open();
+
+				string command = "TRUNCATE TABLE tblBookings";
+
+				SqlCommand logincommand = new SqlCommand(command, connection);
+				try
+				{
+					logincommand.ExecuteNonQuery();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.ToString());
+				}
+				finally
+				{
+					connection.Close();
+				}
+
+
 
 			}
 		}
