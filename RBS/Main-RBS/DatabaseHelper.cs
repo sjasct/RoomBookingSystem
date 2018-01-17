@@ -31,6 +31,60 @@ namespace Main_RBS
 
 		}*/
 
+		public List<ListViewItem> popBookings(bool all = true)
+		{
+
+			SqlConnection connection;
+
+			List<ListViewItem> listItems = new List<ListViewItem>();
+
+			string query;
+
+			if (session.userID < 0 || all)
+			{
+				query = "SELECT * FROM tblBookings";
+			}
+			else
+			{
+				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0}", session.userID);
+			}
+
+			try
+			{
+				using (connection = new SqlConnection(getCString()))
+				{
+
+					
+
+					SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+					DataTable dt = new DataTable();
+
+					adapter.Fill(dt);
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						DataRow dr = dt.Rows[i];
+
+						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString() };
+
+						ListViewItem li = new ListViewItem(list);
+
+						listItems.Add(li);
+
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.ToString());
+			}
+
+			return listItems;
+
+
+
+		}
+
 		public loginReturnedData checkLoginDetails(string username, string pass)
 		{
 

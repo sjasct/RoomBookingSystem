@@ -32,75 +32,38 @@ namespace Main_RBS
 		{
 
 			db = new DatabaseHelper();
-			popBookings();
+			popAllBookings();
+			session.userID = -1;
 
 		}
 
-		private void popBookings()
+		private void popAllBookings()
 		{
 
-			/*DataTable dt = null;
-			try
+			List<ListViewItem> items = db.popBookings();
+
+			foreach(ListViewItem item in items)
 			{
-				dt = db.popBookings();
-			}
-			catch
-			{
-				MessageBox.Show("oops");
-			}
-			finally
-			{
-				//MessageBox.Show(adapter.ToString());
+				listAllBookings.Items.Add(item);
 			}
 
-			
+		}
 
-			lstBookings.DisplayMember = "Date";
-			lstBookings.ValueMember = "Id";
-			lstBookings.DataSource = dt;*/
-
-			SqlConnection connection;
-
-			try
+		private void popOwnBookings()
+		{
+			if (session.loggedIn)
 			{
-				using (connection = new SqlConnection(db.getCString()))
+				List<ListViewItem> items = db.popBookings(false);
+
+				foreach (ListViewItem item in items)
 				{
-
-					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection);
-					
-					DataTable dt = new DataTable();
-
-					adapter.Fill(dt);
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						DataRow dr = dt.Rows[i];
-						/*ListViewItem listitem = new ListViewItem(dr["RoomID"].ToString());
-						listitem.SubItems.Add(dr["Date"].ToString());
-						listitem.SubItems.Add(dr["PeriodBegin"].ToString());
-						listitem.SubItems.Add(dr["UserID"].ToString());
-						listNewBookThingy.Items.Add(listitem);*/
-
-						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString() };
-
-						ListViewItem li = new ListViewItem(list);
-						listNewBookThingy.Items.Add(li);
-
-					}
+					listOwnBookings.Items.Add(item);
 				}
 			}
-			catch(Exception ex)
-			{
-				MessageBox.Show("-");
-			}
-
-
+			
 
 		}
 
-		private void print()
-		{
-			MessageBox.Show("i get here noob");
-		}
 
 		private void label3_Click(object sender, EventArgs e)
 		{
@@ -204,17 +167,22 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
 			}
 
-			foreach (ListViewItem item in listNewBookThingy.Items)
+			foreach (ListViewItem item in listAllBookings.Items)
 			{
 				item.Remove();
 			}
-			popBookings();
+			foreach (ListViewItem item in listOwnBookings.Items)
+			{
+				item.Remove();
+			}
+			popAllBookings();
+			popOwnBookings();
 
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
 		{
-			refreshForm();
+			//refreshForm();
 		}
 
 		private void btnLogOut_Click(object sender, EventArgs e)
@@ -253,7 +221,7 @@ namespace Main_RBS
 			string niceFormat = date.ToString("yyyyMMdd");
 
 
-			db.insertBooking(2, date, 5, 1, "wow");
+			db.insertBooking(2, date, 5, session.userID, "wow");
 
 			refreshForm();
 		}

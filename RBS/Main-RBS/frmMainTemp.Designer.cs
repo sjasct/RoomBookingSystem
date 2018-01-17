@@ -39,12 +39,18 @@
 			this.lblUserHeader = new System.Windows.Forms.Label();
 			this.btnLogOut = new System.Windows.Forms.Button();
 			this.btnTestBooking = new System.Windows.Forms.Button();
-			this.listNewBookThingy = new System.Windows.Forms.ListView();
+			this.listAllBookings = new System.Windows.Forms.ListView();
 			this.clmRoomID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnDeleteAll = new System.Windows.Forms.Button();
+			this.listOwnBookings = new System.Windows.Forms.ListView();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.label4 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -156,21 +162,21 @@
 			this.btnTestBooking.UseVisualStyleBackColor = true;
 			this.btnTestBooking.Click += new System.EventHandler(this.btnTestBooking_Click);
 			// 
-			// listNewBookThingy
+			// listAllBookings
 			// 
-			this.listNewBookThingy.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+			this.listAllBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRoomID,
             this.clmDate,
             this.clmPeriod,
             this.clmUser});
-			this.listNewBookThingy.FullRowSelect = true;
-			this.listNewBookThingy.HideSelection = false;
-			this.listNewBookThingy.Location = new System.Drawing.Point(16, 181);
-			this.listNewBookThingy.Name = "listNewBookThingy";
-			this.listNewBookThingy.Size = new System.Drawing.Size(581, 187);
-			this.listNewBookThingy.TabIndex = 13;
-			this.listNewBookThingy.UseCompatibleStateImageBehavior = false;
-			this.listNewBookThingy.View = System.Windows.Forms.View.Details;
+			this.listAllBookings.FullRowSelect = true;
+			this.listAllBookings.HideSelection = false;
+			this.listAllBookings.Location = new System.Drawing.Point(16, 181);
+			this.listAllBookings.Name = "listAllBookings";
+			this.listAllBookings.Size = new System.Drawing.Size(581, 187);
+			this.listAllBookings.TabIndex = 13;
+			this.listAllBookings.UseCompatibleStateImageBehavior = false;
+			this.listAllBookings.View = System.Windows.Forms.View.Details;
 			// 
 			// clmRoomID
 			// 
@@ -198,13 +204,56 @@
 			this.btnDeleteAll.UseVisualStyleBackColor = true;
 			this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
 			// 
+			// listOwnBookings
+			// 
+			this.listOwnBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+			this.listOwnBookings.FullRowSelect = true;
+			this.listOwnBookings.HideSelection = false;
+			this.listOwnBookings.Location = new System.Drawing.Point(16, 396);
+			this.listOwnBookings.Name = "listOwnBookings";
+			this.listOwnBookings.Size = new System.Drawing.Size(581, 187);
+			this.listOwnBookings.TabIndex = 15;
+			this.listOwnBookings.UseCompatibleStateImageBehavior = false;
+			this.listOwnBookings.View = System.Windows.Forms.View.Details;
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "RoomID";
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "Date";
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "Period";
+			// 
+			// columnHeader4
+			// 
+			this.columnHeader4.Text = "UserID";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(13, 380);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(76, 13);
+			this.label4.TabIndex = 16;
+			this.label4.Text = "Your Bookings";
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(609, 399);
+			this.ClientSize = new System.Drawing.Size(609, 607);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.listOwnBookings);
 			this.Controls.Add(this.btnDeleteAll);
-			this.Controls.Add(this.listNewBookThingy);
+			this.Controls.Add(this.listAllBookings);
 			this.Controls.Add(this.btnTestBooking);
 			this.Controls.Add(this.btnLogOut);
 			this.Controls.Add(this.lblUserHeader);
@@ -243,12 +292,18 @@
 		private System.Windows.Forms.Label lblUserHeader;
 		private System.Windows.Forms.Button btnLogOut;
 		private System.Windows.Forms.Button btnTestBooking;
-		private System.Windows.Forms.ListView listNewBookThingy;
+		private System.Windows.Forms.ListView listAllBookings;
 		private System.Windows.Forms.ColumnHeader clmRoomID;
 		private System.Windows.Forms.ColumnHeader clmDate;
 		private System.Windows.Forms.ColumnHeader clmPeriod;
 		private System.Windows.Forms.ColumnHeader clmUser;
 		private System.Windows.Forms.Button btnDeleteAll;
+		private System.Windows.Forms.ListView listOwnBookings;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.Label label4;
 	}
 }
 

@@ -40,6 +40,7 @@ namespace Main_RBS
 				session.name = loginData.name;
 				session.group = loginData.group;
 				session.email = loginData.email;
+				session.loggedIn = true;
 				
 				this.Close();
 			}
