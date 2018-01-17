@@ -64,10 +64,12 @@ namespace Main_RBS
 
 		}
 
-		public void insertBooking(int roomID, string date, int period, int userID, string notes)
+		public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
 		{
 
-			//string newdt = date.ToShortDateString();
+			string newdt = date.ToShortDateString();
+
+			MessageBox.Show(newdt);
 
 			using (connection = new SqlConnection(getCString()))
 			{
@@ -89,7 +91,6 @@ namespace Main_RBS
 				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, PeriodBegin, PeriodEnd, UserID, Notes) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {2}, {3}, '{4}')", roomID.ToString(), date, period, userID.ToString(), notes); 
 				
 				SqlCommand logincommand = new SqlCommand(command, connection);
-
 				try
 				{
 					logincommand.ExecuteNonQuery();

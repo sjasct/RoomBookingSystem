@@ -79,6 +79,12 @@
     <Compile Include="frmMainTemp.Designer.cs">
       <DependentUpon>frmMainTemp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNewBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewBook.Designer.cs">
+      <DependentUpon>frmNewBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="session.cs" />
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMainTemp.resx">
       <DependentUpon>frmMainTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewBook.resx">
+      <DependentUpon>frmNewBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,10 +132,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="db_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>db.mdf</DependentUpon>
     </Content>
   </ItemGroup>

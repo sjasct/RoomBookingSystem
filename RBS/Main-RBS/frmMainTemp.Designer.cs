@@ -54,6 +54,7 @@
 			this.btnNewBook.TabIndex = 0;
 			this.btnNewBook.Text = "New Booking";
 			this.btnNewBook.UseVisualStyleBackColor = true;
+			this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
 			// 
 			// label1
 			// 

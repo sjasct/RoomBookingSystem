@@ -242,11 +242,10 @@ namespace Main_RBS
 
 			string niceFormat = date.ToString("yyyyMMdd");
 
-			MessageBox.Show(niceFormat);
 
-			db.insertBooking(2, niceFormat, 5, 1, "wow");
+			db.insertBooking(2, date, 5, 1, "wow");
 
-			//refreshForm();
+			refreshForm();
 		}
 
 		private void frmMainTemp_KeyDown(object sender, KeyEventArgs e)
@@ -268,6 +267,9 @@ namespace Main_RBS
 			}
 		}
 
-		
+		private void btnNewBook_Click(object sender, EventArgs e)
+		{
+			new frmNewBook().Show();
+		}
 	}
 }
