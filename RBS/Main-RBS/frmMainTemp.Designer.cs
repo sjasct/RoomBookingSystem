@@ -83,7 +83,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(608, 58);
+			this.label3.Location = new System.Drawing.Point(537, 58);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 5;
@@ -93,25 +93,25 @@
 			// lstBookings
 			// 
 			this.lstBookings.FormattingEnabled = true;
-			this.lstBookings.Location = new System.Drawing.Point(401, 74);
+			this.lstBookings.Location = new System.Drawing.Point(330, 73);
 			this.lstBookings.Name = "lstBookings";
-			this.lstBookings.Size = new System.Drawing.Size(272, 108);
+			this.lstBookings.Size = new System.Drawing.Size(272, 69);
 			this.lstBookings.TabIndex = 6;
 			this.lstBookings.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
 			// btnHomeLogin
 			// 
-			this.btnHomeLogin.Location = new System.Drawing.Point(12, 116);
+			this.btnHomeLogin.Location = new System.Drawing.Point(167, 87);
 			this.btnHomeLogin.Name = "btnHomeLogin";
 			this.btnHomeLogin.Size = new System.Drawing.Size(149, 23);
 			this.btnHomeLogin.TabIndex = 7;
-			this.btnHomeLogin.Text = "Open Login Form";
+			this.btnHomeLogin.Text = "Log In";
 			this.btnHomeLogin.UseVisualStyleBackColor = true;
 			this.btnHomeLogin.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// btnShowID
 			// 
-			this.btnShowID.Location = new System.Drawing.Point(12, 145);
+			this.btnShowID.Location = new System.Drawing.Point(167, 58);
 			this.btnShowID.Name = "btnShowID";
 			this.btnShowID.Size = new System.Drawing.Size(149, 23);
 			this.btnShowID.TabIndex = 8;
@@ -121,7 +121,7 @@
 			// 
 			// btnRefresh
 			// 
-			this.btnRefresh.Location = new System.Drawing.Point(572, 12);
+			this.btnRefresh.Location = new System.Drawing.Point(501, 12);
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(101, 23);
 			this.btnRefresh.TabIndex = 9;
@@ -141,7 +141,7 @@
 			// 
 			// btnLogOut
 			// 
-			this.btnLogOut.Location = new System.Drawing.Point(167, 58);
+			this.btnLogOut.Location = new System.Drawing.Point(167, 116);
 			this.btnLogOut.Name = "btnLogOut";
 			this.btnLogOut.Size = new System.Drawing.Size(149, 23);
 			this.btnLogOut.TabIndex = 11;
@@ -151,7 +151,7 @@
 			// 
 			// btnTestBooking
 			// 
-			this.btnTestBooking.Location = new System.Drawing.Point(167, 87);
+			this.btnTestBooking.Location = new System.Drawing.Point(12, 116);
 			this.btnTestBooking.Name = "btnTestBooking";
 			this.btnTestBooking.Size = new System.Drawing.Size(149, 23);
 			this.btnTestBooking.TabIndex = 12;
@@ -163,7 +163,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(685, 329);
+			this.ClientSize = new System.Drawing.Size(618, 152);
 			this.Controls.Add(this.btnTestBooking);
 			this.Controls.Add(this.btnLogOut);
 			this.Controls.Add(this.lblUserHeader);
@@ -180,7 +180,7 @@
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.Name = "frmMainTemp";
-			this.Text = "Form1";
+			this.Text = "Home | Room Booking System";
 			this.Activated += new System.EventHandler(this.frmMainTemp_Activated);
 			this.Load += new System.EventHandler(this.frmMainTemp_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMainTemp_KeyDown);
