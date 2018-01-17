@@ -115,13 +115,13 @@
 			this.btnShowID.Name = "btnShowID";
 			this.btnShowID.Size = new System.Drawing.Size(149, 23);
 			this.btnShowID.TabIndex = 8;
-			this.btnShowID.Text = "Show Logged In User ID";
+			this.btnShowID.Text = "View Profile";
 			this.btnShowID.UseVisualStyleBackColor = true;
 			this.btnShowID.Click += new System.EventHandler(this.button1_Click_1);
 			// 
 			// btnRefresh
 			// 
-			this.btnRefresh.Location = new System.Drawing.Point(32, 174);
+			this.btnRefresh.Location = new System.Drawing.Point(572, 12);
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(101, 23);
 			this.btnRefresh.TabIndex = 9;
@@ -177,11 +177,14 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnNewBook);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.Name = "frmMainTemp";
 			this.Text = "Form1";
 			this.Activated += new System.EventHandler(this.frmMainTemp_Activated);
 			this.Load += new System.EventHandler(this.frmMainTemp_Load);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMainTemp_KeyDown);
+			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMainTemp_KeyPress);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

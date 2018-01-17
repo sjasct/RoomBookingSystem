@@ -87,7 +87,18 @@ namespace Main_RBS
 
 		private void button1_Click_1(object sender, EventArgs e)
 		{
-			MessageBox.Show(session.userID.ToString());
+			
+			
+
+			try
+			{
+				string userdata = String.Format("Username:{0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.group, session.email, session.userID);
+				MessageBox.Show(userdata);
+			}
+			catch (System.NullReferenceException)
+			{
+				MessageBox.Show("You are not logged in!");
+			}
 		}
 
 		private void btnRefresh_Click(object sender, EventArgs e)
@@ -200,6 +211,25 @@ namespace Main_RBS
 			db.insertBooking(2, niceFormat, 5, 1, "wow");
 
 			//refreshForm();
+		}
+
+		private void frmMainTemp_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.F5)
+			{
+				MessageBox.Show("refreshing");
+				refreshForm();
+			}
+		}
+
+		private void frmMainTemp_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			MessageBox.Show(e.KeyChar.ToString());
+			if (e.KeyChar == (char)Keys.F5)
+			{
+				MessageBox.Show("refreshing..");
+				refreshForm();
+			}
 		}
 	}
 }
