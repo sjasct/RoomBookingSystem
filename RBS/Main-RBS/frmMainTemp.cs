@@ -33,12 +33,13 @@ namespace Main_RBS
 
 			db = new DatabaseHelper();
 			popBookings();
+
 		}
 
 		private void popBookings()
 		{
 
-			DataTable dt = null;
+			/*DataTable dt = null;
 			try
 			{
 				dt = db.popBookings();
@@ -56,9 +57,49 @@ namespace Main_RBS
 
 			lstBookings.DisplayMember = "Date";
 			lstBookings.ValueMember = "Id";
-			lstBookings.DataSource = dt;
+			lstBookings.DataSource = dt;*/
+
+			SqlConnection connection;
+
+			try
+			{
+				using (connection = new SqlConnection(db.getCString()))
+				{
+
+					SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection);
+					
+					DataTable dt = new DataTable();
+
+					adapter.Fill(dt);
+					for (int i = 0; i < dt.Rows.Count; i++)
+					{
+						DataRow dr = dt.Rows[i];
+						/*ListViewItem listitem = new ListViewItem(dr["RoomID"].ToString());
+						listitem.SubItems.Add(dr["Date"].ToString());
+						listitem.SubItems.Add(dr["PeriodBegin"].ToString());
+						listitem.SubItems.Add(dr["UserID"].ToString());
+						listNewBookThingy.Items.Add(listitem);*/
+
+						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString() };
+
+						ListViewItem li = new ListViewItem(list);
+						listNewBookThingy.Items.Add(li);
+
+					}
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show("-");
+			}
 
 
+
+		}
+
+		private void print()
+		{
+			MessageBox.Show("i get here noob");
 		}
 
 		private void label3_Click(object sender, EventArgs e)
@@ -79,20 +120,14 @@ namespace Main_RBS
 
 		private void btnOwnBookings_Click(object sender, EventArgs e)
 		{
-			DatabaseHelper db = new DatabaseHelper();
-			MessageBox.Show(db.test);
-
-			
+			MessageBox.Show("Not implemented.");
 		}
 
 		private void button1_Click_1(object sender, EventArgs e)
 		{
-			
-			
-
 			try
 			{
-				string userdata = String.Format("Username:{0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.group, session.email, session.userID);
+				string userdata = String.Format("Username: {0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.group, session.email, session.userID);
 				MessageBox.Show(userdata);
 			}
 			catch (System.NullReferenceException)
@@ -108,6 +143,8 @@ namespace Main_RBS
 
 		private void refreshForm()
 		{
+
+			
 
 			// Header
 			string name;
@@ -136,11 +173,12 @@ namespace Main_RBS
 				btnOwnBookings.Enabled = false;
 				btnLogOut.Enabled = false;
 				btnHomeLogin.Enabled = true;
+				btnShowID.Enabled = false;
 			}
 			else if (session.group == "Student")
 			{
 
-
+				btnShowID.Enabled = true;
 				btnNewBook.Enabled = false;
 				btnOwnBookings.Enabled = false;
 				btnLogOut.Enabled = true;
@@ -149,23 +187,24 @@ namespace Main_RBS
 			else if(session.group == "Teacher" || session.group == "Admin")
 			{
 
-
+				btnShowID.Enabled = true;
 				btnNewBook.Enabled = true;
 				btnOwnBookings.Enabled = true;
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
 			}
-			else
-			{
-			}
 
-			db.popBookings();
+			foreach(ListViewItem item in listNewBookThingy.Items)
+			{
+				item.Remove();
+			}
+			popBookings();
 
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
 		{
-			refreshForm();
+			//refreshForm();
 		}
 
 		private void btnLogOut_Click(object sender, EventArgs e)
@@ -203,9 +242,6 @@ namespace Main_RBS
 
 			string niceFormat = date.ToString("yyyyMMdd");
 
-			
-			
-
 			MessageBox.Show(niceFormat);
 
 			db.insertBooking(2, niceFormat, 5, 1, "wow");
@@ -231,5 +267,7 @@ namespace Main_RBS
 				refreshForm();
 			}
 		}
+
+		
 	}
 }

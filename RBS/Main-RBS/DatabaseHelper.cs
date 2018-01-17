@@ -14,8 +14,6 @@ namespace Main_RBS
 	public class DatabaseHelper
 	{
 
-		public string test = "idk";
-
 		string connectionString;
 
 		SqlConnection connection;
@@ -26,22 +24,12 @@ namespace Main_RBS
 			return connectionString;
 		}
 
-		public DataTable popBookings()
+		/*public SqlDataAdapter popBookings()
 		{
 
-			using (connection = new SqlConnection(getCString()))
-			{
+			
 
-				SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblBookings", connection);
-
-				DataTable bookTable = new DataTable();
-				adapter.Fill(bookTable);
-
-				return bookTable;
-
-			}
-
-		}
+		}*/
 
 		public loginReturnedData checkLoginDetails(string username, string pass)
 		{

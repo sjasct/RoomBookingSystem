@@ -33,13 +33,17 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.btnOwnBookings = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
-			this.lstBookings = new System.Windows.Forms.ListBox();
 			this.btnHomeLogin = new System.Windows.Forms.Button();
 			this.btnShowID = new System.Windows.Forms.Button();
 			this.btnRefresh = new System.Windows.Forms.Button();
 			this.lblUserHeader = new System.Windows.Forms.Label();
 			this.btnLogOut = new System.Windows.Forms.Button();
 			this.btnTestBooking = new System.Windows.Forms.Button();
+			this.listNewBookThingy = new System.Windows.Forms.ListView();
+			this.clmRoomID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clmPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clmUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -83,21 +87,12 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(537, 58);
+			this.label3.Location = new System.Drawing.Point(13, 165);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "All Bookings";
 			this.label3.Click += new System.EventHandler(this.label3_Click);
-			// 
-			// lstBookings
-			// 
-			this.lstBookings.FormattingEnabled = true;
-			this.lstBookings.Location = new System.Drawing.Point(330, 73);
-			this.lstBookings.Name = "lstBookings";
-			this.lstBookings.Size = new System.Drawing.Size(272, 69);
-			this.lstBookings.TabIndex = 6;
-			this.lstBookings.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
 			// 
 			// btnHomeLogin
 			// 
@@ -121,7 +116,7 @@
 			// 
 			// btnRefresh
 			// 
-			this.btnRefresh.Location = new System.Drawing.Point(501, 12);
+			this.btnRefresh.Location = new System.Drawing.Point(496, 9);
 			this.btnRefresh.Name = "btnRefresh";
 			this.btnRefresh.Size = new System.Drawing.Size(101, 23);
 			this.btnRefresh.TabIndex = 9;
@@ -159,18 +154,50 @@
 			this.btnTestBooking.UseVisualStyleBackColor = true;
 			this.btnTestBooking.Click += new System.EventHandler(this.btnTestBooking_Click);
 			// 
+			// listNewBookThingy
+			// 
+			this.listNewBookThingy.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmRoomID,
+            this.clmDate,
+            this.clmPeriod,
+            this.clmUser});
+			this.listNewBookThingy.FullRowSelect = true;
+			this.listNewBookThingy.HideSelection = false;
+			this.listNewBookThingy.Location = new System.Drawing.Point(16, 181);
+			this.listNewBookThingy.Name = "listNewBookThingy";
+			this.listNewBookThingy.Size = new System.Drawing.Size(581, 187);
+			this.listNewBookThingy.TabIndex = 13;
+			this.listNewBookThingy.UseCompatibleStateImageBehavior = false;
+			this.listNewBookThingy.View = System.Windows.Forms.View.Details;
+			// 
+			// clmRoomID
+			// 
+			this.clmRoomID.Text = "RoomID";
+			// 
+			// clmDate
+			// 
+			this.clmDate.Text = "Date";
+			// 
+			// clmPeriod
+			// 
+			this.clmPeriod.Text = "Period";
+			// 
+			// clmUser
+			// 
+			this.clmUser.Text = "UserID";
+			// 
 			// frmMainTemp
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(618, 152);
+			this.ClientSize = new System.Drawing.Size(609, 399);
+			this.Controls.Add(this.listNewBookThingy);
 			this.Controls.Add(this.btnTestBooking);
 			this.Controls.Add(this.btnLogOut);
 			this.Controls.Add(this.lblUserHeader);
 			this.Controls.Add(this.btnRefresh);
 			this.Controls.Add(this.btnShowID);
 			this.Controls.Add(this.btnHomeLogin);
-			this.Controls.Add(this.lstBookings);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.btnOwnBookings);
 			this.Controls.Add(this.label2);
@@ -197,13 +224,17 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btnOwnBookings;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ListBox lstBookings;
 		private System.Windows.Forms.Button btnHomeLogin;
 		private System.Windows.Forms.Button btnShowID;
 		private System.Windows.Forms.Button btnRefresh;
 		private System.Windows.Forms.Label lblUserHeader;
 		private System.Windows.Forms.Button btnLogOut;
 		private System.Windows.Forms.Button btnTestBooking;
+		private System.Windows.Forms.ListView listNewBookThingy;
+		private System.Windows.Forms.ColumnHeader clmRoomID;
+		private System.Windows.Forms.ColumnHeader clmDate;
+		private System.Windows.Forms.ColumnHeader clmPeriod;
+		private System.Windows.Forms.ColumnHeader clmUser;
 	}
 }
 
