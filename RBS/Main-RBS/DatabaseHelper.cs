@@ -46,7 +46,7 @@ namespace Main_RBS
 			}
 			else
 			{
-				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0}", session.userID);
+				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
 			}
 
 			try
@@ -65,7 +65,7 @@ namespace Main_RBS
 					{
 						DataRow dr = dt.Rows[i];
 
-						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString() };
+						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString() };
 
 						ListViewItem li = new ListViewItem(list);
 
@@ -121,6 +121,10 @@ namespace Main_RBS
 		public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
 		{
 
+			DateTime dt = new DateTime();
+			dt = DateTime.Now;
+			MessageBox.Show(dt.ToString());
+
 			string newdt = date.ToShortDateString();
 
 			using (connection = new SqlConnection(getCString()))
@@ -128,7 +132,7 @@ namespace Main_RBS
 
 				connection.Open();
 
-				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, PeriodBegin, PeriodEnd, UserID, Notes) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {2}, {3}, '{4}')", roomID.ToString(), date, period, userID.ToString(), notes); 
+				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, PeriodBegin, PeriodEnd, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString()); 
 				
 				SqlCommand logincommand = new SqlCommand(command, connection);
 				try

@@ -51,6 +51,8 @@
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.label4 = new System.Windows.Forms.Label();
+			this.clmBookingMade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -168,7 +170,8 @@
             this.clmRoomID,
             this.clmDate,
             this.clmPeriod,
-            this.clmUser});
+            this.clmUser,
+            this.clmBookingMade});
 			this.listAllBookings.FullRowSelect = true;
 			this.listAllBookings.HideSelection = false;
 			this.listAllBookings.Location = new System.Drawing.Point(16, 181);
@@ -210,7 +213,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader5});
 			this.listOwnBookings.FullRowSelect = true;
 			this.listOwnBookings.HideSelection = false;
 			this.listOwnBookings.Location = new System.Drawing.Point(16, 396);
@@ -244,6 +248,14 @@
 			this.label4.Size = new System.Drawing.Size(76, 13);
 			this.label4.TabIndex = 16;
 			this.label4.Text = "Your Bookings";
+			// 
+			// clmBookingMade
+			// 
+			this.clmBookingMade.Text = "Time Made";
+			// 
+			// columnHeader5
+			// 
+			this.columnHeader5.Text = "Time Made";
 			// 
 			// frmMainTemp
 			// 
@@ -304,6 +316,8 @@
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.ColumnHeader clmBookingMade;
+		private System.Windows.Forms.ColumnHeader columnHeader5;
 	}
 }
 

@@ -21,13 +21,6 @@ namespace Main_RBS
 
 		DatabaseHelper db;
 
-		public frmMainTemp()
-		{
-			InitializeComponent();
-
-			
-		}
-
 		private void frmMainTemp_Load(object sender, EventArgs e)
 		{
 
@@ -35,7 +28,18 @@ namespace Main_RBS
 			popAllBookings();
 			session.userID = -1;
 
+			
+
 		}
+
+		public frmMainTemp()
+		{
+			InitializeComponent();
+
+			
+		}
+
+		
 
 		private void popAllBookings()
 		{
