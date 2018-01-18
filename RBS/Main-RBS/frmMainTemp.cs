@@ -15,42 +15,28 @@ namespace Main_RBS
 	public partial class frmMainTemp : Form
 	{
 
-		//string connectionString;
-
-		//SqlConnection connection; 
-
 		DatabaseHelper db;
 
 		private void frmMainTemp_Load(object sender, EventArgs e)
 		{
-
 			db = new DatabaseHelper();
 			popAllBookings();
 			session.userID = -1;
-
-			
-
 		}
 
 		public frmMainTemp()
 		{
-			InitializeComponent();
-
-			
+			InitializeComponent();	
 		}
-
 		
-
 		private void popAllBookings()
 		{
-
 			List<ListViewItem> items = db.popBookings();
 
 			foreach(ListViewItem item in items)
 			{
 				listAllBookings.Items.Add(item);
 			}
-
 		}
 
 		private void popOwnBookings()
@@ -63,20 +49,7 @@ namespace Main_RBS
 				{
 					listOwnBookings.Items.Add(item);
 				}
-			}
-			
-
-		}
-
-
-		private void label3_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
+			}	
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -110,9 +83,6 @@ namespace Main_RBS
 
 		private void refreshForm()
 		{
-
-			
-
 			// Header
 			string name;
 			try
@@ -131,7 +101,6 @@ namespace Main_RBS
 			{
 				lblUserHeader.Text = String.Format("Welcome {0}!", name);
 			}
-
 		
 			// buttons
 			if (string.IsNullOrEmpty(session.group))
@@ -181,7 +150,6 @@ namespace Main_RBS
 			}
 			popAllBookings();
 			popOwnBookings();
-
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
@@ -213,19 +181,19 @@ namespace Main_RBS
 				MessageBox.Show("Logged out!");
 				refreshForm();
 			}
-
-
 		}
 
 		private void btnTestBooking_Click(object sender, EventArgs e)
 		{
 
-			DateTime date = new DateTime(2018, 1, 16);
+			Random r = new Random();
+			int dateThing = r.Next(1, 32);
+			int roomID = r.Next(1, 8);
+			int period = r.Next(1, 6);
 
-			string niceFormat = date.ToString("yyyyMMdd");
+			DateTime date = new DateTime(2018, 1, dateThing);
 
-
-			db.insertBooking(2, date, 5, session.userID, "wow");
+			db.insertBooking(roomID, date, period, session.userID, "wow");
 
 			refreshForm();
 		}
@@ -239,11 +207,6 @@ namespace Main_RBS
 			}
 		}
 
-		private void frmMainTemp_KeyPress(object sender, KeyPressEventArgs e)
-		{
-
-		}
-
 		private void btnNewBook_Click(object sender, EventArgs e)
 		{
 			new frmNewBook().Show();
@@ -251,7 +214,8 @@ namespace Main_RBS
 
 		private void btnDeleteAll_Click(object sender, EventArgs e)
 		{
-			db.removeAllBookings();
+			db.miscAction("TRUNCATE TABLE tblBookings");
+			refreshForm();
 		}
 	}
 }

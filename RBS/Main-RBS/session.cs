@@ -26,4 +26,15 @@ namespace Main_RBS
 		public string group { get; set; }
 		public string email { get; set; }
 	}
+
+	public class booking
+	{
+		public int id { get; set; }
+		public int UserID { get; set; }
+		public DateTime date { get; set; }
+		public int period { get; set; }
+		public string notes { get; set; }
+		public int roomID { get; set; }
+
+	}
 }

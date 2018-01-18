@@ -27,7 +27,6 @@ namespace Main_RBS
 
 		private void btnLoginEnter_Click(object sender, EventArgs e)
 		{
-			
 			string username = txtLoginUsername.Text;
 			string password = txtLoginPassword.Text;
 

@@ -24,16 +24,8 @@ namespace Main_RBS
 			return connectionString;
 		}
 
-		/*public SqlDataAdapter popBookings()
-		{
-
-			
-
-		}*/
-
 		public List<ListViewItem> popBookings(bool all = true)
 		{
-
 			SqlConnection connection;
 
 			List<ListViewItem> listItems = new List<ListViewItem>();
@@ -53,24 +45,21 @@ namespace Main_RBS
 			{
 				using (connection = new SqlConnection(getCString()))
 				{
-
-					
-
 					SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
 					DataTable dt = new DataTable();
 
 					adapter.Fill(dt);
+
 					for (int i = 0; i < dt.Rows.Count; i++)
 					{
 						DataRow dr = dt.Rows[i];
 
-						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["PeriodBegin"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString() };
+						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString() };
 
 						ListViewItem li = new ListViewItem(list);
 
 						listItems.Add(li);
-
 					}
 				}
 			}
@@ -80,9 +69,6 @@ namespace Main_RBS
 			}
 
 			return listItems;
-
-
-
 		}
 
 		public loginReturnedData checkLoginDetails(string username, string pass)
@@ -90,10 +76,8 @@ namespace Main_RBS
 
 			loginReturnedData returnedData = new loginReturnedData();
 
-			// SELECT * FROM tblUsers WHERE username = "{username}" AND pass = "{pass}"
 			using (connection = new SqlConnection(getCString()))
 			{
-
 				connection.Open();
 
 				string command = String.Format("SELECT * FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
@@ -109,30 +93,52 @@ namespace Main_RBS
 					returnedData.name = new string[] { reader.GetString(2), reader.GetString(3) };
 					returnedData.group = reader.GetString(5);
 					returnedData.email = reader.GetString(6);
-
 				}
-
 			}
 
 			return returnedData;
+		}
 
+		public booking getBooking(int id)
+		{
+
+			booking booking = new booking();
+
+			using (connection = new SqlConnection(getCString()))
+			{
+				connection.Open();
+
+				string command = String.Format("SELECT * FROM tblBookings WHERE Id = {0}", id.ToString());
+
+				SqlCommand logincommand = new SqlCommand(command, connection);
+				SqlDataReader reader = logincommand.ExecuteReader();
+
+				if (reader.Read())
+				{
+					booking.id = reader.GetInt32(0);
+					booking.date = reader.GetDateTime(2);
+					booking.UserID = reader.GetInt32(4);
+					booking.period = reader.GetInt32(3);
+					booking.notes = reader.GetString(5);
+					booking.roomID = reader.GetInt32(1);
+				}
+			}
+
+			return booking;
 		}
 
 		public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
 		{
-
 			DateTime dt = new DateTime();
 			dt = DateTime.Now;
-			MessageBox.Show(dt.ToString());
 
 			string newdt = date.ToShortDateString();
 
 			using (connection = new SqlConnection(getCString()))
 			{
-
 				connection.Open();
 
-				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, PeriodBegin, PeriodEnd, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString()); 
+				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, Period, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString()); 
 				
 				SqlCommand logincommand = new SqlCommand(command, connection);
 				try
@@ -147,21 +153,16 @@ namespace Main_RBS
 				{
 					connection.Close();
 				}
-
-				
-
 			}
 		}
 
-		public void removeAllBookings()
+		public void miscAction(string query)
 		{
-
 			using (connection = new SqlConnection(getCString()))
 			{
-
 				connection.Open();
 
-				string command = "TRUNCATE TABLE tblBookings";
+				string command = query;
 
 				SqlCommand logincommand = new SqlCommand(command, connection);
 				try
@@ -176,9 +177,6 @@ namespace Main_RBS
 				{
 					connection.Close();
 				}
-
-
-
 			}
 		}
 

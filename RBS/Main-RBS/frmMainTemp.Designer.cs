@@ -44,15 +44,15 @@
 			this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.clmUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.clmBookingMade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.btnDeleteAll = new System.Windows.Forms.Button();
 			this.listOwnBookings = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.label4 = new System.Windows.Forms.Label();
-			this.clmBookingMade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.label4 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnNewBook
@@ -102,7 +102,6 @@
 			this.label3.Size = new System.Drawing.Size(65, 13);
 			this.label3.TabIndex = 5;
 			this.label3.Text = "All Bookings";
-			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// btnHomeLogin
 			// 
@@ -197,6 +196,10 @@
 			// 
 			this.clmUser.Text = "UserID";
 			// 
+			// clmBookingMade
+			// 
+			this.clmBookingMade.Text = "Time Made";
+			// 
 			// btnDeleteAll
 			// 
 			this.btnDeleteAll.Location = new System.Drawing.Point(448, 116);
@@ -240,6 +243,10 @@
 			// 
 			this.columnHeader4.Text = "UserID";
 			// 
+			// columnHeader5
+			// 
+			this.columnHeader5.Text = "Time Made";
+			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
@@ -248,14 +255,6 @@
 			this.label4.Size = new System.Drawing.Size(76, 13);
 			this.label4.TabIndex = 16;
 			this.label4.Text = "Your Bookings";
-			// 
-			// clmBookingMade
-			// 
-			this.clmBookingMade.Text = "Time Made";
-			// 
-			// columnHeader5
-			// 
-			this.columnHeader5.Text = "Time Made";
 			// 
 			// frmMainTemp
 			// 
@@ -285,7 +284,6 @@
 			this.Activated += new System.EventHandler(this.frmMainTemp_Activated);
 			this.Load += new System.EventHandler(this.frmMainTemp_Load);
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMainTemp_KeyDown);
-			this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmMainTemp_KeyPress);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -37,6 +37,9 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.txtNotes = new System.Windows.Forms.TextBox();
 			this.btnNewBook = new System.Windows.Forms.Button();
+			this.txtEditID = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.btnEditSubmit = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// dtDate
@@ -72,7 +75,6 @@
 			this.txtRoom.Name = "txtRoom";
 			this.txtRoom.Size = new System.Drawing.Size(200, 20);
 			this.txtRoom.TabIndex = 3;
-			this.txtRoom.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// txtPeriod
 			// 
@@ -105,7 +107,6 @@
 			this.txtNotes.Name = "txtNotes";
 			this.txtNotes.Size = new System.Drawing.Size(200, 20);
 			this.txtNotes.TabIndex = 7;
-			this.txtNotes.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
 			// 
 			// btnNewBook
 			// 
@@ -117,11 +118,40 @@
 			this.btnNewBook.UseVisualStyleBackColor = true;
 			this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
 			// 
+			// txtEditID
+			// 
+			this.txtEditID.Location = new System.Drawing.Point(83, 208);
+			this.txtEditID.Name = "txtEditID";
+			this.txtEditID.Size = new System.Drawing.Size(44, 20);
+			this.txtEditID.TabIndex = 9;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(40, 208);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(37, 13);
+			this.label5.TabIndex = 10;
+			this.label5.Text = "Edit Id";
+			// 
+			// btnEditSubmit
+			// 
+			this.btnEditSubmit.Location = new System.Drawing.Point(134, 208);
+			this.btnEditSubmit.Name = "btnEditSubmit";
+			this.btnEditSubmit.Size = new System.Drawing.Size(75, 23);
+			this.btnEditSubmit.TabIndex = 11;
+			this.btnEditSubmit.Text = "getstuff";
+			this.btnEditSubmit.UseVisualStyleBackColor = true;
+			this.btnEditSubmit.Click += new System.EventHandler(this.btnEditSubmit_Click);
+			// 
 			// frmNewBook
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(292, 273);
+			this.Controls.Add(this.btnEditSubmit);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.txtEditID);
 			this.Controls.Add(this.btnNewBook);
 			this.Controls.Add(this.txtNotes);
 			this.Controls.Add(this.label4);
@@ -133,6 +163,7 @@
 			this.Controls.Add(this.dtDate);
 			this.Name = "frmNewBook";
 			this.Text = "frmNewBook";
+			this.Load += new System.EventHandler(this.frmNewBook_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -149,5 +180,8 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox txtNotes;
 		private System.Windows.Forms.Button btnNewBook;
+		private System.Windows.Forms.TextBox txtEditID;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Button btnEditSubmit;
 	}
 }
