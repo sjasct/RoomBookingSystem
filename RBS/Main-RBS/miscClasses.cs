@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Main_RBS
 {
-	public static class session
+	public static class miscClasses
 	{
 		static public Boolean loggedIn { get; set; }
 		static public int userID { get; set; }
@@ -15,6 +15,11 @@ namespace Main_RBS
 		static public string group { get; set; }
 		static public string email { get; set; }
 	}
+
+    public static class tempVars
+    {
+        static public int editBookingId { get; set; }
+    }
 
 
 	public class loginReturnedData

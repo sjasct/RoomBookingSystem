@@ -32,13 +32,13 @@ namespace Main_RBS
 
 			string query;
 
-			if (session.userID < 0 || all)
+			if (miscClasses.userID < 0 || all)
 			{
 				query = "SELECT * FROM tblBookings";
 			}
 			else
 			{
-				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
+				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", miscClasses.userID);
 			}
 
 			try
@@ -55,7 +55,7 @@ namespace Main_RBS
 					{
 						DataRow dr = dt.Rows[i];
 
-						string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString() };
+                        string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString() };
 
 						ListViewItem li = new ListViewItem(list);
 
@@ -156,7 +156,31 @@ namespace Main_RBS
 			}
 		}
 
-		public void miscAction(string query)
+        public void updateBooking(int bookID, int roomID, DateTime date, int period, int userID, string notes)
+        {
+
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
+
+                string command = String.Format("UPDATE tblBookings SET RoomID = {0}, Date = CONVERT(date, '{1}', 103), Period = {2}, UserID = {3}, Notes = '{4}' WHERE Id = {5}", roomID.ToString(), date, period, userID.ToString(), notes, bookID.ToString());
+                SqlCommand logincommand = new SqlCommand(command, connection);
+                try
+                {
+                    logincommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void miscAction(string query)
 		{
 			using (connection = new SqlConnection(getCString()))
 			{

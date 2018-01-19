@@ -21,7 +21,9 @@ namespace Main_RBS
 		{
 			db = new DatabaseHelper();
 			popAllBookings();
-			session.userID = -1;
+			miscClasses.userID = -1;
+            tempVars.editBookingId = 0;
+            refreshForm();
 		}
 
 		public frmMainTemp()
@@ -41,7 +43,7 @@ namespace Main_RBS
 
 		private void popOwnBookings()
 		{
-			if (session.loggedIn)
+			if (miscClasses.loggedIn)
 			{
 				List<ListViewItem> items = db.popBookings(false);
 
@@ -67,7 +69,7 @@ namespace Main_RBS
 		{
 			try
 			{
-				string userdata = String.Format("Username: {0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.group, session.email, session.userID);
+				string userdata = String.Format("Username: {0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", miscClasses.username, miscClasses.name[0], miscClasses.name[1], miscClasses.group, miscClasses.email, miscClasses.userID);
 				MessageBox.Show(userdata);
 			}
 			catch (System.NullReferenceException)
@@ -87,7 +89,7 @@ namespace Main_RBS
 			string name;
 			try
 			{
-				name = session.name[0];
+				name = miscClasses.name[0];
 			}
 			catch
 			{
@@ -103,7 +105,7 @@ namespace Main_RBS
 			}
 		
 			// buttons
-			if (string.IsNullOrEmpty(session.group))
+			if (string.IsNullOrEmpty(miscClasses.group))
 			{
 				btnDeleteAll.Enabled = false;
 				btnNewBook.Enabled = false;
@@ -111,8 +113,9 @@ namespace Main_RBS
 				btnLogOut.Enabled = false;
 				btnHomeLogin.Enabled = true;
 				btnShowID.Enabled = false;
+                btnTestBooking.Enabled = false;
 			}
-			else if (session.group == "Student")
+			else if (miscClasses.group == "Student")
 			{
 				btnDeleteAll.Enabled = false;
 				btnShowID.Enabled = true;
@@ -120,8 +123,9 @@ namespace Main_RBS
 				btnOwnBookings.Enabled = false;
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
-			}
-			else if(session.group == "Teacher")
+                btnTestBooking.Enabled = true;
+            }
+			else if(miscClasses.group == "Teacher")
 			{
 				btnDeleteAll.Enabled = false;
 				btnShowID.Enabled = true;
@@ -129,8 +133,9 @@ namespace Main_RBS
 				btnOwnBookings.Enabled = true;
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
-			}
-			else if (session.group == "Admin")
+                btnTestBooking.Enabled = true;
+            }
+			else if (miscClasses.group == "Admin")
 			{
 				btnDeleteAll.Enabled = true;
 				btnShowID.Enabled = true;
@@ -138,7 +143,8 @@ namespace Main_RBS
 				btnOwnBookings.Enabled = true;
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
-			}
+                btnTestBooking.Enabled = true;
+            }
 
 			foreach (ListViewItem item in listAllBookings.Items)
 			{
@@ -163,12 +169,12 @@ namespace Main_RBS
 
 			try
 			{
-				session.loggedIn = false;
-				session.userID = -1;
-				session.username = null;
-				session.name = new string[] { "", "" };
-				session.group = null;
-				session.email = null;
+				miscClasses.loggedIn = false;
+				miscClasses.userID = -1;
+				miscClasses.username = null;
+				miscClasses.name = new string[] { "", "" };
+				miscClasses.group = null;
+				miscClasses.email = null;
 				success = true;
 			}
 			catch
@@ -187,13 +193,13 @@ namespace Main_RBS
 		{
 
 			Random r = new Random();
-			int dateThing = r.Next(1, 32);
-			int roomID = r.Next(1, 8);
-			int period = r.Next(1, 6);
+			int dateThing = r.Next(1, 31);
+			int roomID = r.Next(1, 5);
+			int period = r.Next(1, 5);
 
 			DateTime date = new DateTime(2018, 1, dateThing);
 
-			db.insertBooking(roomID, date, period, session.userID, "wow");
+			db.insertBooking(roomID, date, period, miscClasses.userID, "wow");
 
 			refreshForm();
 		}
@@ -217,5 +223,17 @@ namespace Main_RBS
 			db.miscAction("TRUNCATE TABLE tblBookings");
 			refreshForm();
 		}
-	}
+
+        private void listAllBookings_ItemActivate(object sender, EventArgs e)
+        {
+            int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
+            tempVars.editBookingId = editBookingId;
+            new frmNewBook().Show();
+        }
+
+        private void listAllBookings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -17,6 +17,8 @@ namespace Main_RBS
 
 		DatabaseHelper db;
 
+        int editID;
+
 		public frmNewBook()
 		{
 			InitializeComponent();
@@ -37,27 +39,50 @@ namespace Main_RBS
 
 			DateTime date = Convert.ToDateTime(dtDate.Text);
 
-			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
+			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), miscClasses.userID, txtNotes.Text);
 
 			this.Close();
-		}
-
-		private void btnEditSubmit_Click(object sender, EventArgs e)
-		{
-			book = db.getBooking(Convert.ToInt32(txtEditID.Text));
-
-			txtNotes.Text = book.notes;
-			txtPeriod.Text = book.period.ToString();
-			txtRoom.Text = book.roomID.ToString();
-			dtDate.MinDate = DateTime.MinValue;
-			dtDate.MaxDate = DateTime.MaxValue;
-			MessageBox.Show(String.Format("{0}\n{1}\n{2}", DateTime.MinValue.ToString(), DateTime.MaxValue.ToString(), dtDate.MaxDate.ToString()));
-			dtDate.Value = book.date;
 		}
 
 		private void frmNewBook_Load(object sender, EventArgs e)
 		{
 			db = new DatabaseHelper();
-		}
-	}
+            if(tempVars.editBookingId != 0)
+            {
+                btnUpdate.Enabled = true;
+                btnNewBook.Enabled = false;
+                editID = tempVars.editBookingId;
+                book = db.getBooking(tempVars.editBookingId);
+
+                txtNotes.Text = book.notes;
+                txtPeriod.Text = book.period.ToString();
+                txtRoom.Text = book.roomID.ToString();
+                dtDate.MinDate = DateTime.MinValue;
+                dtDate.MaxDate = DateTime.MaxValue;
+                dtDate.Value = book.date;
+                tempVars.editBookingId = 0;
+            }
+            else
+            {
+                btnNewBook.Enabled = true;
+                btnUpdate.Enabled = false;
+            }
+            
+
+        }
+
+        private void dtDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DateTime date = Convert.ToDateTime(dtDate.Text);
+
+            db.updateBooking(editID, Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), miscClasses.userID, txtNotes.Text);
+
+            this.Close();
+        }
+    }
 }
