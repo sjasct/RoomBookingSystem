@@ -59,6 +59,7 @@
             this.btnLoginBranton = new System.Windows.Forms.Button();
             this.btnLoginHood = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnNewBook
@@ -196,6 +197,7 @@
             // clmDate
             // 
             this.clmDate.Text = "Date";
+            this.clmDate.Width = 120;
             // 
             // clmPeriod
             // 
@@ -208,6 +210,7 @@
             // clmBookingMade
             // 
             this.clmBookingMade.Text = "Time Made";
+            this.clmBookingMade.Width = 180;
             // 
             // clmId
             // 
@@ -220,7 +223,8 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader6});
             this.listOwnBookings.FullRowSelect = true;
             this.listOwnBookings.HideSelection = false;
             this.listOwnBookings.Location = new System.Drawing.Point(16, 396);
@@ -237,6 +241,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Date";
+            this.columnHeader2.Width = 120;
             // 
             // columnHeader3
             // 
@@ -249,6 +254,7 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Time Made";
+            this.columnHeader5.Width = 180;
             // 
             // label4
             // 
@@ -317,6 +323,10 @@
             this.btnDeleteAll.Text = "Delete All Bookings";
             this.btnDeleteAll.UseVisualStyleBackColor = true;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "ID";
             // 
             // frmMainTemp
             // 
@@ -389,6 +399,7 @@
         private System.Windows.Forms.Button btnLoginBranton;
         private System.Windows.Forms.Button btnLoginHood;
         private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

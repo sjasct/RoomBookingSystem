@@ -55,7 +55,9 @@ namespace Main_RBS
 					{
 						DataRow dr = dt.Rows[i];
 
-                        string[] list = new string[] { dr["RoomID"].ToString(), dr["Date"].ToString(), dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString() };
+                        string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
+
+                        string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString() };
 
 						ListViewItem li = new ListViewItem(list);
 
