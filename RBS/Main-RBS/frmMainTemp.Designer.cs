@@ -45,7 +45,7 @@
             this.clmPeriod = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmBookingMade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.clmId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listOwnBookings = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,14 +53,19 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
-            this.clmId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnLoginSelf = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
+            this.btnLoginBranton = new System.Windows.Forms.Button();
+            this.btnLoginHood = new System.Windows.Forms.Button();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewBook
             // 
             this.btnNewBook.Location = new System.Drawing.Point(12, 58);
             this.btnNewBook.Name = "btnNewBook";
-            this.btnNewBook.Size = new System.Drawing.Size(149, 23);
+            this.btnNewBook.Size = new System.Drawing.Size(114, 23);
             this.btnNewBook.TabIndex = 0;
             this.btnNewBook.Text = "New Booking";
             this.btnNewBook.UseVisualStyleBackColor = true;
@@ -89,7 +94,7 @@
             // 
             this.btnOwnBookings.Location = new System.Drawing.Point(12, 87);
             this.btnOwnBookings.Name = "btnOwnBookings";
-            this.btnOwnBookings.Size = new System.Drawing.Size(149, 23);
+            this.btnOwnBookings.Size = new System.Drawing.Size(114, 23);
             this.btnOwnBookings.TabIndex = 4;
             this.btnOwnBookings.Text = "Your Bookings";
             this.btnOwnBookings.UseVisualStyleBackColor = true;
@@ -106,9 +111,9 @@
             // 
             // btnHomeLogin
             // 
-            this.btnHomeLogin.Location = new System.Drawing.Point(167, 87);
+            this.btnHomeLogin.Location = new System.Drawing.Point(483, 68);
             this.btnHomeLogin.Name = "btnHomeLogin";
-            this.btnHomeLogin.Size = new System.Drawing.Size(149, 23);
+            this.btnHomeLogin.Size = new System.Drawing.Size(114, 23);
             this.btnHomeLogin.TabIndex = 7;
             this.btnHomeLogin.Text = "Log In";
             this.btnHomeLogin.UseVisualStyleBackColor = true;
@@ -116,9 +121,9 @@
             // 
             // btnShowID
             // 
-            this.btnShowID.Location = new System.Drawing.Point(167, 58);
+            this.btnShowID.Location = new System.Drawing.Point(321, 152);
             this.btnShowID.Name = "btnShowID";
-            this.btnShowID.Size = new System.Drawing.Size(149, 23);
+            this.btnShowID.Size = new System.Drawing.Size(114, 23);
             this.btnShowID.TabIndex = 8;
             this.btnShowID.Text = "View Profile";
             this.btnShowID.UseVisualStyleBackColor = true;
@@ -126,11 +131,11 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(496, 9);
+            this.btnRefresh.Location = new System.Drawing.Point(522, 9);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(101, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 9;
-            this.btnRefresh.Text = "Refresh Data";
+            this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -146,9 +151,9 @@
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(167, 116);
+            this.btnLogOut.Location = new System.Drawing.Point(483, 39);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(149, 23);
+            this.btnLogOut.Size = new System.Drawing.Size(114, 23);
             this.btnLogOut.TabIndex = 11;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -158,7 +163,7 @@
             // 
             this.btnTestBooking.Location = new System.Drawing.Point(12, 116);
             this.btnTestBooking.Name = "btnTestBooking";
-            this.btnTestBooking.Size = new System.Drawing.Size(149, 23);
+            this.btnTestBooking.Size = new System.Drawing.Size(114, 23);
             this.btnTestBooking.TabIndex = 12;
             this.btnTestBooking.Text = "Insert test booking";
             this.btnTestBooking.UseVisualStyleBackColor = true;
@@ -204,15 +209,9 @@
             // 
             this.clmBookingMade.Text = "Time Made";
             // 
-            // btnDeleteAll
+            // clmId
             // 
-            this.btnDeleteAll.Location = new System.Drawing.Point(448, 116);
-            this.btnDeleteAll.Name = "btnDeleteAll";
-            this.btnDeleteAll.Size = new System.Drawing.Size(149, 23);
-            this.btnDeleteAll.TabIndex = 14;
-            this.btnDeleteAll.Text = "Delete All Bookings";
-            this.btnDeleteAll.UseVisualStyleBackColor = true;
-            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            this.clmId.Text = "ID";
             // 
             // listOwnBookings
             // 
@@ -260,18 +259,78 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Your Bookings";
             // 
-            // clmId
+            // label5
             // 
-            this.clmId.Text = "ID";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(438, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Login as:";
+            // 
+            // btnLoginSelf
+            // 
+            this.btnLoginSelf.Location = new System.Drawing.Point(441, 123);
+            this.btnLoginSelf.Name = "btnLoginSelf";
+            this.btnLoginSelf.Size = new System.Drawing.Size(75, 23);
+            this.btnLoginSelf.TabIndex = 18;
+            this.btnLoginSelf.Text = "scottsj03";
+            this.btnLoginSelf.UseVisualStyleBackColor = true;
+            this.btnLoginSelf.Click += new System.EventHandler(this.btnLoginSelf_Click);
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Location = new System.Drawing.Point(441, 152);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(75, 23);
+            this.btnAdmin.TabIndex = 19;
+            this.btnAdmin.Text = "sysadmin";
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // btnLoginBranton
+            // 
+            this.btnLoginBranton.Location = new System.Drawing.Point(522, 123);
+            this.btnLoginBranton.Name = "btnLoginBranton";
+            this.btnLoginBranton.Size = new System.Drawing.Size(75, 23);
+            this.btnLoginBranton.TabIndex = 20;
+            this.btnLoginBranton.Text = "brantodb01";
+            this.btnLoginBranton.UseVisualStyleBackColor = true;
+            this.btnLoginBranton.Click += new System.EventHandler(this.btnLoginBranton_Click);
+            // 
+            // btnLoginHood
+            // 
+            this.btnLoginHood.Location = new System.Drawing.Point(522, 152);
+            this.btnLoginHood.Name = "btnLoginHood";
+            this.btnLoginHood.Size = new System.Drawing.Size(75, 23);
+            this.btnLoginHood.TabIndex = 21;
+            this.btnLoginHood.Text = "hoodj03";
+            this.btnLoginHood.UseVisualStyleBackColor = true;
+            this.btnLoginHood.Click += new System.EventHandler(this.btnLoginHood_Click);
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(132, 58);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(114, 23);
+            this.btnDeleteAll.TabIndex = 22;
+            this.btnDeleteAll.Text = "Delete All Bookings";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
             // 
             // frmMainTemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 607);
+            this.Controls.Add(this.btnDeleteAll);
+            this.Controls.Add(this.btnLoginHood);
+            this.Controls.Add(this.btnLoginBranton);
+            this.Controls.Add(this.btnAdmin);
+            this.Controls.Add(this.btnLoginSelf);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listOwnBookings);
-            this.Controls.Add(this.btnDeleteAll);
             this.Controls.Add(this.listAllBookings);
             this.Controls.Add(this.btnTestBooking);
             this.Controls.Add(this.btnLogOut);
@@ -315,7 +374,6 @@
 		private System.Windows.Forms.ColumnHeader clmDate;
 		private System.Windows.Forms.ColumnHeader clmPeriod;
 		private System.Windows.Forms.ColumnHeader clmUser;
-		private System.Windows.Forms.Button btnDeleteAll;
 		private System.Windows.Forms.ListView listOwnBookings;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -325,6 +383,12 @@
 		private System.Windows.Forms.ColumnHeader clmBookingMade;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader clmId;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnLoginSelf;
+        private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.Button btnLoginBranton;
+        private System.Windows.Forms.Button btnLoginHood;
+        private System.Windows.Forms.Button btnDeleteAll;
     }
 }
 

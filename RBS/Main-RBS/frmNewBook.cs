@@ -39,7 +39,7 @@ namespace Main_RBS
 
 			DateTime date = Convert.ToDateTime(dtDate.Text);
 
-			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), miscClasses.userID, txtNotes.Text);
+			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
 
 			this.Close();
 		}
@@ -80,7 +80,7 @@ namespace Main_RBS
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
 
-            db.updateBooking(editID, Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), miscClasses.userID, txtNotes.Text);
+            db.updateBooking(editID, Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
 
             this.Close();
         }

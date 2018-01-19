@@ -34,12 +34,12 @@ namespace Main_RBS
 
 			if (loginData.success)
 			{
-				miscClasses.userID = loginData.userID;
-				miscClasses.username = loginData.username;
-				miscClasses.name = loginData.name;
-				miscClasses.group = loginData.group;
-				miscClasses.email = loginData.email;
-				miscClasses.loggedIn = true;
+				session.userID = loginData.userID;
+				session.username = loginData.username;
+				session.name = loginData.name;
+				session.group = loginData.group;
+				session.email = loginData.email;
+				session.loggedIn = true;
 				
 				this.Close();
 			}

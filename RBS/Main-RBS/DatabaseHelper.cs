@@ -32,13 +32,13 @@ namespace Main_RBS
 
 			string query;
 
-			if (miscClasses.userID < 0 || all)
+			if (session.userID < 0 || all)
 			{
 				query = "SELECT * FROM tblBookings";
 			}
 			else
 			{
-				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", miscClasses.userID);
+				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
 			}
 
 			try

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Main_RBS
 {
-	public static class miscClasses
+	public static class session
 	{
 		static public Boolean loggedIn { get; set; }
 		static public int userID { get; set; }
