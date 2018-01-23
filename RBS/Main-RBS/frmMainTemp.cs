@@ -287,5 +287,10 @@ namespace Main_RBS
             session.email = "hoodj03@horsforthschool.org";
             refreshForm();
         }
+
+        private void listOwnBookings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
