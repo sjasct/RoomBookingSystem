@@ -52,6 +52,7 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLoginSelf = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.btnLoginBranton = new System.Windows.Forms.Button();
             this.btnLoginHood = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btnNewBook
@@ -112,6 +112,7 @@
             // 
             // btnHomeLogin
             // 
+            this.btnHomeLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHomeLogin.Location = new System.Drawing.Point(483, 68);
             this.btnHomeLogin.Name = "btnHomeLogin";
             this.btnHomeLogin.Size = new System.Drawing.Size(114, 23);
@@ -122,6 +123,7 @@
             // 
             // btnShowID
             // 
+            this.btnShowID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowID.Location = new System.Drawing.Point(321, 152);
             this.btnShowID.Name = "btnShowID";
             this.btnShowID.Size = new System.Drawing.Size(114, 23);
@@ -132,6 +134,7 @@
             // 
             // btnRefresh
             // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.Location = new System.Drawing.Point(522, 9);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
@@ -152,6 +155,7 @@
             // 
             // btnLogOut
             // 
+            this.btnLogOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogOut.Location = new System.Drawing.Point(483, 39);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(114, 23);
@@ -172,6 +176,8 @@
             // 
             // listAllBookings
             // 
+            this.listAllBookings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listAllBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRoomID,
             this.clmDate,
@@ -218,6 +224,8 @@
             // 
             // listOwnBookings
             // 
+            this.listOwnBookings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listOwnBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -256,6 +264,10 @@
             this.columnHeader5.Text = "Time Made";
             this.columnHeader5.Width = 180;
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "ID";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -267,6 +279,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(438, 107);
             this.label5.Name = "label5";
@@ -276,6 +289,7 @@
             // 
             // btnLoginSelf
             // 
+            this.btnLoginSelf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoginSelf.Location = new System.Drawing.Point(441, 123);
             this.btnLoginSelf.Name = "btnLoginSelf";
             this.btnLoginSelf.Size = new System.Drawing.Size(75, 23);
@@ -286,6 +300,7 @@
             // 
             // btnAdmin
             // 
+            this.btnAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdmin.Location = new System.Drawing.Point(441, 152);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(75, 23);
@@ -296,6 +311,7 @@
             // 
             // btnLoginBranton
             // 
+            this.btnLoginBranton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoginBranton.Location = new System.Drawing.Point(522, 123);
             this.btnLoginBranton.Name = "btnLoginBranton";
             this.btnLoginBranton.Size = new System.Drawing.Size(75, 23);
@@ -306,6 +322,7 @@
             // 
             // btnLoginHood
             // 
+            this.btnLoginHood.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoginHood.Location = new System.Drawing.Point(522, 152);
             this.btnLoginHood.Name = "btnLoginHood";
             this.btnLoginHood.Size = new System.Drawing.Size(75, 23);
@@ -323,10 +340,6 @@
             this.btnDeleteAll.Text = "Delete All Bookings";
             this.btnDeleteAll.UseVisualStyleBackColor = true;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "ID";
             // 
             // frmMainTemp
             // 
@@ -353,7 +366,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNewBook);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmMainTemp";

@@ -208,14 +208,13 @@ namespace Main_RBS
 		{
 			if(e.KeyCode == Keys.F5)
 			{
-				MessageBox.Show("refreshing");
 				refreshForm();
 			}
 		}
 
 		private void btnNewBook_Click(object sender, EventArgs e)
 		{
-			new frmNewBook().Show();
+			new frmNewBook().ShowDialog();
 		}
 
 		private void btnDeleteAll_Click(object sender, EventArgs e)
@@ -227,8 +226,17 @@ namespace Main_RBS
         private void listAllBookings_ItemActivate(object sender, EventArgs e)
         {
             int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
-            tempVars.editBookingId = editBookingId;
-            new frmNewBook().Show();
+            int editUserId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[3].Text);
+            if (editUserId == session.userID)
+            {
+
+                tempVars.editBookingId = editBookingId;
+                new frmNewBook().ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("invalid!");
+            }
         }
 
         private void listAllBookings_SelectedIndexChanged(object sender, EventArgs e)
