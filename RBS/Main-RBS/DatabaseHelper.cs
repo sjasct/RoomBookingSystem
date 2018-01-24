@@ -97,7 +97,7 @@ namespace Main_RBS
 
                         string formattedName = String.Format("{0} {1}", dr["FirstName"], dr["SecondName"]);
 
-                        string[] list = new string[] { dr["Id"].ToString(), dr["Username"].ToString(), formattedName, dr["Group"].ToString(), dr["Email"].ToString() };
+                        string[] list = new string[] { dr["Id"].ToString(), dr["Username"].ToString(), formattedName, dr["Role"].ToString(), dr["Email"].ToString() };
 
                         ListViewItem li = new ListViewItem(list);
 
@@ -133,7 +133,7 @@ namespace Main_RBS
 					returnedData.userID = reader.GetInt32(0);
 					returnedData.username = reader.GetString(1);
 					returnedData.name = new string[] { reader.GetString(2), reader.GetString(3) };
-					returnedData.group = reader.GetString(5);
+					returnedData.role = reader.GetString(5);
 					returnedData.email = reader.GetString(6);
 				}
 			}
@@ -191,7 +191,7 @@ namespace Main_RBS
                     user.firstname = reader.GetString(2);
                     user.secondname = reader.GetString(3);
                     user.password = reader.GetString(4);
-                    user.group = reader.GetString(5);
+                    user.role = reader.GetString(5);
                     user.email = reader.GetString(6);
                 }
             }
@@ -252,14 +252,15 @@ namespace Main_RBS
             }
         }
 
-        public void updateUser(int id, string firstname, string secondname, string password, string email)
+        public void updateUser(int id, string firstname, string secondname, string password, string email, string role)
         {
 
             using (connection = new SqlConnection(getCString()))
             {
                 connection.Open();
 
-                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Email = '{3}' WHERE Id = {4}", firstname, secondname, password, email, id.ToString());
+                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{4}', Email = '{3}'  WHERE Id = {5}", firstname, secondname, password, email, role, id.ToString());
+                MessageBox.Show(command);
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try
                 {

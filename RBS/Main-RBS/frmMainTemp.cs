@@ -80,7 +80,7 @@ namespace Main_RBS
 		{
 			try
 			{
-				string userdata = String.Format("Username: {0}\nName: {1} {2}\nGroup: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.group, session.email, session.userID);
+				string userdata = String.Format("Username: {0}\nName: {1} {2}\nrole: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.role, session.email, session.userID);
 				MessageBox.Show(userdata);
 			}
 			catch (System.NullReferenceException)
@@ -116,7 +116,7 @@ namespace Main_RBS
 			}
 		
 			// buttons
-			if (string.IsNullOrEmpty(session.group))
+			if (string.IsNullOrEmpty(session.role))
 			{
 				btnDeleteAll.Enabled = false;
 				btnNewBook.Enabled = false;
@@ -126,7 +126,7 @@ namespace Main_RBS
 				btnShowID.Enabled = false;
                 btnTestBooking.Enabled = false;
 			}
-			else if (session.group == "Student")
+			else if (session.role == "Student")
 			{
 				btnDeleteAll.Enabled = false;
 				btnShowID.Enabled = true;
@@ -136,7 +136,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = false;
             }
-			else if(session.group == "Teacher")
+			else if(session.role == "Teacher")
 			{
 				btnDeleteAll.Enabled = false;
 				btnShowID.Enabled = true;
@@ -146,7 +146,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
             }
-			else if (session.group == "Admin")
+			else if (session.role == "Admin")
 			{
 				btnDeleteAll.Enabled = true;
 				btnShowID.Enabled = true;
@@ -189,7 +189,7 @@ namespace Main_RBS
 				session.userID = -1;
 				session.username = null;
 				session.name = new string[] { "", "" };
-				session.group = null;
+				session.role = null;
 				session.email = null;
 				success = true;
 			}
@@ -262,45 +262,54 @@ namespace Main_RBS
 
         private void btnLoginSelf_Click(object sender, EventArgs e)
         {
+            user user = db.getUser(1);
+
             session.loggedIn = true;
-            session.userID = 1;
-            session.username = "scottsj03";
-            session.name = new string[] { "Sam", "Scott" };
-            session.group = "Admin";
-            session.email = "scottsj03@horsforthschool.org";
+            session.userID = user.id;
+            session.username = user.username;
+            session.name = new string[] { user.firstname, user.secondname };
+            session.role = user.role;
+            session.email = user.email;
             refreshForm();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
+
+            user user = db.getUser(8);
+
             session.loggedIn = true;
-            session.userID = 8;
-            session.username = "sysadmin";
-            session.name = new string[] { "name", "surname" };
-            session.group = "Admin";
-            session.email = "admin@horsforthschool.org";
+            session.userID = user.id;
+            session.username = user.username;
+            session.name = new string[] { user.firstname, user.secondname };
+            session.role = user.role;
+            session.email = user.email;
             refreshForm();
         }
 
         private void btnLoginBranton_Click(object sender, EventArgs e)
         {
+            user user = db.getUser(2);
+
             session.loggedIn = true;
-            session.userID = 2;
-            session.username = "brantodb01";
-            session.name = new string[] { "Daniel", "Branton" };
-            session.group = "Student";
-            session.email = "brantodb01@horsforthschool.org";
+            session.userID = user.id;
+            session.username = user.username;
+            session.name = new string[] { user.firstname, user.secondname };
+            session.role = user.role;
+            session.email = user.email;
             refreshForm();
         }
 
         private void btnLoginHood_Click(object sender, EventArgs e)
         {
+            user user = db.getUser(3);
+
             session.loggedIn = true;
-            session.userID = 3;
-            session.username = "hoodj03";
-            session.name = new string[] { "Jayson", "Hood" };
-            session.group = "Teacher";
-            session.email = "hoodj03@horsforthschool.org";
+            session.userID = user.id;
+            session.username = user.username;
+            session.name = new string[] { user.firstname, user.secondname };
+            session.role = user.role;
+            session.email = user.email;
             refreshForm();
         }
 
@@ -319,7 +328,7 @@ namespace Main_RBS
 
             int editUserId = Convert.ToInt32(listUsers.SelectedItems[0].SubItems[0].Text);
 
-            if (session.userID == editUserId || session.group == "Admin")
+            if (session.userID == editUserId || session.role == "Admin")
             {
                 tempVars.editUserId = editUserId;
 

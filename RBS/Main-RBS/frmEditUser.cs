@@ -49,6 +49,16 @@ namespace Main_RBS
 
         private void frmEditUser_Load(object sender, EventArgs e)
         {
+
+            if (session.role != "Admin")
+            {
+                txtRole.ReadOnly = true;
+            }
+            else
+            {
+                txtRole.ReadOnly = false;
+            }
+
             db = new DatabaseHelper();
             if (tempVars.editUserId != 0)
             {
@@ -61,6 +71,7 @@ namespace Main_RBS
                 txtName1.Text = user.firstname;
                 txtName2.Text = user.secondname;
                 txtEmail.Text = user.email;
+                txtRole.Text = user.role;
             }
             else
             {
@@ -70,6 +81,8 @@ namespace Main_RBS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            
 
             string givenPassword = user.password;
             bool success = false;
@@ -95,7 +108,7 @@ namespace Main_RBS
             {
                 try
                 {
-                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text);
+                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text);
                     if(session.userID == userID)
                     {
                         session.name = new string[] { txtName1.Text, txtName2.Text };

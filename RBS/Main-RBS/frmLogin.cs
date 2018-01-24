@@ -37,7 +37,7 @@ namespace Main_RBS
 				session.userID = loginData.userID;
 				session.username = loginData.username;
 				session.name = loginData.name;
-				session.group = loginData.group;
+				session.role = loginData.role;
 				session.email = loginData.email;
 				session.loggedIn = true;
 				
