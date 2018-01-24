@@ -101,6 +101,7 @@ namespace Main_RBS
                         session.name = new string[] { txtName1.Text, txtName2.Text };
                         session.email = txtEmail.Text;
                     }
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
