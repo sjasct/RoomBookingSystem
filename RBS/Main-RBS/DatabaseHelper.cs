@@ -73,7 +73,47 @@ namespace Main_RBS
 			return listItems;
 		}
 
-		public loginReturnedData checkLoginDetails(string username, string pass)
+        public List<ListViewItem> popUsers(bool all = true)
+        {
+            SqlConnection connection;
+
+            List<ListViewItem> listItems = new List<ListViewItem>();
+
+            string query = "SELECT * FROM tblUsers";
+
+            try
+            {
+                using (connection = new SqlConnection(getCString()))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+                    DataTable dt = new DataTable();
+
+                    adapter.Fill(dt);
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DataRow dr = dt.Rows[i];
+
+                        string formattedName = String.Format("{0} {1}", dr["FirstName"], dr["SecondName"]);
+
+                        string[] list = new string[] { dr["Id"].ToString(), dr["Username"].ToString(), formattedName, dr["Group"].ToString(), dr["Email"].ToString() };
+
+                        ListViewItem li = new ListViewItem(list);
+
+                        listItems.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return listItems;
+        }
+
+        public loginReturnedData checkLoginDetails(string username, string pass)
 		{
 
 			loginReturnedData returnedData = new loginReturnedData();
@@ -129,7 +169,37 @@ namespace Main_RBS
 			return booking;
 		}
 
-		public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
+        public user getUser(int id)
+        {
+
+            user user = new user();
+
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
+
+                string command = String.Format("SELECT * FROM tblUsers WHERE Id = {0}", id.ToString());
+
+                SqlCommand logincommand = new SqlCommand(command, connection);
+                SqlDataReader reader = logincommand.ExecuteReader();
+
+                if (reader.Read())
+                { 
+
+                    user.id = reader.GetInt32(0);
+                    user.username = reader.GetString(1);
+                    user.firstname = reader.GetString(2);
+                    user.secondname = reader.GetString(3);
+                    user.password = reader.GetString(4);
+                    user.group = reader.GetString(5);
+                    user.email = reader.GetString(6);
+                }
+            }
+
+            return user;
+        }
+
+        public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
 		{
 			DateTime dt = new DateTime();
 			dt = DateTime.Now;
@@ -166,6 +236,30 @@ namespace Main_RBS
                 connection.Open();
 
                 string command = String.Format("UPDATE tblBookings SET RoomID = {0}, Date = CONVERT(date, '{1}', 103), Period = {2}, UserID = {3}, Notes = '{4}' WHERE Id = {5}", roomID.ToString(), date, period, userID.ToString(), notes, bookID.ToString());
+                SqlCommand logincommand = new SqlCommand(command, connection);
+                try
+                {
+                    logincommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public void updateUser(int id, string firstname, string secondname, string password, string email)
+        {
+
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
+
+                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Email = '{3}' WHERE Id = {4}", firstname, secondname, password, email, id.ToString());
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try
                 {

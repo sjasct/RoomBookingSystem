@@ -19,6 +19,7 @@ namespace Main_RBS
     public static class tempVars
     {
         static public int editBookingId { get; set; }
+        static public int editUserId { get; set; }
     }
 
 
@@ -42,4 +43,15 @@ namespace Main_RBS
 		public int roomID { get; set; }
 
 	}
+
+    public class user
+    {
+        public int id { get; set; }
+        public string username { get; set; }
+        public string firstname { get; set; }
+        public string secondname { get; set; }
+        public string group { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+    }
 }

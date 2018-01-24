@@ -54,7 +54,18 @@ namespace Main_RBS
 			}	
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+        private void popUsers()
+        {
+
+            List<ListViewItem> items = db.popUsers();
+
+            foreach (ListViewItem item in items)
+            {
+                listUsers.Items.Add(item);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
 		{
 			frmLogin loginForm = new frmLogin();
 			loginForm.ShowDialog();
@@ -154,8 +165,13 @@ namespace Main_RBS
 			{
 				item.Remove();
 			}
-			popAllBookings();
+            foreach (ListViewItem item in listUsers.Items)
+            {
+                item.Remove();
+            }
+            popAllBookings();
 			popOwnBookings();
+            popUsers();
 		}
 
 		private void frmMainTemp_Activated(object sender, EventArgs e)
@@ -291,6 +307,28 @@ namespace Main_RBS
         private void listOwnBookings_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listUsers_ItemActivate(object sender, EventArgs e)
+        {
+
+            int editUserId = Convert.ToInt32(listUsers.SelectedItems[0].SubItems[0].Text);
+
+            if (session.userID == editUserId || session.group == "Admin")
+            {
+                tempVars.editUserId = editUserId;
+
+                new frmEditUser().ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("melon");
+            }
         }
     }
 }
