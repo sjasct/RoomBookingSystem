@@ -72,6 +72,7 @@ namespace Main_RBS
                 txtName2.Text = user.secondname;
                 txtEmail.Text = user.email;
                 txtRole.Text = user.role;
+                txtUsername.Text = user.username;
             }
             else
             {
@@ -108,7 +109,7 @@ namespace Main_RBS
             {
                 try
                 {
-                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text);
+                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text, txtUsername.Text);
                     if(session.userID == userID)
                     {
                         session.name = new string[] { txtName1.Text, txtName2.Text };

@@ -252,14 +252,14 @@ namespace Main_RBS
             }
         }
 
-        public void updateUser(int id, string firstname, string secondname, string password, string email, string role)
+        public void updateUser(int id, string firstname, string secondname, string password, string email, string role, string username)
         {
 
             using (connection = new SqlConnection(getCString()))
             {
                 connection.Open();
 
-                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{4}', Email = '{3}'  WHERE Id = {5}", firstname, secondname, password, email, role, id.ToString());
+                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{4}', Email = '{3}', Username = '{6}'  WHERE Id = {5}", firstname, secondname, password, email, role, id.ToString(), username);
                 MessageBox.Show(command);
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try

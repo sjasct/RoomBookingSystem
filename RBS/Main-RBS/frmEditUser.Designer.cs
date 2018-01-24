@@ -41,6 +41,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRole = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtName1
@@ -113,7 +115,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(190, 179);
+            this.btnSubmit.Location = new System.Drawing.Point(181, 233);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 8;
@@ -154,11 +156,29 @@
             this.txtRole.Size = new System.Drawing.Size(162, 20);
             this.txtRole.TabIndex = 11;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 172);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Username";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(103, 169);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(162, 20);
+            this.txtUsername.TabIndex = 13;
+            // 
             // frmEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 229);
+            this.ClientSize = new System.Drawing.Size(280, 287);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtRole);
             this.Controls.Add(this.label5);
@@ -195,5 +215,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtRole;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtUsername;
     }
 }
