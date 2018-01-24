@@ -83,7 +83,7 @@ namespace Main_RBS
                 }
                 else
                 {
-                    MessageBox.Show("things don't match melonhead");
+                    MessageBox.Show("The two passwords you mentioned don't match");
                 }
             }
             else
@@ -93,10 +93,14 @@ namespace Main_RBS
 
             if (success)
             {
-                MessageBox.Show("kjfhbkjbfhn");
                 try
                 {
                     db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text);
+                    if(session.userID == userID)
+                    {
+                        session.name = new string[] { txtName1.Text, txtName2.Text };
+                        session.email = txtEmail.Text;
+                    }
                 }
                 catch (Exception ex)
                 {
