@@ -31,13 +31,15 @@
             this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtRoom = new System.Windows.Forms.TextBox();
-            this.txtPeriod = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.btnNewBook = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtRoom = new System.Windows.Forms.NumericUpDown();
+            this.txtPeriod = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).BeginInit();
             this.SuspendLayout();
             // 
             // dtDate
@@ -67,20 +69,6 @@
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "RoomID";
-            // 
-            // txtRoom
-            // 
-            this.txtRoom.Location = new System.Drawing.Point(80, 44);
-            this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Size = new System.Drawing.Size(200, 20);
-            this.txtRoom.TabIndex = 3;
-            // 
-            // txtPeriod
-            // 
-            this.txtPeriod.Location = new System.Drawing.Point(80, 70);
-            this.txtPeriod.Name = "txtPeriod";
-            this.txtPeriod.Size = new System.Drawing.Size(200, 20);
-            this.txtPeriod.TabIndex = 4;
             // 
             // label3
             // 
@@ -127,24 +115,46 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // txtRoom
+            // 
+            this.txtRoom.Location = new System.Drawing.Point(81, 47);
+            this.txtRoom.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.txtRoom.Name = "txtRoom";
+            this.txtRoom.Size = new System.Drawing.Size(38, 20);
+            this.txtRoom.TabIndex = 13;
+            // 
+            // txtPeriod
+            // 
+            this.txtPeriod.Location = new System.Drawing.Point(82, 73);
+            this.txtPeriod.Name = "txtPeriod";
+            this.txtPeriod.Size = new System.Drawing.Size(38, 20);
+            this.txtPeriod.TabIndex = 14;
+            this.txtPeriod.ValueChanged += new System.EventHandler(this.txtPeriod_ValueChanged);
+            // 
             // frmNewBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 189);
+            this.Controls.Add(this.txtPeriod);
+            this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnNewBook);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPeriod);
-            this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtDate);
             this.Name = "frmNewBook";
             this.Text = "frmNewBook";
             this.Load += new System.EventHandler(this.frmNewBook_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtRoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,12 +165,12 @@
 		private System.Windows.Forms.DateTimePicker dtDate;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txtRoom;
-		private System.Windows.Forms.TextBox txtPeriod;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox txtNotes;
 		private System.Windows.Forms.Button btnNewBook;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.NumericUpDown txtRoom;
+        private System.Windows.Forms.NumericUpDown txtPeriod;
     }
 }

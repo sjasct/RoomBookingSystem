@@ -39,7 +39,7 @@ namespace Main_RBS
 
 			DateTime date = Convert.ToDateTime(dtDate.Text);
 
-			db.insertBooking(Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
+			db.insertBooking(Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
 
 			this.Close();
 		}
@@ -55,8 +55,8 @@ namespace Main_RBS
                 book = db.getBooking(tempVars.editBookingId);
 
                 txtNotes.Text = book.notes;
-                txtPeriod.Text = book.period.ToString();
-                txtRoom.Text = book.roomID.ToString();
+                txtPeriod.Value = book.period;
+                txtRoom.Value = book.roomID;
                 dtDate.MinDate = DateTime.MinValue;
                 dtDate.MaxDate = DateTime.MaxValue;
                 dtDate.Value = book.date;
@@ -80,9 +80,14 @@ namespace Main_RBS
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
 
-            db.updateBooking(editID, Convert.ToInt32(txtRoom.Text), date, Convert.ToInt32(txtPeriod.Text), session.userID, txtNotes.Text);
+            db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
 
             this.Close();
+        }
+
+        private void txtPeriod_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

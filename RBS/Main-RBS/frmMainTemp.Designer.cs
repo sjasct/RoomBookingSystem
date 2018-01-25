@@ -63,12 +63,13 @@
             this.btnLoginHood = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
             this.listUsers = new System.Windows.Forms.ListView();
-            this.label6 = new System.Windows.Forms.Label();
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnEditProfile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewBook
@@ -384,15 +385,6 @@
             this.listUsers.ItemActivate += new System.EventHandler(this.listUsers_ItemActivate);
             this.listUsers.SelectedIndexChanged += new System.EventHandler(this.listUsers_SelectedIndexChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 598);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Users";
-            // 
             // columnHeader15
             // 
             this.columnHeader15.Text = "User ID";
@@ -401,6 +393,11 @@
             // 
             this.columnHeader16.Text = "Username";
             this.columnHeader16.Width = 100;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Name";
+            this.columnHeader8.Width = 200;
             // 
             // columnHeader17
             // 
@@ -412,16 +409,32 @@
             this.columnHeader18.Text = "Email";
             this.columnHeader18.Width = 200;
             // 
-            // columnHeader8
+            // label6
             // 
-            this.columnHeader8.Text = "Name";
-            this.columnHeader8.Width = 200;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(13, 598);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Users";
+            // 
+            // btnEditProfile
+            // 
+            this.btnEditProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditProfile.Location = new System.Drawing.Point(484, 123);
+            this.btnEditProfile.Name = "btnEditProfile";
+            this.btnEditProfile.Size = new System.Drawing.Size(114, 23);
+            this.btnEditProfile.TabIndex = 25;
+            this.btnEditProfile.Text = "Edit Profile";
+            this.btnEditProfile.UseVisualStyleBackColor = true;
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // frmMainTemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 808);
+            this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listUsers);
             this.Controls.Add(this.btnDeleteAll);
@@ -499,6 +512,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button btnEditProfile;
     }
 }
 

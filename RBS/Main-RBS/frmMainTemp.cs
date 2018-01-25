@@ -339,5 +339,11 @@ namespace Main_RBS
                 MessageBox.Show("melon");
             }
         }
+
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {
+            tempVars.editUserId = session.userID;
+            new frmEditUser().ShowDialog();
+        }
     }
 }
