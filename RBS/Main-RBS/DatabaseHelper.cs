@@ -141,7 +141,47 @@ namespace Main_RBS
 			return returnedData;
 		}
 
-		public booking getBooking(int id)
+        public bool checkUsernameExists(string username, int editId)
+        {
+
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
+
+                string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}'", username);
+                MessageBox.Show("IGETHERE");
+                SqlCommand logincommand = new SqlCommand(command, connection);
+                SqlDataReader reader = logincommand.ExecuteReader();
+
+                try
+                {
+                    if (reader.Read())
+                    {
+
+                        if (reader.GetInt32(0) > 0 || reader.GetInt32(0) == editId)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return true;
+                }
+                
+            }
+        }
+
+        public booking getBooking(int id)
 		{
 
 			booking booking = new booking();

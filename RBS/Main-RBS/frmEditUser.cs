@@ -86,26 +86,40 @@ namespace Main_RBS
             
 
             string givenPassword = user.password;
-            bool success = false;
+            bool passsuccess = false;
+            bool namesuccess = false;
 
             if(!String.IsNullOrEmpty(txtPass1.Text))
             {
                if(txtPass1.Text == txtPass2.Text)
                 {
                     givenPassword = txtPass1.Text;
-                    success = true;
+                    passsuccess = true;
                 }
                 else
                 {
                     MessageBox.Show("The two passwords you mentioned don't match");
                 }
+                
             }
             else
             {
-                success = true;
+                passsuccess = true;
             }
 
-            if (success)
+            MessageBox.Show(db.checkUsernameExists(txtUsername.Text, userID).ToString());
+
+            if (db.checkUsernameExists(txtUsername.Text, userID))
+            {
+                MessageBox.Show("succe3ss");
+                namesuccess = true;
+            }
+            else
+            {
+                MessageBox.Show("fail");
+            }
+
+            if (passsuccess && namesuccess)
             {
                 try
                 {
@@ -123,6 +137,11 @@ namespace Main_RBS
                 }
             }
             
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
