@@ -144,39 +144,35 @@ namespace Main_RBS
         public bool checkUsernameExists(string username, int editId)
         {
 
+            bool exists = false;
+
             using (connection = new SqlConnection(getCString()))
             {
                 connection.Open();
 
                 string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}'", username);
-                MessageBox.Show("IGETHERE");
                 SqlCommand logincommand = new SqlCommand(command, connection);
-                SqlDataReader reader = logincommand.ExecuteReader();
 
+                // if username trying to change to is the user's current username
+                int recievedId = (int)logincommand.ExecuteScalar();
+                
+                if(recievedId == editId)
+                {
+                    return false;
+                }
+
+                // if username exists
                 try
                 {
-                    if (reader.Read())
-                    {
-
-                        if (reader.GetInt32(0) > 0 || reader.GetInt32(0) == editId)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    exists = (int)logincommand.ExecuteScalar() > 0;
                 }
-                catch(Exception ex)
+                catch (NullReferenceException)
                 {
-                    MessageBox.Show(ex.ToString());
-                    return true;
+                    exists = false;
                 }
+                
+
+                return exists;
                 
             }
         }

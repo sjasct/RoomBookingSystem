@@ -98,7 +98,7 @@ namespace Main_RBS
                 }
                 else
                 {
-                    MessageBox.Show("The two passwords you mentioned don't match");
+                    MessageBox.Show("The two passwords you entered don't match");
                 }
                 
             }
@@ -107,16 +107,14 @@ namespace Main_RBS
                 passsuccess = true;
             }
 
-            MessageBox.Show(db.checkUsernameExists(txtUsername.Text, userID).ToString());
-
-            if (db.checkUsernameExists(txtUsername.Text, userID))
+            if (!db.checkUsernameExists(txtUsername.Text, userID))
             {
-                MessageBox.Show("succe3ss");
+                MessageBox.Show("Success");
                 namesuccess = true;
             }
             else
             {
-                MessageBox.Show("fail");
+                MessageBox.Show("Fail");
             }
 
             if (passsuccess && namesuccess)
