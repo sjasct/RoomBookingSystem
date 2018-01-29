@@ -1,5 +1,5 @@
 # Room Booking System
-**A Level Computer Science Project**
+**A-Level Computer Science Project**
 
 ### Documentation
 
