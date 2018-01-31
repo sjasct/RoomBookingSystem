@@ -43,6 +43,7 @@
             this.txtRole = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtName1
@@ -93,6 +94,7 @@
             // 
             this.txtPass1.Location = new System.Drawing.Point(103, 64);
             this.txtPass1.Name = "txtPass1";
+            this.txtPass1.PasswordChar = '*';
             this.txtPass1.Size = new System.Drawing.Size(162, 20);
             this.txtPass1.TabIndex = 4;
             // 
@@ -110,6 +112,7 @@
             // 
             this.txtPass2.Location = new System.Drawing.Point(103, 90);
             this.txtPass2.Name = "txtPass2";
+            this.txtPass2.PasswordChar = '*';
             this.txtPass2.Size = new System.Drawing.Size(162, 20);
             this.txtPass2.TabIndex = 6;
             // 
@@ -173,11 +176,22 @@
             this.txtUsername.TabIndex = 13;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.Location = new System.Drawing.Point(13, 232);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(94, 23);
+            this.btnDeleteUser.TabIndex = 15;
+            this.btnDeleteUser.Text = "Delete User";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
             // frmEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 287);
+            this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label6);
@@ -218,5 +232,6 @@
         private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.Button btnDeleteUser;
     }
 }

@@ -50,13 +50,20 @@ namespace Main_RBS
         private void frmEditUser_Load(object sender, EventArgs e)
         {
 
+            btnDeleteUser.Enabled = false;
+
             if (session.role != "Admin")
             {
                 txtRole.ReadOnly = true;
+                
             }
             else
             {
                 txtRole.ReadOnly = false;
+                if (session.userID != tempVars.editUserId)
+                {
+                    btnDeleteUser.Enabled = true;
+                }
             }
 
             db = new DatabaseHelper();
@@ -139,6 +146,14 @@ namespace Main_RBS
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            string cmd = String.Format("DELETE from tblUsers WHERE Id = {0}", userID);
+
+            db.miscAction(cmd);
 
         }
     }
