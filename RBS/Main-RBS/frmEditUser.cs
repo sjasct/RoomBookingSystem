@@ -16,6 +16,7 @@ namespace Main_RBS
         DatabaseHelper db;
         int userID;
         user user;
+        bool newUserMode;
 
         public frmEditUser()
         {
@@ -50,6 +51,7 @@ namespace Main_RBS
         private void frmEditUser_Load(object sender, EventArgs e)
         {
 
+
             btnDeleteUser.Enabled = false;
 
             if (session.role != "Admin")
@@ -67,9 +69,9 @@ namespace Main_RBS
             }
 
             db = new DatabaseHelper();
-            if (tempVars.editUserId != 0)
+            if (tempVars.editUserId != -1)
             {
-
+                newUserMode = false;
                 userID = tempVars.editUserId;
                 user = db.getUser(userID);
 
@@ -83,16 +85,18 @@ namespace Main_RBS
             }
             else
             {
-                
+                newUserMode = true;
+                btnDeleteUser.Enabled = false;
+                txtRole.ReadOnly = false;
             }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
 
-            
 
-            string givenPassword = user.password;
+
+            string givenPassword;
             bool passsuccess = false;
             bool namesuccess = false;
 
@@ -126,19 +130,38 @@ namespace Main_RBS
 
             if (passsuccess && namesuccess)
             {
-                try
+                if (newUserMode)
                 {
-                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text, txtUsername.Text);
-                    if(session.userID == userID)
+                    try
                     {
-                        session.name = new string[] { txtName1.Text, txtName2.Text };
-                        session.email = txtEmail.Text;
+                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Email, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtName1.Text, txtName2.Text, txtPass1.Text, txtEmail.Text, txtRole.Text, txtUsername.Text);
+                        MessageBox.Show(cmd);
+                        db.miscAction(cmd);
+                        this.Close();
                     }
-                    this.Close();
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    givenPassword = user.password;
+                    try
+                    {
+                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text, txtUsername.Text);
+                        if (session.userID == userID)
+                        {
+                            session.name = new string[] { txtName1.Text, txtName2.Text };
+                            session.email = txtEmail.Text;
+                        }
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
             
@@ -154,6 +177,8 @@ namespace Main_RBS
             string cmd = String.Format("DELETE from tblUsers WHERE Id = {0}", userID);
 
             db.miscAction(cmd);
+
+            this.Close();
 
         }
     }

@@ -159,8 +159,17 @@ namespace Main_RBS
 
                 SqlCommand logincommand = new SqlCommand(command, connection);
 
+                int recievedId;
+
                 // if username trying to change to is the user's current username
-                int recievedId = (int)logincommand.ExecuteScalar();
+                try
+                {
+                    recievedId = (int)logincommand.ExecuteScalar();
+                }
+                catch
+                {
+                    return false;
+                }
                 
                 if(recievedId == editId)
                 {

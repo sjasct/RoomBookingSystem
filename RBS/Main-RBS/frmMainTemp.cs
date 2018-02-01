@@ -132,6 +132,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = true;
 				btnShowID.Enabled = false;
                 btnTestBooking.Enabled = false;
+                btnNewUser.Enabled = false;
 			}
 			else if (session.role == "Student")
 			{
@@ -142,6 +143,7 @@ namespace Main_RBS
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = false;
+                btnNewUser.Enabled = false;
             }
 			else if(session.role == "Teacher")
 			{
@@ -152,6 +154,7 @@ namespace Main_RBS
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
+                btnNewUser.Enabled = false;
             }
 			else if (session.role == "Admin")
 			{
@@ -162,6 +165,7 @@ namespace Main_RBS
 				btnLogOut.Enabled = true;
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
+                btnNewUser.Enabled = true;
             }
 
 			foreach (ListViewItem item in listAllBookings.Items)
@@ -365,6 +369,12 @@ namespace Main_RBS
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
             tempVars.editUserId = session.userID;
+            new frmEditUser().ShowDialog();
+        }
+
+        private void btnNewUser_Click(object sender, EventArgs e)
+        {
+            tempVars.editUserId = -1;
             new frmEditUser().ShowDialog();
         }
     }

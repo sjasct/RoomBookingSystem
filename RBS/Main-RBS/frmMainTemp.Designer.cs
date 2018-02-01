@@ -70,6 +70,7 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label6 = new System.Windows.Forms.Label();
             this.btnEditProfile = new System.Windows.Forms.Button();
+            this.btnNewUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewBook
@@ -429,11 +430,22 @@
             this.btnEditProfile.UseVisualStyleBackColor = true;
             this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
+            // btnNewUser
+            // 
+            this.btnNewUser.Location = new System.Drawing.Point(565, 39);
+            this.btnNewUser.Name = "btnNewUser";
+            this.btnNewUser.Size = new System.Drawing.Size(75, 23);
+            this.btnNewUser.TabIndex = 26;
+            this.btnNewUser.Text = "New User";
+            this.btnNewUser.UseVisualStyleBackColor = true;
+            this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
+            // 
             // frmMainTemp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 808);
+            this.Controls.Add(this.btnNewUser);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listUsers);
@@ -513,6 +525,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnEditProfile;
+        private System.Windows.Forms.Button btnNewUser;
     }
 }
 
