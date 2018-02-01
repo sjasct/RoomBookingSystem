@@ -102,7 +102,7 @@ namespace Main_RBS
         {
             string cmd = String.Format("DELETE from tblBookings WHERE Id = {0}", book.id);
 
-            MessageBox.Show(cmd);
+            //MessageBox.Show(cmd);
 
             try
             {

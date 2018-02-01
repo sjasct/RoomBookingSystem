@@ -243,7 +243,7 @@ namespace Main_RBS
         {
             int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
             int editUserId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[3].Text);
-            if (editUserId == session.userID)
+            if (editUserId == session.userID || session.role == "Admin")
             {
 
                 tempVars.editBookingId = editBookingId;
