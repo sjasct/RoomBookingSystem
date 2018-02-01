@@ -41,7 +41,9 @@ namespace Main_RBS
 				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
 			}
 
-			try
+            Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
+
+            try
 			{
 				using (connection = new SqlConnection(getCString()))
 				{
@@ -80,6 +82,7 @@ namespace Main_RBS
             List<ListViewItem> listItems = new List<ListViewItem>();
 
             string query = "SELECT * FROM tblUsers";
+            Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
 
             try
             {
@@ -123,8 +126,9 @@ namespace Main_RBS
 				connection.Open();
 
 				string command = String.Format("SELECT * FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
 
-				SqlCommand logincommand = new SqlCommand(command, connection);
+                SqlCommand logincommand = new SqlCommand(command, connection);
 				SqlDataReader reader = logincommand.ExecuteReader();
 
 				if (reader.Read())
@@ -151,6 +155,8 @@ namespace Main_RBS
                 connection.Open();
 
                 string command = String.Format("SELECT Id FROM tblUsers WHERE Username = '{0}'", username);
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
+
                 SqlCommand logincommand = new SqlCommand(command, connection);
 
                 // if username trying to change to is the user's current username
@@ -187,8 +193,8 @@ namespace Main_RBS
 				connection.Open();
 
 				string command = String.Format("SELECT * FROM tblBookings WHERE Id = {0}", id.ToString());
-
-				SqlCommand logincommand = new SqlCommand(command, connection);
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
+                SqlCommand logincommand = new SqlCommand(command, connection);
 				SqlDataReader reader = logincommand.ExecuteReader();
 
 				if (reader.Read())
@@ -215,7 +221,7 @@ namespace Main_RBS
                 connection.Open();
 
                 string command = String.Format("SELECT * FROM tblUsers WHERE Id = {0}", id.ToString());
-
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 SqlDataReader reader = logincommand.ExecuteReader();
 
@@ -246,9 +252,9 @@ namespace Main_RBS
 			{
 				connection.Open();
 
-				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, Period, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString()); 
-				
-				SqlCommand logincommand = new SqlCommand(command, connection);
+				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, Period, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString());
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
+                SqlCommand logincommand = new SqlCommand(command, connection);
 				try
 				{
 					logincommand.ExecuteNonQuery();
@@ -272,6 +278,7 @@ namespace Main_RBS
                 connection.Open();
 
                 string command = String.Format("UPDATE tblBookings SET RoomID = {0}, Date = CONVERT(date, '{1}', 103), Period = {2}, UserID = {3}, Notes = '{4}' WHERE Id = {5}", roomID.ToString(), date, period, userID.ToString(), notes, bookID.ToString());
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try
                 {
@@ -296,6 +303,7 @@ namespace Main_RBS
                 connection.Open();
 
                 string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{4}', Email = '{3}', Username = '{6}'  WHERE Id = {5}", firstname, secondname, password, email, role, id.ToString(), username);
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try
                 {
@@ -314,6 +322,9 @@ namespace Main_RBS
 
         public void miscAction(string query)
 		{
+
+            Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
+
 			using (connection = new SqlConnection(getCString()))
 			{
 				connection.Open();
