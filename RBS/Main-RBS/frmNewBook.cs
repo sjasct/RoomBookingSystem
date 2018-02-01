@@ -67,6 +67,14 @@ namespace Main_RBS
                 btnNewBook.Enabled = true;
                 btnUpdate.Enabled = false;
             }
+
+            if(book.UserID == session.userID || session.role == "Admin"){
+                btnDeleteBook.Enabled = true;
+            }
+            else
+            {
+                btnDeleteBook.Enabled = false;
+            }
             
 
         }
@@ -75,7 +83,7 @@ namespace Main_RBS
         {
 
         }
-
+        
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
@@ -88,6 +96,27 @@ namespace Main_RBS
         private void txtPeriod_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDeleteBook_Click(object sender, EventArgs e)
+        {
+            string cmd = String.Format("DELETE from tblBookings WHERE Id = {0}", book.id);
+
+            MessageBox.Show(cmd);
+
+            try
+            {
+                db.miscAction(cmd);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+
+
+
+            this.Close();
         }
     }
 }

@@ -38,6 +38,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtRoom = new System.Windows.Forms.NumericUpDown();
             this.txtPeriod = new System.Windows.Forms.NumericUpDown();
+            this.btnDeleteBook = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).BeginInit();
             this.SuspendLayout();
@@ -135,11 +136,22 @@
             this.txtPeriod.TabIndex = 14;
             this.txtPeriod.ValueChanged += new System.EventHandler(this.txtPeriod_ValueChanged);
             // 
+            // btnDeleteBook
+            // 
+            this.btnDeleteBook.Location = new System.Drawing.Point(12, 154);
+            this.btnDeleteBook.Name = "btnDeleteBook";
+            this.btnDeleteBook.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteBook.TabIndex = 15;
+            this.btnDeleteBook.Text = "Delete";
+            this.btnDeleteBook.UseVisualStyleBackColor = true;
+            this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
+            // 
             // frmNewBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 189);
+            this.Controls.Add(this.btnDeleteBook);
             this.Controls.Add(this.txtPeriod);
             this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.btnUpdate);
@@ -172,5 +184,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.NumericUpDown txtRoom;
         private System.Windows.Forms.NumericUpDown txtPeriod;
+        private System.Windows.Forms.Button btnDeleteBook;
     }
 }
