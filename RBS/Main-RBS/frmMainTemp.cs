@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Main_RBS
 {
@@ -19,6 +20,7 @@ namespace Main_RBS
 
 		private void frmMainTemp_Load(object sender, EventArgs e)
 		{
+            Debug.WriteLine("Loading main form..");
 			db = new DatabaseHelper();
 			popAllBookings();
 			session.userID = -1;
@@ -33,6 +35,7 @@ namespace Main_RBS
 		
 		private void popAllBookings()
 		{
+            Debug.WriteLine("Populating all bookings list..");
 			List<ListViewItem> items = db.popBookings();
 
 			foreach(ListViewItem item in items)
@@ -43,6 +46,7 @@ namespace Main_RBS
 
 		private void popOwnBookings()
 		{
+            Debug.WriteLine("Populating own bookings list..");
 			if (session.loggedIn)
 			{
 				List<ListViewItem> items = db.popBookings(false);
@@ -56,6 +60,7 @@ namespace Main_RBS
 
         private void popUsers()
         {
+            Debug.WriteLine("Populating users list..");
 
             List<ListViewItem> items = db.popUsers();
 
@@ -67,6 +72,7 @@ namespace Main_RBS
 
         private void button1_Click(object sender, EventArgs e)
 		{
+            Debug.WriteLine("Opening login form..");
 			frmLogin loginForm = new frmLogin();
 			loginForm.ShowDialog();
 		}
@@ -96,6 +102,7 @@ namespace Main_RBS
 
 		private void refreshForm()
 		{
+            Debug.WriteLine("Refreshing form..");
 			// Header
 			string name;
 			try
@@ -181,6 +188,7 @@ namespace Main_RBS
 
 		private void btnLogOut_Click(object sender, EventArgs e)
 		{
+            Debug.WriteLine("Logging user out..");
 			bool success = false;
 
 			try
@@ -208,6 +216,8 @@ namespace Main_RBS
 		private void btnTestBooking_Click(object sender, EventArgs e)
 		{
 
+            Debug.WriteLine("Inserting test booking..");
+
 			Random r = new Random();
 			int dateThing = r.Next(1, 31);
 			int roomID = r.Next(1, 5);
@@ -224,6 +234,7 @@ namespace Main_RBS
 		{
 			if(e.KeyCode == Keys.F5)
 			{
+                Debug.WriteLine("Detected F5 key");
 				refreshForm();
 			}
 		}
@@ -271,6 +282,9 @@ namespace Main_RBS
             session.role = user.role;
             session.email = user.email;
             refreshForm();
+
+            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -285,6 +299,9 @@ namespace Main_RBS
             session.role = user.role;
             session.email = user.email;
             refreshForm();
+
+            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+
         }
 
         private void btnLoginBranton_Click(object sender, EventArgs e)
@@ -298,6 +315,8 @@ namespace Main_RBS
             session.role = user.role;
             session.email = user.email;
             refreshForm();
+
+            Debug.WriteLine(String.Format("Logged in as {0}", session.username)); 
         }
 
         private void btnLoginHood_Click(object sender, EventArgs e)
@@ -311,6 +330,9 @@ namespace Main_RBS
             session.role = user.role;
             session.email = user.email;
             refreshForm();
+
+            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+
         }
 
         private void listOwnBookings_SelectedIndexChanged(object sender, EventArgs e)
