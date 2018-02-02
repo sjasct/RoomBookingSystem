@@ -1,6 +1,6 @@
 ﻿namespace Main_RBS
 {
-	partial class frmNewBook
+	partial class frmBookingDetails
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.btnNewBook = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.txtRoom = new System.Windows.Forms.NumericUpDown();
             this.txtPeriod = new System.Windows.Forms.NumericUpDown();
             this.btnDeleteBook = new System.Windows.Forms.Button();
@@ -47,7 +46,7 @@
             // 
             this.dtDate.CustomFormat = "dd/MM/yyyy";
             this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate.Location = new System.Drawing.Point(80, 12);
+            this.dtDate.Location = new System.Drawing.Point(52, 15);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(200, 20);
             this.dtDate.TabIndex = 0;
@@ -56,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 12);
+            this.label1.Location = new System.Drawing.Point(17, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 1;
@@ -65,40 +64,42 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 47);
+            this.label2.Location = new System.Drawing.Point(12, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "RoomID";
+            this.label2.Text = "Room";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 70);
+            this.label3.Location = new System.Drawing.Point(10, 69);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "PERIOD";
+            this.label3.Text = "Period";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 97);
+            this.label4.Location = new System.Drawing.Point(12, 94);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "NOTES";
+            this.label4.Text = "Notes";
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(80, 97);
+            this.txtNotes.AllowDrop = true;
+            this.txtNotes.Location = new System.Drawing.Point(52, 91);
+            this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(200, 20);
+            this.txtNotes.Size = new System.Drawing.Size(200, 92);
             this.txtNotes.TabIndex = 7;
             // 
             // btnNewBook
             // 
-            this.btnNewBook.Location = new System.Drawing.Point(205, 123);
+            this.btnNewBook.Location = new System.Drawing.Point(177, 202);
             this.btnNewBook.Name = "btnNewBook";
             this.btnNewBook.Size = new System.Drawing.Size(75, 23);
             this.btnNewBook.TabIndex = 8;
@@ -106,19 +107,9 @@
             this.btnNewBook.UseVisualStyleBackColor = true;
             this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(205, 152);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 12;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // txtRoom
             // 
-            this.txtRoom.Location = new System.Drawing.Point(81, 47);
+            this.txtRoom.Location = new System.Drawing.Point(53, 41);
             this.txtRoom.Maximum = new decimal(new int[] {
             7,
             0,
@@ -130,7 +121,7 @@
             // 
             // txtPeriod
             // 
-            this.txtPeriod.Location = new System.Drawing.Point(82, 73);
+            this.txtPeriod.Location = new System.Drawing.Point(54, 67);
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(38, 20);
             this.txtPeriod.TabIndex = 14;
@@ -138,7 +129,7 @@
             // 
             // btnDeleteBook
             // 
-            this.btnDeleteBook.Location = new System.Drawing.Point(12, 154);
+            this.btnDeleteBook.Location = new System.Drawing.Point(96, 202);
             this.btnDeleteBook.Name = "btnDeleteBook";
             this.btnDeleteBook.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteBook.TabIndex = 15;
@@ -146,15 +137,14 @@
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
-            // frmNewBook
+            // frmBookingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 189);
+            this.ClientSize = new System.Drawing.Size(260, 238);
             this.Controls.Add(this.btnDeleteBook);
             this.Controls.Add(this.txtPeriod);
             this.Controls.Add(this.txtRoom);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnNewBook);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.label4);
@@ -162,8 +152,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtDate);
-            this.Name = "frmNewBook";
-            this.Text = "frmNewBook";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "frmBookingDetails";
+            this.Text = "x Booking";
             this.Load += new System.EventHandler(this.frmNewBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtRoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).EndInit();
@@ -181,7 +172,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox txtNotes;
 		private System.Windows.Forms.Button btnNewBook;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.NumericUpDown txtRoom;
         private System.Windows.Forms.NumericUpDown txtPeriod;
         private System.Windows.Forms.Button btnDeleteBook;

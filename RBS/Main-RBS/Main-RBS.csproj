@@ -85,11 +85,11 @@
     <Compile Include="frmMainTemp.Designer.cs">
       <DependentUpon>frmMainTemp.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewBook.cs">
+    <Compile Include="frmBookingDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewBook.Designer.cs">
-      <DependentUpon>frmNewBook.cs</DependentUpon>
+    <Compile Include="frmBookingDetails.Designer.cs">
+      <DependentUpon>frmBookingDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,8 +103,8 @@
     <EmbeddedResource Include="frmMainTemp.resx">
       <DependentUpon>frmMainTemp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewBook.resx">
-      <DependentUpon>frmNewBook.cs</DependentUpon>
+    <EmbeddedResource Include="frmBookingDetails.resx">
+      <DependentUpon>frmBookingDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
