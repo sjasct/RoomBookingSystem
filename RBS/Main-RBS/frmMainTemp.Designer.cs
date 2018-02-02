@@ -187,6 +187,7 @@
             // 
             // listAllBookings
             // 
+            this.listAllBookings.AllowColumnReorder = true;
             this.listAllBookings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listAllBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -198,6 +199,7 @@
             this.clmId,
             this.clmNotes});
             this.listAllBookings.FullRowSelect = true;
+            this.listAllBookings.GridLines = true;
             this.listAllBookings.HideSelection = false;
             this.listAllBookings.Location = new System.Drawing.Point(16, 181);
             this.listAllBookings.Name = "listAllBookings";
@@ -252,6 +254,7 @@
             this.columnHeader6,
             this.columnHeader7});
             this.listOwnBookings.FullRowSelect = true;
+            this.listOwnBookings.GridLines = true;
             this.listOwnBookings.HideSelection = false;
             this.listOwnBookings.Location = new System.Drawing.Point(16, 396);
             this.listOwnBookings.Name = "listOwnBookings";
@@ -259,6 +262,7 @@
             this.listOwnBookings.TabIndex = 15;
             this.listOwnBookings.UseCompatibleStateImageBehavior = false;
             this.listOwnBookings.View = System.Windows.Forms.View.Details;
+            this.listOwnBookings.ItemActivate += new System.EventHandler(this.listOwnBookings_ItemActivate);
             this.listOwnBookings.SelectedIndexChanged += new System.EventHandler(this.listOwnBookings_SelectedIndexChanged);
             // 
             // columnHeader1
@@ -376,6 +380,7 @@
             this.columnHeader17,
             this.columnHeader18});
             this.listUsers.FullRowSelect = true;
+            this.listUsers.GridLines = true;
             this.listUsers.HideSelection = false;
             this.listUsers.Location = new System.Drawing.Point(16, 614);
             this.listUsers.Name = "listUsers";
@@ -472,6 +477,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmMainTemp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home | Room Booking System";
             this.Activated += new System.EventHandler(this.frmMainTemp_Activated);
             this.Load += new System.EventHandler(this.frmMainTemp_Load);

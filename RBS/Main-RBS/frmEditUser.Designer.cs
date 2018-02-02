@@ -207,6 +207,7 @@
             this.Controls.Add(this.txtName2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmEditUser";
             this.Text = "frmEditUser";
             this.Load += new System.EventHandler(this.frmEditUser_Load);

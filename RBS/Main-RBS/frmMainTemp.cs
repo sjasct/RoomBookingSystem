@@ -24,7 +24,7 @@ namespace Main_RBS
 			db = new DatabaseHelper();
 			popAllBookings();
 			session.userID = -1;
-            tempVars.editBookingId = 0;
+            tempVars.editBookingId = -1;
             refreshForm();
 		}
 
@@ -133,6 +133,7 @@ namespace Main_RBS
 				btnShowID.Enabled = false;
                 btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
+                btnEditProfile.Enabled = false;
 			}
 			else if (session.role == "Student")
 			{
@@ -144,6 +145,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
+                btnEditProfile.Enabled = true;
             }
 			else if(session.role == "Teacher")
 			{
@@ -155,6 +157,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = false;
+                btnEditProfile.Enabled = true;
             }
 			else if (session.role == "Admin")
 			{
@@ -166,6 +169,7 @@ namespace Main_RBS
 				btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = true;
+                btnEditProfile.Enabled = true;
             }
 
 			foreach (ListViewItem item in listAllBookings.Items)
@@ -245,13 +249,16 @@ namespace Main_RBS
 
 		private void btnNewBook_Click(object sender, EventArgs e)
 		{
-			new frmNewBook().ShowDialog();
+			new frmBookingDetails().ShowDialog();
 		}
 
 		private void btnDeleteAll_Click(object sender, EventArgs e)
 		{
-			db.miscAction("TRUNCATE TABLE tblBookings");
-			refreshForm();
+            if (MessageBox.Show("Are you sure you want to delete all bookings?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                db.miscAction("TRUNCATE TABLE tblBookings");
+                refreshForm();
+            }
 		}
 
         private void listAllBookings_ItemActivate(object sender, EventArgs e)
@@ -262,7 +269,7 @@ namespace Main_RBS
             {
 
                 tempVars.editBookingId = editBookingId;
-                new frmNewBook().ShowDialog();
+                new frmBookingDetails().ShowDialog();
             }
             else
             {
@@ -376,6 +383,30 @@ namespace Main_RBS
         {
             tempVars.editUserId = -1;
             new frmEditUser().ShowDialog();
+        }
+
+        private void listOwnBookings_ItemActivate(object sender, EventArgs e)
+        {
+            try
+            {
+                int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
+                int editUserId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[3].Text);
+                if (editUserId == session.userID || session.role == "Admin")
+                {
+
+                    tempVars.editBookingId = editBookingId;
+                    new frmBookingDetails().ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("invalid!");
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            
         }
     }
 }
