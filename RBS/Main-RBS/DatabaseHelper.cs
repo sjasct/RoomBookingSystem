@@ -34,8 +34,10 @@ namespace Main_RBS
 
 			if (session.userID < 0 || all)
 			{
-				query = "SELECT * FROM tblBookings";
-			}
+                //query = "SELECT b.*, u.Username FROM tblBookings b, tblUsers u";
+                //query = "SELECT b.* FROM tblBookings b LEFT JOIN tblUsers u ON CONVERT(varchar, b.UserID) = u.Username;";
+                query = "SELECT b.* FROM tblBookings b ";
+            }
 			else
 			{
 				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
@@ -51,13 +53,24 @@ namespace Main_RBS
 
 					DataTable dt = new DataTable();
 
-					adapter.Fill(dt);
+                    try
+                    {
+                        adapter.Fill(dt);
+                    }
+                    catch(Exception ex)
+                    {
+                        Debug.WriteLine("it's this");
+                        Debug.WriteLine(ex.ToString());
+                    }
 
 					for (int i = 0; i < dt.Rows.Count; i++)
 					{
 						DataRow dr = dt.Rows[i];
 
                         string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
+
+                        //MessageBox.Show(dr["u.Username"].ToString());
+                        //MessageBox.Show(dr["Username"].ToString());
 
                         string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
 

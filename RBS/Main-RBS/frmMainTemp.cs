@@ -185,7 +185,7 @@ namespace Main_RBS
                 item.Remove();
             }
             popAllBookings();
-			popOwnBookings();
+			//popOwnBookings();
             popUsers();
 		}
 
