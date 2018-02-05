@@ -1,71 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Main_RBS
 {
-	public class DatabaseHelper
-	{
+    public class DatabaseHelper
+    {
+        private string connectionString;
 
-		string connectionString;
+        private SqlConnection connection;
 
-		SqlConnection connection;
+        public string getCString()
+        {
+            connectionString = ConfigurationManager.ConnectionStrings["Main_RBS.Properties.Settings.dbConnectionString"].ConnectionString;
+            return connectionString;
+        }
 
-		public string getCString()
-		{
-			connectionString = ConfigurationManager.ConnectionStrings["Main_RBS.Properties.Settings.dbConnectionString"].ConnectionString;
-			return connectionString;
-		}
+        public List<ListViewItem> popBookings(bool all = true)
+        {
+            SqlConnection connection;
 
-		public List<ListViewItem> popBookings(bool all = true)
-		{
-			SqlConnection connection;
+            List<ListViewItem> listItems = new List<ListViewItem>();
 
-			List<ListViewItem> listItems = new List<ListViewItem>();
+            string query;
 
-			string query;
-
-			if (session.userID < 0 || all)
-			{
+            if (session.userID < 0 || all)
+            {
                 //query = "SELECT b.*, u.Username FROM tblBookings b, tblUsers u";
                 //query = "SELECT b.* FROM tblBookings b LEFT JOIN tblUsers u ON CONVERT(varchar, b.UserID) = u.Username;";
                 query = "SELECT b.* FROM tblBookings b ";
             }
-			else
-			{
-				query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
-			}
+            else
+            {
+                query = String.Format("SELECT * FROM tblBookings WHERE UserID = {0} ORDER BY TimeBooked DESC", session.userID);
+            }
 
             Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
 
             try
-			{
-				using (connection = new SqlConnection(getCString()))
-				{
-					SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            {
+                using (connection = new SqlConnection(getCString()))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
 
-					DataTable dt = new DataTable();
+                    DataTable dt = new DataTable();
 
                     try
                     {
                         adapter.Fill(dt);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Debug.WriteLine("it's this");
                         Debug.WriteLine(ex.ToString());
                     }
 
-					for (int i = 0; i < dt.Rows.Count; i++)
-					{
-						DataRow dr = dt.Rows[i];
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DataRow dr = dt.Rows[i];
 
                         string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
 
@@ -74,19 +70,19 @@ namespace Main_RBS
 
                         string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
 
-						ListViewItem li = new ListViewItem(list);
+                        ListViewItem li = new ListViewItem(list);
 
-						listItems.Add(li);
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.ToString());
-			}
+                        listItems.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
-			return listItems;
-		}
+            return listItems;
+        }
 
         public List<ListViewItem> popUsers(bool all = true)
         {
@@ -130,37 +126,35 @@ namespace Main_RBS
         }
 
         public loginReturnedData checkLoginDetails(string username, string pass)
-		{
+        {
+            loginReturnedData returnedData = new loginReturnedData();
 
-			loginReturnedData returnedData = new loginReturnedData();
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
 
-			using (connection = new SqlConnection(getCString()))
-			{
-				connection.Open();
-
-				string command = String.Format("SELECT * FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
+                string command = String.Format("SELECT * FROM tblUsers WHERE Username = '{0}' AND Password = '{1}'", username, pass);
                 Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
 
                 SqlCommand logincommand = new SqlCommand(command, connection);
-				SqlDataReader reader = logincommand.ExecuteReader();
+                SqlDataReader reader = logincommand.ExecuteReader();
 
-				if (reader.Read())
-				{
-					returnedData.success = true;
-					returnedData.userID = reader.GetInt32(0);
-					returnedData.username = reader.GetString(1);
-					returnedData.name = new string[] { reader.GetString(2), reader.GetString(3) };
-					returnedData.role = reader.GetString(5);
-					returnedData.email = reader.GetString(6);
-				}
-			}
+                if (reader.Read())
+                {
+                    returnedData.success = true;
+                    returnedData.userID = reader.GetInt32(0);
+                    returnedData.username = reader.GetString(1);
+                    returnedData.name = new string[] { reader.GetString(2), reader.GetString(3) };
+                    returnedData.role = reader.GetString(5);
+                    returnedData.email = reader.GetString(6);
+                }
+            }
 
-			return returnedData;
-		}
+            return returnedData;
+        }
 
         public bool checkUsernameExists(string username, int editId)
         {
-
             bool exists = false;
 
             using (connection = new SqlConnection(getCString()))
@@ -183,8 +177,8 @@ namespace Main_RBS
                 {
                     return false;
                 }
-                
-                if(recievedId == editId)
+
+                if (recievedId == editId)
                 {
                     return false;
                 }
@@ -198,44 +192,40 @@ namespace Main_RBS
                 {
                     exists = false;
                 }
-                
 
                 return exists;
-                
             }
         }
 
         public booking getBooking(int id)
-		{
+        {
+            booking booking = new booking();
 
-			booking booking = new booking();
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
 
-			using (connection = new SqlConnection(getCString()))
-			{
-				connection.Open();
-
-				string command = String.Format("SELECT * FROM tblBookings WHERE Id = {0}", id.ToString());
+                string command = String.Format("SELECT * FROM tblBookings WHERE Id = {0}", id.ToString());
                 Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
-				SqlDataReader reader = logincommand.ExecuteReader();
+                SqlDataReader reader = logincommand.ExecuteReader();
 
-				if (reader.Read())
-				{
-					booking.id = reader.GetInt32(0);
-					booking.date = reader.GetDateTime(2);
-					booking.UserID = reader.GetInt32(4);
-					booking.period = reader.GetInt32(3);
-					booking.notes = reader.GetString(5);
-					booking.roomID = reader.GetInt32(1);
-				}
-			}
+                if (reader.Read())
+                {
+                    booking.id = reader.GetInt32(0);
+                    booking.date = reader.GetDateTime(2);
+                    booking.UserID = reader.GetInt32(4);
+                    booking.period = reader.GetInt32(3);
+                    booking.notes = reader.GetString(5);
+                    booking.roomID = reader.GetInt32(1);
+                }
+            }
 
-			return booking;
-		}
+            return booking;
+        }
 
         public user getUser(int id)
         {
-
             user user = new user();
 
             using (connection = new SqlConnection(getCString()))
@@ -248,8 +238,7 @@ namespace Main_RBS
                 SqlDataReader reader = logincommand.ExecuteReader();
 
                 if (reader.Read())
-                { 
-
+                {
                     user.id = reader.GetInt32(0);
                     user.username = reader.GetString(1);
                     user.firstname = reader.GetString(2);
@@ -264,37 +253,36 @@ namespace Main_RBS
         }
 
         public void insertBooking(int roomID, DateTime date, int period, int userID, string notes)
-		{
-			DateTime dt = new DateTime();
-			dt = DateTime.Now;
+        {
+            DateTime dt = new DateTime();
+            dt = DateTime.Now;
 
-			string newdt = date.ToShortDateString();
+            string newdt = date.ToShortDateString();
 
-			using (connection = new SqlConnection(getCString()))
-			{
-				connection.Open();
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
 
-				string command = String.Format("INSERT INTO tblBookings (RoomID, Date, Period, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString());
+                string command = String.Format("INSERT INTO tblBookings (RoomID, Date, Period, UserID, Notes, TimeBooked) VALUES ({0}, CONVERT(date, '{1}', 103), {2}, {3}, '{4}', CONVERT(datetime, '{5}', 103))", roomID.ToString(), date, period, userID.ToString(), notes, dt.ToString());
                 Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
-				try
-				{
-					logincommand.ExecuteNonQuery();
-				}
-				catch(Exception ex)
-				{
-					MessageBox.Show(ex.ToString());
-				}
-				finally
-				{
-					connection.Close();
-				}
-			}
-		}
+                try
+                {
+                    logincommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 
         public void updateBooking(int bookID, int roomID, DateTime date, int period, int userID, string notes)
         {
-
             using (connection = new SqlConnection(getCString()))
             {
                 connection.Open();
@@ -319,7 +307,6 @@ namespace Main_RBS
 
         public void updateUser(int id, string firstname, string secondname, string password, string email, string role, string username)
         {
-
             using (connection = new SqlConnection(getCString()))
             {
                 connection.Open();
@@ -343,31 +330,29 @@ namespace Main_RBS
         }
 
         public void miscAction(string query)
-		{
-
+        {
             Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
 
-			using (connection = new SqlConnection(getCString()))
-			{
-				connection.Open();
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
 
-				string command = query;
+                string command = query;
 
-				SqlCommand logincommand = new SqlCommand(command, connection);
-				try
-				{
-					logincommand.ExecuteNonQuery();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.ToString());
-				}
-				finally
-				{
-					connection.Close();
-				}
-			}
-		}
-
-	}
+                SqlCommand logincommand = new SqlCommand(command, connection);
+                try
+                {
+                    logincommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+    }
 }

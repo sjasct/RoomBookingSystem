@@ -1,45 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Main_RBS
 {
-	public partial class frmBookingDetails : Form
-	{
+    public partial class frmBookingDetails : Form
+    {
+        private booking book;
 
-		booking book;
+        private DatabaseHelper db;
 
-		DatabaseHelper db;
+        private int editID;
 
-        int editID;
+        private bool modeEdit;
 
-        bool modeEdit;
+        public frmBookingDetails()
+        {
+            InitializeComponent();
+        }
 
-		public frmBookingDetails()
-		{
-			InitializeComponent();
-		}
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+        }
 
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+        }
 
-		}
-
-		private void textBox3_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void btnNewBook_Click(object sender, EventArgs e)
-		{
-
+        private void btnNewBook_Click(object sender, EventArgs e)
+        {
             DateTime date = Convert.ToDateTime(dtDate.Text);
 
             if (modeEdit)
@@ -50,15 +39,15 @@ namespace Main_RBS
             {
                 db.insertBooking(Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
             }
-            
-			this.Close();
-		}
 
-		private void frmNewBook_Load(object sender, EventArgs e)
-		{
-			db = new DatabaseHelper();
+            this.Close();
+        }
+
+        private void frmNewBook_Load(object sender, EventArgs e)
+        {
+            db = new DatabaseHelper();
             modeEdit = false;
-            if(tempVars.editBookingId != -1)
+            if (tempVars.editBookingId != -1)
             {
                 this.Text = "Edit Booking";
                 modeEdit = true;
@@ -79,26 +68,22 @@ namespace Main_RBS
                 this.Text = "New Booking";
                 modeEdit = false;
                 btnDeleteBook.Enabled = false;
-
-
             }
 
-            if (book.UserID == session.userID || session.role == "Admin"){
+            if (book.UserID == session.userID || session.role == "Admin")
+            {
                 btnDeleteBook.Enabled = true;
             }
             else
             {
                 btnDeleteBook.Enabled = false;
             }
-            
-
         }
 
         private void dtDate_ValueChanged(object sender, EventArgs e)
         {
-
         }
-        
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
@@ -110,13 +95,11 @@ namespace Main_RBS
 
         private void txtPeriod_ValueChanged(object sender, EventArgs e)
         {
-
         }
 
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
-
-            if(MessageBox.Show("Are you sure?", "Confirmation",MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             {
                 string cmd = String.Format("DELETE from tblBookings WHERE Id = {0}", book.id);
 
@@ -133,7 +116,6 @@ namespace Main_RBS
 
                 this.Close();
             }
-                
         }
     }
 }
