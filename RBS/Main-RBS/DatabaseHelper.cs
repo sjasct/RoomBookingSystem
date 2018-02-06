@@ -65,9 +65,6 @@ namespace Main_RBS
 
                         string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
 
-                        //MessageBox.Show(dr["u.Username"].ToString());
-                        //MessageBox.Show(dr["Username"].ToString());
-
                         string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
 
                         ListViewItem li = new ListViewItem(list);
