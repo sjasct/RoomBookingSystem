@@ -1,59 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main_RBS
 {
-	public partial class frmLogin : Form
-	{
+    public partial class frmLogin : Form
+    {
+        private DatabaseHelper db;
 
-		DatabaseHelper db;
+        public frmLogin()
+        {
+            InitializeComponent();
+        }
 
-		public frmLogin()
-		{
-			InitializeComponent();
-		}
+        private void btnLoginCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-		private void btnLoginCancel_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+        private void btnLoginEnter_Click(object sender, EventArgs e)
+        {
+            string username = txtLoginUsername.Text;
+            string password = txtLoginPassword.Text;
 
-		private void btnLoginEnter_Click(object sender, EventArgs e)
-		{
-			string username = txtLoginUsername.Text;
-			string password = txtLoginPassword.Text;
+            loginReturnedData loginData = db.checkLoginDetails(username, password);
 
-			loginReturnedData loginData = db.checkLoginDetails(username, password);
+            if (loginData.success)
+            {
+                session.userID = loginData.userID;
+                session.username = loginData.username;
+                session.name = loginData.name;
+                session.role = loginData.role;
+                session.email = loginData.email;
+                session.loggedIn = true;
 
-			if (loginData.success)
-			{
-				session.userID = loginData.userID;
-				session.username = loginData.username;
-				session.name = loginData.name;
-				session.role = loginData.role;
-				session.email = loginData.email;
-				session.loggedIn = true;
-				
-				this.Close();
-			}
-			else
-			{
-				lblLoginError.Text = "login failed";
-				txtLoginPassword.Text = String.Empty;
-			}
-		}
+                this.Close();
+            }
+            else
+            {
+                lblLoginError.Text = "login failed";
+                txtLoginPassword.Text = String.Empty;
+            }
+        }
 
-		private void frmLogin_Load(object sender, EventArgs e)
-		{
-			db = new DatabaseHelper();
-			lblLoginError.Text = String.Empty;
-		}
-	}
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            db = new DatabaseHelper();
+            lblLoginError.Text = String.Empty;
+        }
+    }
 }

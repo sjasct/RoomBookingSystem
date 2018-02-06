@@ -38,6 +38,7 @@
             this.txtRoom = new System.Windows.Forms.NumericUpDown();
             this.txtPeriod = new System.Windows.Forms.NumericUpDown();
             this.btnDeleteBook = new System.Windows.Forms.Button();
+            this.btnBookExist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeriod)).BeginInit();
             this.SuspendLayout();
@@ -137,11 +138,22 @@
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
+            // btnBookExist
+            // 
+            this.btnBookExist.Location = new System.Drawing.Point(15, 202);
+            this.btnBookExist.Name = "btnBookExist";
+            this.btnBookExist.Size = new System.Drawing.Size(75, 23);
+            this.btnBookExist.TabIndex = 16;
+            this.btnBookExist.Text = "CheckExists";
+            this.btnBookExist.UseVisualStyleBackColor = true;
+            this.btnBookExist.Click += new System.EventHandler(this.btnBookExist_Click);
+            // 
             // frmBookingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 238);
+            this.Controls.Add(this.btnBookExist);
             this.Controls.Add(this.btnDeleteBook);
             this.Controls.Add(this.txtPeriod);
             this.Controls.Add(this.txtRoom);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.NumericUpDown txtRoom;
         private System.Windows.Forms.NumericUpDown txtPeriod;
         private System.Windows.Forms.Button btnDeleteBook;
+        private System.Windows.Forms.Button btnBookExist;
     }
 }

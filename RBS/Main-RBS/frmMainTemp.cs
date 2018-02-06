@@ -1,62 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Main_RBS
 {
-	public partial class frmMainTemp : Form
-	{
+    public partial class frmMainTemp : Form
+    {
+        private DatabaseHelper db;
 
-		DatabaseHelper db;
-
-		private void frmMainTemp_Load(object sender, EventArgs e)
-		{
+        private void frmMainTemp_Load(object sender, EventArgs e)
+        {
             Debug.WriteLine("Loading main form..");
-			db = new DatabaseHelper();
-			popAllBookings();
-			session.userID = -1;
+            db = new DatabaseHelper();
+            popAllBookings();
+            session.userID = -1;
             tempVars.editBookingId = -1;
             refreshForm();
-		}
+        }
 
-		public frmMainTemp()
-		{
-			InitializeComponent();	
-		}
-		
-		private void popAllBookings()
-		{
+        public frmMainTemp()
+        {
+            InitializeComponent();
+        }
+
+        private void popAllBookings()
+        {
             Debug.WriteLine("Populating all bookings list..");
-			List<ListViewItem> items = db.popBookings();
+            List<ListViewItem> items = db.popBookings();
 
-			foreach(ListViewItem item in items)
-			{
-				listAllBookings.Items.Add(item);
-			}
-		}
+            foreach (ListViewItem item in items)
+            {
+                listAllBookings.Items.Add(item);
+            }
+        }
 
-		private void popOwnBookings()
-		{
+        private void popOwnBookings()
+        {
             Debug.WriteLine("Populating own bookings list..");
-			if (session.loggedIn)
-			{
-				List<ListViewItem> items = db.popBookings(false);
+            if (session.loggedIn)
+            {
+                List<ListViewItem> items = db.popBookings(false);
 
-				foreach (ListViewItem item in items)
-				{
-					listOwnBookings.Items.Add(item);
-				}
-			}	
-		}
+                foreach (ListViewItem item in items)
+                {
+                    listOwnBookings.Items.Add(item);
+                }
+            }
+        }
 
         private void popUsers()
         {
@@ -71,195 +62,198 @@ namespace Main_RBS
         }
 
         private void button1_Click(object sender, EventArgs e)
-		{
+        {
             Debug.WriteLine("Opening login form..");
-			frmLogin loginForm = new frmLogin();
-			loginForm.ShowDialog();
-		}
+            frmLogin loginForm = new frmLogin();
+            loginForm.ShowDialog();
+        }
 
-		private void btnOwnBookings_Click(object sender, EventArgs e)
-		{
-			MessageBox.Show("Not implemented.");
-		}
+        private void btnOwnBookings_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented.");
+        }
 
-		private void button1_Click_1(object sender, EventArgs e)
-		{
-			try
-			{
-				string userdata = String.Format("Username: {0}\nName: {1} {2}\nrole: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.role, session.email, session.userID);
-				MessageBox.Show(userdata);
-			}
-			catch (System.NullReferenceException)
-			{
-				MessageBox.Show("You are not logged in!");
-			}
-		}
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                string userdata = String.Format("Username: {0}\nName: {1} {2}\nrole: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.role, session.email, session.userID);
+                MessageBox.Show(userdata);
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("You are not logged in!");
+            }
+        }
 
-		private void btnRefresh_Click(object sender, EventArgs e)
-		{
-			refreshForm();
-		}
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            refreshForm();
+        }
 
-		private void refreshForm()
-		{
+        private void refreshForm()
+        {
             Debug.WriteLine("Refreshing form..");
-			// Header
-			string name;
-			try
-			{
-				name = session.name[0];
-			}
-			catch
-			{
-				name = "";
-			}
-			if (string.IsNullOrEmpty(name) || name == "")
-			{
-				lblUserHeader.Text = "Not logged in..";
-			}
-			else
-			{
-				lblUserHeader.Text = String.Format("Welcome {0}!", name);
-			}
-		
-			// buttons
-			if (string.IsNullOrEmpty(session.role))
-			{
-				btnDeleteAll.Enabled = false;
-				btnNewBook.Enabled = false;
-				btnOwnBookings.Enabled = false;
-				btnLogOut.Enabled = false;
-				btnHomeLogin.Enabled = true;
-				btnShowID.Enabled = false;
+            // Header
+            string name;
+            try
+            {
+                name = session.name[0];
+            }
+            catch
+            {
+                name = "";
+            }
+            if (string.IsNullOrEmpty(name) || name == "")
+            {
+                lblUserHeader.Text = "Not logged in..";
+            }
+            else
+            {
+                lblUserHeader.Text = String.Format("Welcome {0}!", name);
+            }
+
+            // buttons
+            if (string.IsNullOrEmpty(session.role))
+            {
+                btnDeleteAll.Enabled = false;
+                btnNewBook.Enabled = false;
+                btnOwnBookings.Enabled = false;
+                btnLogOut.Enabled = false;
+                btnHomeLogin.Enabled = true;
+                btnShowID.Enabled = false;
                 btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = false;
-			}
-			else if (session.role == "Student")
-			{
-				btnDeleteAll.Enabled = false;
-				btnShowID.Enabled = true;
-				btnNewBook.Enabled = false;
-				btnOwnBookings.Enabled = false;
-				btnLogOut.Enabled = true;
-				btnHomeLogin.Enabled = false;
+            }
+            else if (session.role == "Student")
+            {
+                btnDeleteAll.Enabled = false;
+                btnShowID.Enabled = true;
+                btnNewBook.Enabled = false;
+                btnOwnBookings.Enabled = false;
+                btnLogOut.Enabled = true;
+                btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
-			else if(session.role == "Teacher")
-			{
-				btnDeleteAll.Enabled = false;
-				btnShowID.Enabled = true;
-				btnNewBook.Enabled = true;
-				btnOwnBookings.Enabled = true;
-				btnLogOut.Enabled = true;
-				btnHomeLogin.Enabled = false;
+            else if (session.role == "Teacher")
+            {
+                btnDeleteAll.Enabled = false;
+                btnShowID.Enabled = true;
+                btnNewBook.Enabled = true;
+                btnOwnBookings.Enabled = true;
+                btnLogOut.Enabled = true;
+                btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
-			else if (session.role == "Admin")
-			{
-				btnDeleteAll.Enabled = true;
-				btnShowID.Enabled = true;
-				btnNewBook.Enabled = true;
-				btnOwnBookings.Enabled = true;
-				btnLogOut.Enabled = true;
-				btnHomeLogin.Enabled = false;
+            else if (session.role == "Admin")
+            {
+                btnDeleteAll.Enabled = true;
+                btnShowID.Enabled = true;
+                btnNewBook.Enabled = true;
+                btnOwnBookings.Enabled = true;
+                btnLogOut.Enabled = true;
+                btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = true;
                 btnEditProfile.Enabled = true;
             }
 
-			foreach (ListViewItem item in listAllBookings.Items)
-			{
-				item.Remove();
-			}
-			foreach (ListViewItem item in listOwnBookings.Items)
-			{
-				item.Remove();
-			}
+            foreach (ListViewItem item in listAllBookings.Items)
+            {
+                item.Remove();
+            }
+            foreach (ListViewItem item in listOwnBookings.Items)
+            {
+                item.Remove();
+            }
             foreach (ListViewItem item in listUsers.Items)
             {
                 item.Remove();
             }
             popAllBookings();
-			popOwnBookings();
+            popOwnBookings();
             popUsers();
-		}
+        }
 
-		private void frmMainTemp_Activated(object sender, EventArgs e)
-		{
-			//refreshForm();
-		}
+        private void frmMainTemp_Activated(object sender, EventArgs e)
+        {
+            //refreshForm();
+        }
 
-		private void btnLogOut_Click(object sender, EventArgs e)
-		{
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
             Debug.WriteLine("Logging user out..");
-			bool success = false;
+            bool success = false;
 
-			try
-			{
-				session.loggedIn = false;
-				session.userID = -1;
-				session.username = null;
-				session.name = new string[] { "", "" };
-				session.role = null;
-				session.email = null;
-				success = true;
-			}
-			catch
-			{
-				MessageBox.Show("Log out failed!");
-			}
+            try
+            {
+                session.loggedIn = false;
+                session.userID = -1;
+                session.username = null;
+                session.name = new string[] { "", "" };
+                session.role = null;
+                session.email = null;
+                success = true;
+            }
+            catch
+            {
+                MessageBox.Show("Log out failed!");
+            }
 
-			if (success)
-			{
-				MessageBox.Show("Logged out!");
-				refreshForm();
-			}
-		}
+            if (success)
+            {
+                MessageBox.Show("Logged out!");
+                refreshForm();
+            }
+        }
 
-		private void btnTestBooking_Click(object sender, EventArgs e)
-		{
-
+        private void btnTestBooking_Click(object sender, EventArgs e)
+        {
             Debug.WriteLine("Inserting test booking..");
 
-			Random r = new Random();
-			int dateThing = r.Next(1, 31);
-			int roomID = r.Next(1, 5);
-			int period = r.Next(1, 5);
+            Random r = new Random();
+            int dateThing = r.Next(1, 31);
+            int roomID = r.Next(1, 5);
+            int period = r.Next(1, 5);
 
-			DateTime date = new DateTime(2018, 1, dateThing);
+            DateTime date = new DateTime(2018, 1, dateThing);
 
-			db.insertBooking(roomID, date, period, session.userID, "Test Booking");
+            if (!db.checkBookingExists(date.ToString(), period, roomID))
+            {
+                db.insertBooking(roomID, date, period, session.userID, "Test Booking");
+            }
 
-			refreshForm();
-		}
 
-		private void frmMainTemp_KeyDown(object sender, KeyEventArgs e)
-		{
-			if(e.KeyCode == Keys.F5)
-			{
+            refreshForm();
+        }
+
+        private void frmMainTemp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5)
+            {
                 Debug.WriteLine("Detected F5 key");
-				refreshForm();
-			}
-		}
+                refreshForm();
+            }
+        }
 
-		private void btnNewBook_Click(object sender, EventArgs e)
-		{
-			new frmBookingDetails().ShowDialog();
-		}
+        private void btnNewBook_Click(object sender, EventArgs e)
+        {
+            new frmBookingDetails().ShowDialog();
+        }
 
-		private void btnDeleteAll_Click(object sender, EventArgs e)
-		{
+        private void btnDeleteAll_Click(object sender, EventArgs e)
+        {
             if (MessageBox.Show("Are you sure you want to delete all bookings?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             {
                 db.miscAction("TRUNCATE TABLE tblBookings");
                 refreshForm();
             }
-		}
+        }
 
         private void listAllBookings_ItemActivate(object sender, EventArgs e)
         {
@@ -267,7 +261,6 @@ namespace Main_RBS
             int editUserId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[3].Text);
             if (editUserId == session.userID || session.role == "Admin")
             {
-
                 tempVars.editBookingId = editBookingId;
                 new frmBookingDetails().ShowDialog();
             }
@@ -279,7 +272,6 @@ namespace Main_RBS
 
         private void listAllBookings_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void btnLoginSelf_Click(object sender, EventArgs e)
@@ -295,12 +287,10 @@ namespace Main_RBS
             refreshForm();
 
             Debug.WriteLine(String.Format("Logged in as {0}", session.username));
-
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-
             user user = db.getUser(8);
 
             session.loggedIn = true;
@@ -312,7 +302,6 @@ namespace Main_RBS
             refreshForm();
 
             Debug.WriteLine(String.Format("Logged in as {0}", session.username));
-
         }
 
         private void btnLoginBranton_Click(object sender, EventArgs e)
@@ -327,7 +316,7 @@ namespace Main_RBS
             session.email = user.email;
             refreshForm();
 
-            Debug.WriteLine(String.Format("Logged in as {0}", session.username)); 
+            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
         }
 
         private void btnLoginHood_Click(object sender, EventArgs e)
@@ -343,22 +332,18 @@ namespace Main_RBS
             refreshForm();
 
             Debug.WriteLine(String.Format("Logged in as {0}", session.username));
-
         }
 
         private void listOwnBookings_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void listUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void listUsers_ItemActivate(object sender, EventArgs e)
         {
-
             int editUserId = Convert.ToInt32(listUsers.SelectedItems[0].SubItems[0].Text);
 
             if (session.userID == editUserId || session.role == "Admin")
@@ -393,7 +378,6 @@ namespace Main_RBS
                 int editUserId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[3].Text);
                 if (editUserId == session.userID || session.role == "Admin")
                 {
-
                     tempVars.editBookingId = editBookingId;
                     new frmBookingDetails().ShowDialog();
                 }
@@ -402,11 +386,10 @@ namespace Main_RBS
                     MessageBox.Show("invalid!");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
-            
         }
     }
 }

@@ -194,6 +194,59 @@ namespace Main_RBS
             }
         }
 
+        public bool checkBookingExists(string date, int period, int room, int editId = -1)
+        {
+            try
+            {
+                bool exists = false;
+
+                using (connection = new SqlConnection(getCString()))
+                {
+                    connection.Open();
+
+                    string command = String.Format("SELECT Id FROM tblBookings WHERE Date = CONVERT(date, '{0}', 103) AND Period = {1} AND RoomID = {2}", date, period, room);
+                    Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
+                    SqlCommand logincommand = new SqlCommand(command, connection);
+
+                    int recievedId;
+
+                    // if username trying to change to is the user's current username
+                    try
+                    {
+                        recievedId = (int)logincommand.ExecuteScalar();
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+
+                    if (editId != -1 && recievedId == editId)
+                    {
+                        return false;
+                    }
+
+                    // if username exists
+                    try
+                    {
+                        exists = (int)logincommand.ExecuteScalar() > 0;
+                        Debug.WriteLine(exists.ToString());
+                    }
+                    catch (NullReferenceException)
+                    {
+                        exists = false;
+                    }
+
+                    return exists;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+            
+        }
+
         public booking getBooking(int id)
         {
             booking booking = new booking();

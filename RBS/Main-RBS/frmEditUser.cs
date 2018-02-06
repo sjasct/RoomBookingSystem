@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Main_RBS
 {
     public partial class frmEditUser : Form
     {
-
-        DatabaseHelper db;
-        int userID;
-        user user;
-        bool newUserMode;
+        private DatabaseHelper db;
+        private int userID;
+        private user user;
+        private bool newUserMode;
 
         public frmEditUser()
         {
@@ -25,39 +17,31 @@ namespace Main_RBS
 
         private void label5_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void frmEditUser_Load(object sender, EventArgs e)
         {
-
-
             btnDeleteUser.Enabled = false;
 
             if (session.role != "Admin")
             {
                 txtRole.ReadOnly = true;
-                
             }
             else
             {
@@ -93,16 +77,13 @@ namespace Main_RBS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
-
-
             string givenPassword;
             bool passsuccess = false;
             bool namesuccess = false;
 
-            if(!String.IsNullOrEmpty(txtPass1.Text))
+            if (!String.IsNullOrEmpty(txtPass1.Text))
             {
-               if(txtPass1.Text == txtPass2.Text)
+                if (txtPass1.Text == txtPass2.Text)
                 {
                     givenPassword = txtPass1.Text;
                     passsuccess = true;
@@ -111,7 +92,6 @@ namespace Main_RBS
                 {
                     MessageBox.Show("The two passwords you entered don't match");
                 }
-                
             }
             else
             {
@@ -139,11 +119,10 @@ namespace Main_RBS
                         db.miscAction(cmd);
                         this.Close();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                     }
-
                 }
                 else
                 {
@@ -164,12 +143,10 @@ namespace Main_RBS
                     }
                 }
             }
-            
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
@@ -179,7 +156,6 @@ namespace Main_RBS
             db.miscAction(cmd);
 
             this.Close();
-
         }
     }
 }

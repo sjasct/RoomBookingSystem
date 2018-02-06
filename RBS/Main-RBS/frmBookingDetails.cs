@@ -31,16 +31,26 @@ namespace Main_RBS
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
 
-            if (modeEdit)
+            if (!db.checkBookingExists(dtDate.Text, Convert.ToInt32(txtPeriod.Value), Convert.ToInt32(txtRoom.Value), editID))
             {
-                db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                if (modeEdit)
+                {
+                    db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                }
+                else
+                {
+                    db.insertBooking(Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                }
+
+                this.Close();
+
             }
             else
             {
-                db.insertBooking(Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                MessageBox.Show("That slot is taken!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            this.Close();
+            
         }
 
         private void frmNewBook_Load(object sender, EventArgs e)
@@ -88,8 +98,14 @@ namespace Main_RBS
         {
             DateTime date = Convert.ToDateTime(dtDate.Text);
 
-            db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
-
+            if (!db.checkBookingExists(dtDate.Text, Convert.ToInt32(txtPeriod.Value), Convert.ToInt32(txtRoom.Value), editID))
+            {
+                db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+            }
+            else
+            {
+                MessageBox.Show("That slot is taken!");
+            }
             this.Close();
         }
 
@@ -116,6 +132,11 @@ namespace Main_RBS
 
                 this.Close();
             }
+        }
+
+        private void btnBookExist_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(db.checkBookingExists(dtDate.Text, Convert.ToInt32(txtPeriod.Value), Convert.ToInt32(txtRoom.Value), editID).ToString());
         }
     }
 }
