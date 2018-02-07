@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeekPlanner</RootNamespace>
+    <AssemblyName>WeekPlanner</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalendarPlanner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarPlanner.Designer.cs">
+      <DependentUpon>CalendarPlanner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CoordLevel.cs" />
+    <Compile Include="DataValue.cs" />
+    <Compile Include="HeaderStyleMode.cs" />
+    <Compile Include="iWeek.cs" />
+    <Compile Include="iWeekPlannerItem.cs" />
+    <Compile Include="iWeekPlannerRow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RowClickEventArgs.cs" />
+    <Compile Include="RowEventArgs.cs" />
+    <Compile Include="WeekPlannerColorTable.cs" />
+    <Compile Include="WeekPlannerGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WeekPlannerGrid.Designer.cs">
+      <DependentUpon>WeekPlannerGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeekPlannerHeader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WeekPlannerHeader.Designer.cs">
+      <DependentUpon>WeekPlannerHeader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeekPlannerItem.cs" />
+    <Compile Include="WeekPlannerItemCollection.cs" />
+    <Compile Include="WeekPlannerItemEventArgs.cs" />
+    <Compile Include="WeekPlannerMode.cs" />
+    <Compile Include="WeekPlannerRow.cs" />
+    <Compile Include="WeekPlannerRowCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CalendarPlanner.resx">
+      <DependentUpon>CalendarPlanner.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

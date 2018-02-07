@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main-RBS", "Main-RBS\Main-RBS.csproj", "{8FDD17E6-65DA-4E48-8A36-614EF60798FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekPlanner", "WeekPlanner\WeekPlanner.csproj", "{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8FDD17E6-65DA-4E48-8A36-614EF60798FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FDD17E6-65DA-4E48-8A36-614EF60798FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FDD17E6-65DA-4E48-8A36-614EF60798FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF500EB-6DEB-4F00-A96B-91C2B1B8A012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -160,5 +160,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeekPlanner\WeekPlanner.csproj">
+      <Project>{0af500eb-6deb-4f00-a96b-91c2b1b8a012}</Project>
+      <Name>WeekPlanner</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

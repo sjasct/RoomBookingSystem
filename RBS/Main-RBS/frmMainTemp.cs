@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using WeekPlanner;
 
 namespace Main_RBS
 {
@@ -17,6 +18,30 @@ namespace Main_RBS
             session.userID = -1;
             tempVars.editBookingId = -1;
             refreshForm();
+
+            DateTime earlyDate = Convert.ToDateTime("01/01/1970");
+
+            
+            calAllBookings.Columns.Add("clmPeriod", "Period", 100);
+            for(int n = 1; n < 6; n++)
+            {
+                WeekPlannerItemCollection ic = new WeekPlannerItemCollection();
+                WeekPlannerItem i = new WeekPlannerItem();
+                i.StartDate = earlyDate;
+                i.EndDate = earlyDate;
+                i.Subject = "test";
+                i.BackColor = System.Drawing.Color.YellowGreen;
+                ic.Add(i);
+                DataColumns cr = new DataColumns(calAllBookings.Calendar);
+                cr["clmPeriod"].Data.Add(String.Format("Period {0}", n.ToString()));
+                calAllBookings.Rows.Add(cr, ic);
+            }
+
+            
+                
+
+
+
         }
 
         public frmMainTemp()
