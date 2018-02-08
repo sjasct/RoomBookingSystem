@@ -13,7 +13,7 @@ namespace Main_RBS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMainTemp());
+            Application.Run(new frmHome());
         }
     }
 }
