@@ -11,5 +11,6 @@ namespace WeekPlanner
         string Subject { get; set; }
         Rectangle Rectangle { get; set; }
         string Name { get; set; }
+        string backData { get; set; }
     }
 }

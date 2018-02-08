@@ -17,6 +17,7 @@ namespace WeekPlanner
         private bool _isResizingEndDate;
         private Color _backColor;
         private WeekPlannerGrid _calendar;
+        private string _backData;
 
         internal WeekPlannerGrid Calendar
         {
@@ -87,6 +88,12 @@ namespace WeekPlanner
         /// Name of the item
         /// </summary>
         public string Name
+        {
+            get;
+            set;
+        }
+
+        public string backData
         {
             get;
             set;

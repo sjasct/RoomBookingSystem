@@ -39,6 +39,7 @@ namespace Main_RBS
                 i.EndDate = earlyDate;
                 i.Subject = "test";
                 i.BackColor = System.Drawing.Color.YellowGreen;
+                i.backData = "thing";
                 ic.Add(i);
 
                 List<booking> bookinglist = db.populateCalendar(1, n);
