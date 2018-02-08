@@ -114,10 +114,6 @@ namespace Main_RBS
             loginForm.ShowDialog();
         }
 
-        private void btnOwnBookings_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not implemented.");
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -128,7 +124,7 @@ namespace Main_RBS
             }
             catch (System.NullReferenceException)
             {
-                MessageBox.Show("You are not logged in!");
+                MessageBox.Show("You are not logged in!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,7 +161,6 @@ namespace Main_RBS
             {
                 btnDeleteAll.Enabled = false;
                 btnNewBook.Enabled = false;
-                btnOwnBookings.Enabled = false;
                 btnLogOut.Enabled = false;
                 btnHomeLogin.Enabled = true;
                 btnShowID.Enabled = false;
@@ -178,7 +173,6 @@ namespace Main_RBS
                 btnDeleteAll.Enabled = false;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = false;
-                btnOwnBookings.Enabled = false;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = false;
@@ -190,7 +184,6 @@ namespace Main_RBS
                 btnDeleteAll.Enabled = false;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
-                btnOwnBookings.Enabled = true;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
@@ -202,7 +195,6 @@ namespace Main_RBS
                 btnDeleteAll.Enabled = true;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
-                btnOwnBookings.Enabled = true;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
                 btnTestBooking.Enabled = true;
@@ -249,12 +241,12 @@ namespace Main_RBS
             }
             catch
             {
-                MessageBox.Show("Log out failed!");
+                MessageBox.Show("Log out failed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (success)
             {
-                MessageBox.Show("Logged out!");
+                MessageBox.Show("You have successfully been logged out!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 refreshForm();
             }
         }
@@ -312,7 +304,7 @@ namespace Main_RBS
             }
             else
             {
-                MessageBox.Show("invalid!");
+                MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -400,7 +392,7 @@ namespace Main_RBS
             }
             else
             {
-                MessageBox.Show("melon");
+                MessageBox.Show("You do not have permission to edit other users!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -429,7 +421,7 @@ namespace Main_RBS
                 }
                 else
                 {
-                    MessageBox.Show("invalid!");
+                    MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -453,7 +445,7 @@ namespace Main_RBS
             }
             else
             {
-                MessageBox.Show("invalid!");
+                MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

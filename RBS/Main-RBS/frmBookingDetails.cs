@@ -101,7 +101,7 @@ namespace Main_RBS
             }
             else
             {
-                MessageBox.Show("That slot is taken!");
+                MessageBox.Show("That slot is taken!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }
@@ -133,7 +133,15 @@ namespace Main_RBS
 
         private void btnBookExist_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(db.checkBookingExists(dtDate.Text, Convert.ToInt32(txtPeriod.Value), Convert.ToInt32(txtRoom.Value), editID).ToString());
+
+            if(db.checkBookingExists(dtDate.Text, Convert.ToInt32(txtPeriod.Value), Convert.ToInt32(txtRoom.Value), editID))
+            {
+                MessageBox.Show("That slot is taken!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("That slot is available!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

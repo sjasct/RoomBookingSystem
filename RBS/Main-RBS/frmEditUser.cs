@@ -90,7 +90,7 @@ namespace Main_RBS
                 }
                 else
                 {
-                    MessageBox.Show("The two passwords you entered don't match");
+                    MessageBox.Show("The two passwords you entered don't match!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -100,12 +100,12 @@ namespace Main_RBS
 
             if (!db.checkUsernameExists(txtUsername.Text, userID))
             {
-                MessageBox.Show("Success");
+                //MessageBox.Show("Success");
                 namesuccess = true;
             }
             else
             {
-                MessageBox.Show("Fail");
+                //MessageBox.Show("Fail");
             }
 
             if (passsuccess && namesuccess)
@@ -115,13 +115,13 @@ namespace Main_RBS
                     try
                     {
                         string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Email, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtName1.Text, txtName2.Text, txtPass1.Text, txtEmail.Text, txtRole.Text, txtUsername.Text);
-                        MessageBox.Show(cmd);
+                        //MessageBox.Show(cmd);
                         db.miscAction(cmd);
                         this.Close();
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.ToString());
+                        MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -139,7 +139,7 @@ namespace Main_RBS
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.ToString());
+                        MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

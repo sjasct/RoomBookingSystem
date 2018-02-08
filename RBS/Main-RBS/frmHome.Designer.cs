@@ -31,7 +31,6 @@
             WeekPlanner.DataColumns dataColumns1 = new WeekPlanner.DataColumns();
             this.btnNewBook = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnOwnBookings = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnHomeLogin = new System.Windows.Forms.Button();
             this.btnShowID = new System.Windows.Forms.Button();
@@ -104,16 +103,6 @@
             this.label1.Size = new System.Drawing.Size(234, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "CompSci Project: Room Booking System";
-            // 
-            // btnOwnBookings
-            // 
-            this.btnOwnBookings.Location = new System.Drawing.Point(12, 68);
-            this.btnOwnBookings.Name = "btnOwnBookings";
-            this.btnOwnBookings.Size = new System.Drawing.Size(114, 23);
-            this.btnOwnBookings.TabIndex = 4;
-            this.btnOwnBookings.Text = "Your Bookings";
-            this.btnOwnBookings.UseVisualStyleBackColor = true;
-            this.btnOwnBookings.Click += new System.EventHandler(this.btnOwnBookings_Click);
             // 
             // label3
             // 
@@ -591,7 +580,6 @@
             this.Controls.Add(this.lblUserHeader);
             this.Controls.Add(this.btnShowID);
             this.Controls.Add(this.btnHomeLogin);
-            this.Controls.Add(this.btnOwnBookings);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnNewBook);
             this.KeyPreview = true;
@@ -617,7 +605,6 @@
 
 		private System.Windows.Forms.Button btnNewBook;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button btnOwnBookings;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button btnHomeLogin;
 		private System.Windows.Forms.Button btnShowID;
