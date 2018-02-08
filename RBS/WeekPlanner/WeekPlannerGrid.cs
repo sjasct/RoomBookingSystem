@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Linq;
+using System.Diagnostics;
 
 
 namespace WeekPlanner
@@ -1138,10 +1139,17 @@ namespace WeekPlanner
 
             if (mouseClickScrollPosition.X < LeftMargin)
             {
-                var rowClicked = listRows.ElementAt(_selectedRow);
-                if (e.Button == MouseButtons.Left) rowClicked.IsExpanded = !rowClicked.IsExpanded;
-                planner.OnRowLeftColumnClick(new RowClickEventArgs(rowClicked, e.Button), listRows.IndexOf(rowClicked));
-                rowClicked.LeftMarginBackColor = rowClicked.LeftMarginOldBackColor;
+                try
+                {
+                    var rowClicked = listRows.ElementAt(_selectedRow);
+                    if (e.Button == MouseButtons.Left) rowClicked.IsExpanded = !rowClicked.IsExpanded;
+                    planner.OnRowLeftColumnClick(new RowClickEventArgs(rowClicked, e.Button), listRows.IndexOf(rowClicked));
+                    rowClicked.LeftMarginBackColor = rowClicked.LeftMarginOldBackColor;
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                    Debug.WriteLine("It happened");
+                }
             }
 
             base.OnMouseDown(e);

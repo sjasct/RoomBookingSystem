@@ -19,12 +19,20 @@ namespace Main_RBS
             tempVars.editBookingId = -1;
             refreshForm();
 
+        }
+
+        public void rePopCalndar()
+        {
             DateTime earlyDate = Convert.ToDateTime("01/01/1970");
 
-            
+            calAllBookings.Calendar.Rows.Clear();
+
+            calAllBookings.CurrentDate = earlyDate;
+
             calAllBookings.Columns.Add("clmPeriod", "Period", 100);
-            for(int n = 1; n < 6; n++)
+            for (int n = 1; n < 6; n++)
             {
+                // empty
                 WeekPlannerItemCollection ic = new WeekPlannerItemCollection();
                 WeekPlannerItem i = new WeekPlannerItem();
                 i.StartDate = earlyDate;
@@ -32,13 +40,26 @@ namespace Main_RBS
                 i.Subject = "test";
                 i.BackColor = System.Drawing.Color.YellowGreen;
                 ic.Add(i);
+
+                List<booking> bookinglist = db.populateCalendar(1, n);
+
+                foreach (booking bk in bookinglist)
+                {
+
+                    WeekPlannerItem item = new WeekPlannerItem();
+                    item.StartDate = bk.date;
+                    item.EndDate = bk.date;
+                    item.Subject = bk.UserID.ToString();
+                    item.BackColor = System.Drawing.Color.Red;
+                    ic.Add(item);
+
+
+                }
+
                 DataColumns cr = new DataColumns(calAllBookings.Calendar);
                 cr["clmPeriod"].Data.Add(String.Format("Period {0}", n.ToString()));
                 calAllBookings.Rows.Add(cr, ic);
             }
-
-            
-                
 
 
 
@@ -118,6 +139,7 @@ namespace Main_RBS
 
         private void refreshForm()
         {
+            rePopCalndar();
             Debug.WriteLine("Refreshing form..");
             // Header
             string name;
@@ -415,6 +437,11 @@ namespace Main_RBS
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        private void calAllBookings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -81,6 +81,67 @@ namespace Main_RBS
             return listItems;
         }
 
+        public List<booking> populateCalendar(int roomID, int period)
+        {
+            SqlConnection connection;
+
+            List<booking> listItems = new List<booking>();
+
+            string query;
+
+            query = String.Format("SELECT Date, Id, UserID FROM tblBookings WHERE RoomID = {0} AND Period = {1}", roomID.ToString(), period.ToString());
+
+            Debug.WriteLine(String.Format("Sending SQL command: {0}", query));
+
+            try
+            {
+                using (connection = new SqlConnection(getCString()))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+
+                    DataTable dt = new DataTable();
+
+                    try
+                    {
+                        adapter.Fill(dt);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("it's this");
+                        Debug.WriteLine(ex.ToString());
+                    }
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DataRow dr = dt.Rows[i];
+
+                        /*string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
+
+                        string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
+
+                        ListViewItem li = new ListViewItem(list);
+
+                        listItems.Add(li);*/
+
+                        booking bk = new Main_RBS.booking();
+                        bk.date = Convert.ToDateTime(dr["Date"].ToString());
+                        bk.id = Convert.ToInt32(dr["Id"]);
+                        bk.UserID = Convert.ToInt32(dr["UserID"]);
+
+
+                        listItems.Add(bk);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return listItems;
+        }
+
         public List<ListViewItem> popUsers(bool all = true)
         {
             SqlConnection connection;

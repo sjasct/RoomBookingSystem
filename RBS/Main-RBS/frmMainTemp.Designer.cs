@@ -471,6 +471,7 @@
             this.calAllBookings.Name = "calAllBookings";
             this.calAllBookings.Size = new System.Drawing.Size(666, 346);
             this.calAllBookings.TabIndex = 27;
+            this.calAllBookings.Load += new System.EventHandler(this.calAllBookings_Load);
             // 
             // comboBox1
             // 
