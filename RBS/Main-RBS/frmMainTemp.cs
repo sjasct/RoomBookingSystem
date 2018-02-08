@@ -20,8 +20,6 @@ namespace Main_RBS
 
             calAllBookings.Columns.Add("clmPeriod", "Period", 100);
             refreshForm();
-
-
         }
 
         public void rePopCalndar(int roomID)
@@ -34,7 +32,6 @@ namespace Main_RBS
 
             calAllBookings.CurrentDate = DateTime.Now.Date;
 
-            
             for (int n = 1; n < 6; n++)
             {
                 // empty
@@ -52,7 +49,6 @@ namespace Main_RBS
 
                 foreach (booking bk in bookinglist)
                 {
-
                     WeekPlannerItem item = new WeekPlannerItem();
                     item.StartDate = bk.date;
                     item.EndDate = bk.date;
@@ -61,17 +57,12 @@ namespace Main_RBS
                     item.bookingid = bk.id;
                     item.userid = bk.UserID;
                     ic.Add(item);
-
-
                 }
 
                 DataColumns cr = new DataColumns(calAllBookings.Calendar);
                 cr["clmPeriod"].Data.Add(String.Format("Period {0}", n.ToString()));
                 calAllBookings.Rows.Add(cr, ic);
             }
-
-
-
         }
 
         public frmMainTemp()
@@ -284,7 +275,6 @@ namespace Main_RBS
                 db.insertBooking(roomID, date, period, session.userID, "Test Booking");
             }
 
-
             refreshForm();
         }
 
@@ -450,7 +440,6 @@ namespace Main_RBS
 
         private void calAllBookings_Load(object sender, EventArgs e)
         {
-
         }
 
         private void calAllBookings_ItemClick(object sender, WeekPlannerItemEventArgs e)
@@ -470,12 +459,10 @@ namespace Main_RBS
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)

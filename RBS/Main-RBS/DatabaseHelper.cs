@@ -128,9 +128,7 @@ namespace Main_RBS
                         bk.id = Convert.ToInt32(dr["Id"]);
                         bk.UserID = Convert.ToInt32(dr["UserID"]);
 
-
                         listItems.Add(bk);
-
                     }
                 }
             }
@@ -300,12 +298,11 @@ namespace Main_RBS
                     return exists;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 return false;
             }
-            
         }
 
         public booking getBooking(int id)

@@ -43,14 +43,11 @@ namespace Main_RBS
                 }
 
                 this.Close();
-
             }
             else
             {
                 MessageBox.Show("That slot is taken!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
 
         private void frmNewBook_Load(object sender, EventArgs e)
