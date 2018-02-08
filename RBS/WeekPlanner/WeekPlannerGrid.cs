@@ -1286,20 +1286,27 @@ namespace WeekPlanner
 
                     if (rowNumer != moveRow && moveRow != -1 && IsAllowedDraggingBetweenRows)
                     {
-                        var oldRowNumber = rowNumer;
-                        rowNumer = moveRow;
+                        try
+                        {
+                            var oldRowNumber = rowNumer;
+                            rowNumer = moveRow;
 
-                        var newRow = Rows.ElementAt(rowNumer);
-                        var oldRow = Rows.ElementAt(oldRowNumber);
+                            var newRow = Rows.ElementAt(rowNumer);
+                            var oldRow = Rows.ElementAt(oldRowNumber);
 
-                        var newItem = new WeekPlannerItem(this);
-                        newItem = itemOnState;
+                            var newItem = new WeekPlannerItem(this);
+                            newItem = itemOnState;
 
 
-                        var addedItem = newRow.Items.Add(newItem);
-                        oldRow.Items.Remove(itemOnState);
-                        _selectedItem = addedItem;
-                        itemOnState = addedItem;
+                            var addedItem = newRow.Items.Add(newItem);
+                            oldRow.Items.Remove(itemOnState);
+                            _selectedItem = addedItem;
+                            itemOnState = addedItem;
+                        }
+                        catch (Exception)
+                        {
+                            Debug.WriteLine("it did it again");
+                        }
                     }
                     itemOnStateChanged = true;
                     break;
