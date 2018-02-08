@@ -17,19 +17,24 @@ namespace Main_RBS
             popAllBookings();
             session.userID = -1;
             tempVars.editBookingId = -1;
+
+            calAllBookings.Columns.Add("clmPeriod", "Period", 100);
             refreshForm();
+
 
         }
 
-        public void rePopCalndar()
+        public void rePopCalndar(int roomID)
         {
             DateTime earlyDate = Convert.ToDateTime("01/01/1970");
 
             calAllBookings.Calendar.Rows.Clear();
 
-            calAllBookings.CurrentDate = earlyDate;
+            //calAllBookings.CurrentDate = earlyDate;
 
-            calAllBookings.Columns.Add("clmPeriod", "Period", 100);
+            calAllBookings.CurrentDate = DateTime.Now.Date;
+
+            
             for (int n = 1; n < 6; n++)
             {
                 // empty
@@ -39,10 +44,11 @@ namespace Main_RBS
                 i.EndDate = earlyDate;
                 i.Subject = "test";
                 i.BackColor = System.Drawing.Color.YellowGreen;
-                i.backData = "thing";
+                i.bookingid = -2;
+                i.userid = -2;
                 ic.Add(i);
 
-                List<booking> bookinglist = db.populateCalendar(1, n);
+                List<booking> bookinglist = db.populateCalendar(roomID, n);
 
                 foreach (booking bk in bookinglist)
                 {
@@ -52,6 +58,8 @@ namespace Main_RBS
                     item.EndDate = bk.date;
                     item.Subject = bk.UserID.ToString();
                     item.BackColor = System.Drawing.Color.Red;
+                    item.bookingid = bk.id;
+                    item.userid = bk.UserID;
                     ic.Add(item);
 
 
@@ -140,7 +148,7 @@ namespace Main_RBS
 
         private void refreshForm()
         {
-            rePopCalndar();
+            rePopCalndar(Convert.ToInt32(numRoomSelect.Value));
             Debug.WriteLine("Refreshing form..");
             // Header
             string name;
@@ -265,11 +273,11 @@ namespace Main_RBS
             Debug.WriteLine("Inserting test booking..");
 
             Random r = new Random();
-            int dateThing = r.Next(1, 31);
-            int roomID = r.Next(1, 5);
-            int period = r.Next(1, 5);
+            int dateThing = r.Next(1, 22);
+            int roomID = r.Next(1, 8);
+            int period = r.Next(1, 6);
 
-            DateTime date = new DateTime(2018, 1, dateThing);
+            DateTime date = new DateTime(2018, 2, dateThing);
 
             if (!db.checkBookingExists(date.ToString(), period, roomID))
             {
@@ -443,6 +451,46 @@ namespace Main_RBS
         private void calAllBookings_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void calAllBookings_ItemClick(object sender, WeekPlannerItemEventArgs e)
+        {
+            int editBookingId = e.Item.bookingid;
+            int editUserId = e.Item.userid;
+            if (editUserId == session.userID || session.role == "Admin")
+            {
+                tempVars.editBookingId = editBookingId;
+                new frmBookingDetails().ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("invalid!");
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            rePopCalndar(Convert.ToInt32(numRoomSelect.Value));
+        }
+
+        private void btnDayRight_Click(object sender, EventArgs e)
+        {
+            calAllBookings.CurrentDate = calAllBookings.CurrentDate.AddDays(1);
+        }
+
+        private void btnDayLeft_Click(object sender, EventArgs e)
+        {
+            calAllBookings.CurrentDate = calAllBookings.CurrentDate.AddDays(-1);
         }
     }
 }

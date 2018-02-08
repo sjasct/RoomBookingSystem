@@ -80,7 +80,7 @@ namespace Main_RBS
                 btnDeleteBook.Enabled = false;
             }
 
-            if (book.UserID == session.userID || session.role == "Admin")
+            if (book != null && (book.UserID == session.userID || session.role == "Admin"))
             {
                 btnDeleteBook.Enabled = true;
             }

@@ -17,7 +17,8 @@ namespace WeekPlanner
         private bool _isResizingEndDate;
         private Color _backColor;
         private WeekPlannerGrid _calendar;
-        private string _backData;
+        private int _bookingid;
+        private int _userid;
 
         internal WeekPlannerGrid Calendar
         {
@@ -93,10 +94,15 @@ namespace WeekPlanner
             set;
         }
 
-        public string backData
+        public int bookingid
         {
             get;
             set;
+        }
+
+        public int userid
+        {
+            get;set;
         }
 
         public Rectangle Rectangle
