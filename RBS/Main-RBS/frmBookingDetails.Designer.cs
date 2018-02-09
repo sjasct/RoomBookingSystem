@@ -96,14 +96,14 @@
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(200, 92);
-            this.txtNotes.TabIndex = 7;
+            this.txtNotes.TabIndex = 3;
             // 
             // btnNewBook
             // 
             this.btnNewBook.Location = new System.Drawing.Point(177, 202);
             this.btnNewBook.Name = "btnNewBook";
             this.btnNewBook.Size = new System.Drawing.Size(75, 23);
-            this.btnNewBook.TabIndex = 8;
+            this.btnNewBook.TabIndex = 4;
             this.btnNewBook.Text = "Submit";
             this.btnNewBook.UseVisualStyleBackColor = true;
             this.btnNewBook.Click += new System.EventHandler(this.btnNewBook_Click);
@@ -123,7 +123,7 @@
             0});
             this.txtRoom.Name = "txtRoom";
             this.txtRoom.Size = new System.Drawing.Size(38, 20);
-            this.txtRoom.TabIndex = 13;
+            this.txtRoom.TabIndex = 1;
             this.txtRoom.Value = new decimal(new int[] {
             1,
             0,
@@ -145,7 +145,7 @@
             0});
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(38, 20);
-            this.txtPeriod.TabIndex = 14;
+            this.txtPeriod.TabIndex = 2;
             this.txtPeriod.Value = new decimal(new int[] {
             1,
             0,
@@ -158,7 +158,7 @@
             this.btnDeleteBook.Location = new System.Drawing.Point(96, 202);
             this.btnDeleteBook.Name = "btnDeleteBook";
             this.btnDeleteBook.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteBook.TabIndex = 15;
+            this.btnDeleteBook.TabIndex = 5;
             this.btnDeleteBook.Text = "Delete";
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
@@ -168,13 +168,14 @@
             this.btnBookExist.Location = new System.Drawing.Point(15, 202);
             this.btnBookExist.Name = "btnBookExist";
             this.btnBookExist.Size = new System.Drawing.Size(75, 23);
-            this.btnBookExist.TabIndex = 16;
+            this.btnBookExist.TabIndex = 6;
             this.btnBookExist.Text = "CheckExists";
             this.btnBookExist.UseVisualStyleBackColor = true;
             this.btnBookExist.Click += new System.EventHandler(this.btnBookExist_Click);
             // 
             // frmBookingDetails
             // 
+            this.AcceptButton = this.btnNewBook;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 238);

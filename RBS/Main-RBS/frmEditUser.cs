@@ -78,6 +78,7 @@ namespace Main_RBS
                 this.Text = "New User";
                 newUserMode = true;
                 btnDeleteUser.Enabled = false;
+                btnDeleteUser.Visible = false;
                 bxRoleList.Enabled = true;
             }
         }

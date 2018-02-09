@@ -115,7 +115,7 @@
             this.btnHomeLogin.Location = new System.Drawing.Point(12, 97);
             this.btnHomeLogin.Name = "btnHomeLogin";
             this.btnHomeLogin.Size = new System.Drawing.Size(114, 23);
-            this.btnHomeLogin.TabIndex = 7;
+            this.btnHomeLogin.TabIndex = 2;
             this.btnHomeLogin.Text = "Log In";
             this.btnHomeLogin.UseVisualStyleBackColor = true;
             this.btnHomeLogin.Click += new System.EventHandler(this.button1_Click);
@@ -126,7 +126,7 @@
             this.btnShowID.Location = new System.Drawing.Point(132, 97);
             this.btnShowID.Name = "btnShowID";
             this.btnShowID.Size = new System.Drawing.Size(114, 23);
-            this.btnShowID.TabIndex = 8;
+            this.btnShowID.TabIndex = 6;
             this.btnShowID.Text = "View Profile";
             this.btnShowID.UseVisualStyleBackColor = true;
             this.btnShowID.Click += new System.EventHandler(this.button1_Click_1);
@@ -147,7 +147,7 @@
             this.btnLogOut.Location = new System.Drawing.Point(12, 68);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(114, 23);
-            this.btnLogOut.TabIndex = 11;
+            this.btnLogOut.TabIndex = 1;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
@@ -337,7 +337,7 @@
             this.btnEditProfile.Location = new System.Drawing.Point(132, 68);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Size = new System.Drawing.Size(114, 23);
-            this.btnEditProfile.TabIndex = 25;
+            this.btnEditProfile.TabIndex = 4;
             this.btnEditProfile.Text = "Edit Profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
             this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
@@ -347,7 +347,7 @@
             this.btnNewUser.Location = new System.Drawing.Point(132, 39);
             this.btnNewUser.Name = "btnNewUser";
             this.btnNewUser.Size = new System.Drawing.Size(114, 23);
-            this.btnNewUser.TabIndex = 26;
+            this.btnNewUser.TabIndex = 3;
             this.btnNewUser.Text = "New User";
             this.btnNewUser.UseVisualStyleBackColor = true;
             this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
@@ -486,7 +486,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(703, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(92, 23);
-            this.btnRefresh.TabIndex = 30;
+            this.btnRefresh.TabIndex = 8;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);

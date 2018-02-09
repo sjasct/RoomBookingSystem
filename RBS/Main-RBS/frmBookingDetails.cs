@@ -75,6 +75,7 @@ namespace Main_RBS
                 this.Text = "New Booking";
                 modeEdit = false;
                 btnDeleteBook.Enabled = false;
+                btnDeleteBook.Visible = false;
             }
 
             if (book != null && (book.UserID == session.userID || session.role == "Admin"))

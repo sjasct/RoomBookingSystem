@@ -49,7 +49,7 @@
             this.txtName1.Location = new System.Drawing.Point(103, 34);
             this.txtName1.Name = "txtName1";
             this.txtName1.Size = new System.Drawing.Size(162, 20);
-            this.txtName1.TabIndex = 0;
+            this.txtName1.TabIndex = 2;
             // 
             // label1
             // 
@@ -76,7 +76,7 @@
             this.txtName2.Location = new System.Drawing.Point(103, 60);
             this.txtName2.Name = "txtName2";
             this.txtName2.Size = new System.Drawing.Size(162, 20);
-            this.txtName2.TabIndex = 2;
+            this.txtName2.TabIndex = 3;
             // 
             // label3
             // 
@@ -94,7 +94,7 @@
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '*';
             this.txtPass1.Size = new System.Drawing.Size(162, 20);
-            this.txtPass1.TabIndex = 4;
+            this.txtPass1.TabIndex = 5;
             // 
             // label4
             // 
@@ -119,7 +119,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(190, 176);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.TabIndex = 7;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -149,7 +149,7 @@
             this.txtUsername.Location = new System.Drawing.Point(103, 8);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(162, 20);
-            this.txtUsername.TabIndex = 13;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // btnDeleteUser
@@ -157,7 +157,7 @@
             this.btnDeleteUser.Location = new System.Drawing.Point(16, 176);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(94, 23);
-            this.btnDeleteUser.TabIndex = 15;
+            this.btnDeleteUser.TabIndex = 8;
             this.btnDeleteUser.Text = "Delete User";
             this.btnDeleteUser.UseVisualStyleBackColor = true;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
@@ -168,11 +168,12 @@
             this.bxRoleList.Location = new System.Drawing.Point(103, 86);
             this.bxRoleList.Name = "bxRoleList";
             this.bxRoleList.Size = new System.Drawing.Size(162, 21);
-            this.bxRoleList.TabIndex = 16;
+            this.bxRoleList.TabIndex = 4;
             this.bxRoleList.SelectedIndexChanged += new System.EventHandler(this.bxRoleList_SelectedIndexChanged);
             // 
             // frmEditUser
             // 
+            this.AcceptButton = this.btnSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 220);

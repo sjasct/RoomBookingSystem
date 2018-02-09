@@ -52,7 +52,7 @@
             this.txtLoginUsername.Location = new System.Drawing.Point(74, 56);
             this.txtLoginUsername.Name = "txtLoginUsername";
             this.txtLoginUsername.Size = new System.Drawing.Size(198, 20);
-            this.txtLoginUsername.TabIndex = 1;
+            this.txtLoginUsername.TabIndex = 0;
             // 
             // lblLoginUsername
             // 
@@ -78,7 +78,7 @@
             this.txtLoginPassword.Name = "txtLoginPassword";
             this.txtLoginPassword.PasswordChar = '*';
             this.txtLoginPassword.Size = new System.Drawing.Size(198, 20);
-            this.txtLoginPassword.TabIndex = 4;
+            this.txtLoginPassword.TabIndex = 1;
             // 
             // lblLoginError
             // 
@@ -95,7 +95,7 @@
             this.btnLoginEnter.Location = new System.Drawing.Point(196, 145);
             this.btnLoginEnter.Name = "btnLoginEnter";
             this.btnLoginEnter.Size = new System.Drawing.Size(75, 23);
-            this.btnLoginEnter.TabIndex = 6;
+            this.btnLoginEnter.TabIndex = 2;
             this.btnLoginEnter.Text = "Login";
             this.btnLoginEnter.UseVisualStyleBackColor = true;
             this.btnLoginEnter.Click += new System.EventHandler(this.btnLoginEnter_Click);
@@ -105,7 +105,7 @@
             this.btnLoginCancel.Location = new System.Drawing.Point(115, 145);
             this.btnLoginCancel.Name = "btnLoginCancel";
             this.btnLoginCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnLoginCancel.TabIndex = 7;
+            this.btnLoginCancel.TabIndex = 4;
             this.btnLoginCancel.Text = "Cancel";
             this.btnLoginCancel.UseVisualStyleBackColor = true;
             this.btnLoginCancel.Click += new System.EventHandler(this.btnLoginCancel_Click);
@@ -127,7 +127,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmLogin";
-            this.Text = "frmLogin";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

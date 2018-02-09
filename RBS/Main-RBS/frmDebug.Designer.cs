@@ -51,7 +51,7 @@
             this.btnLoginAdmin.Location = new System.Drawing.Point(16, 39);
             this.btnLoginAdmin.Name = "btnLoginAdmin";
             this.btnLoginAdmin.Size = new System.Drawing.Size(157, 23);
-            this.btnLoginAdmin.TabIndex = 1;
+            this.btnLoginAdmin.TabIndex = 0;
             this.btnLoginAdmin.Text = "Admin (scottsj03)";
             this.btnLoginAdmin.UseVisualStyleBackColor = true;
             this.btnLoginAdmin.Click += new System.EventHandler(this.btnLoginAdmin_Click);
@@ -61,7 +61,7 @@
             this.btnLoginTeacher.Location = new System.Drawing.Point(16, 69);
             this.btnLoginTeacher.Name = "btnLoginTeacher";
             this.btnLoginTeacher.Size = new System.Drawing.Size(157, 23);
-            this.btnLoginTeacher.TabIndex = 2;
+            this.btnLoginTeacher.TabIndex = 1;
             this.btnLoginTeacher.Text = "Teacher (hoodj03)";
             this.btnLoginTeacher.UseVisualStyleBackColor = true;
             this.btnLoginTeacher.Click += new System.EventHandler(this.btnLoginTeacher_Click);
@@ -71,7 +71,7 @@
             this.btnLoginStudent.Location = new System.Drawing.Point(16, 98);
             this.btnLoginStudent.Name = "btnLoginStudent";
             this.btnLoginStudent.Size = new System.Drawing.Size(157, 23);
-            this.btnLoginStudent.TabIndex = 3;
+            this.btnLoginStudent.TabIndex = 2;
             this.btnLoginStudent.Text = "Student (brantodb01)";
             this.btnLoginStudent.UseVisualStyleBackColor = true;
             this.btnLoginStudent.Click += new System.EventHandler(this.btnLoginStudent_Click);
@@ -90,7 +90,7 @@
             this.btnDeleteAll.Location = new System.Drawing.Point(204, 39);
             this.btnDeleteAll.Name = "btnDeleteAll";
             this.btnDeleteAll.Size = new System.Drawing.Size(153, 23);
-            this.btnDeleteAll.TabIndex = 5;
+            this.btnDeleteAll.TabIndex = 3;
             this.btnDeleteAll.Text = "Delete all bookings";
             this.btnDeleteAll.UseVisualStyleBackColor = true;
             this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
@@ -100,7 +100,7 @@
             this.btnTestBooking.Location = new System.Drawing.Point(204, 69);
             this.btnTestBooking.Name = "btnTestBooking";
             this.btnTestBooking.Size = new System.Drawing.Size(153, 23);
-            this.btnTestBooking.TabIndex = 6;
+            this.btnTestBooking.TabIndex = 4;
             this.btnTestBooking.Text = "Insert Test Booking";
             this.btnTestBooking.UseVisualStyleBackColor = true;
             this.btnTestBooking.Click += new System.EventHandler(this.btnTestBooking_Click);
