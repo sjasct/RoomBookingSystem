@@ -435,7 +435,7 @@ namespace Main_RBS
             {
                 connection.Open();
 
-                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{4}', Username = '{5}'  WHERE Id = {6}", firstname, secondname, password, role, id.ToString(), username);
+                string command = String.Format("UPDATE tblUsers SET FirstName = '{0}', SecondName = '{1}', Password = '{2}', Role='{3}', Username = '{4}'  WHERE Id = {5}", firstname, secondname, password, role, username, id.ToString());
                 Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
                 SqlCommand logincommand = new SqlCommand(command, connection);
                 try
