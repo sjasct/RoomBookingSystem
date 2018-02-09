@@ -40,10 +40,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtRole = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.bxRoleList = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtName1
@@ -152,13 +152,6 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Role";
             // 
-            // txtRole
-            // 
-            this.txtRole.Location = new System.Drawing.Point(103, 143);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.Size = new System.Drawing.Size(162, 20);
-            this.txtRole.TabIndex = 11;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -186,16 +179,24 @@
             this.btnDeleteUser.UseVisualStyleBackColor = true;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
+            // bxRoleList
+            // 
+            this.bxRoleList.FormattingEnabled = true;
+            this.bxRoleList.Location = new System.Drawing.Point(103, 144);
+            this.bxRoleList.Name = "bxRoleList";
+            this.bxRoleList.Size = new System.Drawing.Size(162, 21);
+            this.bxRoleList.TabIndex = 16;
+            // 
             // frmEditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 287);
+            this.Controls.Add(this.bxRoleList);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtRole);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnSubmit);
@@ -230,9 +231,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.ComboBox bxRoleList;
     }
 }

@@ -39,13 +39,18 @@ namespace Main_RBS
         {
             btnDeleteUser.Enabled = false;
 
+            bxRoleList.Items.Add("Admin");
+            bxRoleList.Items.Add("Teacher");
+            bxRoleList.Items.Add("Student");
+            bxRoleList.DropDownStyle = ComboBoxStyle.DropDownList;
+
             if (session.role != "Admin")
             {
-                txtRole.ReadOnly = true;
+                bxRoleList.Enabled = false;
             }
             else
             {
-                txtRole.ReadOnly = false;
+                bxRoleList.Enabled = true;
                 if (session.userID != tempVars.editUserId)
                 {
                     btnDeleteUser.Enabled = true;
@@ -64,14 +69,14 @@ namespace Main_RBS
                 txtName1.Text = user.firstname;
                 txtName2.Text = user.secondname;
                 txtEmail.Text = user.email;
-                txtRole.Text = user.role;
+                bxRoleList.Text = user.role;
                 txtUsername.Text = user.username;
             }
             else
             {
                 newUserMode = true;
                 btnDeleteUser.Enabled = false;
-                txtRole.ReadOnly = false;
+                bxRoleList.Enabled = true;
             }
         }
 
@@ -114,7 +119,7 @@ namespace Main_RBS
                 {
                     try
                     {
-                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Email, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtName1.Text, txtName2.Text, txtPass1.Text, txtEmail.Text, txtRole.Text, txtUsername.Text);
+                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Email, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtName1.Text, txtName2.Text, txtPass1.Text, txtEmail.Text, bxRoleList.Text, txtUsername.Text);
                         //MessageBox.Show(cmd);
                         db.miscAction(cmd);
                         this.Close();
@@ -129,7 +134,7 @@ namespace Main_RBS
                     givenPassword = user.password;
                     try
                     {
-                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, txtRole.Text, txtUsername.Text);
+                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, bxRoleList.Text, txtUsername.Text);
                         if (session.userID == userID)
                         {
                             session.name = new string[] { txtName1.Text, txtName2.Text };
