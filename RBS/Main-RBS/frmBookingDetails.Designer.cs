@@ -51,7 +51,6 @@
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(266, 20);
             this.dtDate.TabIndex = 0;
-            this.dtDate.ValueChanged += new System.EventHandler(this.dtDate_ValueChanged);
             // 
             // label1
             // 
@@ -151,7 +150,6 @@
             0,
             0,
             0});
-            this.txtPeriod.ValueChanged += new System.EventHandler(this.txtPeriod_ValueChanged);
             // 
             // btnDeleteBook
             // 

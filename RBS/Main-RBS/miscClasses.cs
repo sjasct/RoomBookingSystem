@@ -2,6 +2,7 @@
 
 namespace Main_RBS
 {
+    // global class that holds the current user session
     public static class session
     {
         static public Boolean loggedIn { get; set; }
@@ -12,12 +13,14 @@ namespace Main_RBS
         static public string email { get; set; }
     }
 
+    // global class that stores data that needs to be transfered between forms
     public static class tempVars
     {
         static public int editBookingId { get; set; }
         static public int editUserId { get; set; }
     }
 
+    // class structure that can hold login data
     public class loginReturnedData
     {
         public Boolean success { get; set; }
@@ -28,6 +31,7 @@ namespace Main_RBS
         public string email { get; set; }
     }
 
+    // class structure that can hold booking data
     public class booking
     {
         public int id { get; set; }
@@ -38,6 +42,7 @@ namespace Main_RBS
         public int roomID { get; set; }
     }
 
+    // class structure that can hold user data
     public class user
     {
         public int id { get; set; }
