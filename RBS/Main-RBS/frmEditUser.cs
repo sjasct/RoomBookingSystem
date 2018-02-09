@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Main_RBS
 {
@@ -84,70 +85,75 @@ namespace Main_RBS
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             string givenPassword;
-            bool passsuccess = false;
-            bool namesuccess = false;
 
+            // CHECK: password match
             if (!String.IsNullOrEmpty(txtPass1.Text))
             {
                 if (txtPass1.Text == txtPass2.Text)
                 {
                     givenPassword = txtPass1.Text;
-                    passsuccess = true;
                 }
                 else
                 {
                     MessageBox.Show("The two passwords you entered don't match!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // CHECK: username already exists
+            if (db.checkUsernameExists(txtUsername.Text, userID))
+            {
+                MessageBox.Show("That username is taken!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // CHECK: username alphanumeric
+            Regex alphanumeric = new Regex("^[a-zA-Z0-9]*$");
+            if (!alphanumeric.IsMatch(txtUsername.Text))
+            {
+                MessageBox.Show("The username should only contain alphanumeric characters! (A-Z, a-z and 0-9)", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // CHECK: username length
+            if(txtUsername.Text.Length >= 20)
+            {
+                MessageBox.Show("The username should be 20 characters or less!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (newUserMode)
+            {
+                try
+                {
+                    string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", txtName1.Text, txtName2.Text, txtPass1.Text, bxRoleList.Text, txtUsername.Text);
+                    //MessageBox.Show(cmd);
+                    db.miscAction(cmd);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                passsuccess = true;
-            }
-
-            if (!db.checkUsernameExists(txtUsername.Text, userID))
-            {
-                //MessageBox.Show("Success");
-                namesuccess = true;
-            }
-            else
-            {
-                //MessageBox.Show("Fail");
-            }
-
-            if (passsuccess && namesuccess)
-            {
-                if (newUserMode)
+                givenPassword = user.password;
+                try
                 {
-                    try
+                    db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, bxRoleList.Text, txtUsername.Text);
+                    if (session.userID == userID)
                     {
-                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", txtName1.Text, txtName2.Text, txtPass1.Text, bxRoleList.Text, txtUsername.Text);
-                        //MessageBox.Show(cmd);
-                        db.miscAction(cmd);
-                        this.Close();
+                        session.name = new string[] { txtName1.Text, txtName2.Text };
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Close();
                 }
-                else
+                catch (Exception ex)
                 {
-                    givenPassword = user.password;
-                    try
-                    {
-                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, bxRoleList.Text, txtUsername.Text);
-                        if (session.userID == userID)
-                        {
-                            session.name = new string[] { txtName1.Text, txtName2.Text };
-                        }
-                        this.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
