@@ -162,45 +162,37 @@ namespace Main_RBS
             // buttons
             if (string.IsNullOrEmpty(session.role))
             {
-                btnDeleteAll.Enabled = false;
                 btnNewBook.Enabled = false;
                 btnLogOut.Enabled = false;
                 btnHomeLogin.Enabled = true;
                 btnShowID.Enabled = false;
-                btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = false;
             }
             else if (session.role == "Student")
             {
-                btnDeleteAll.Enabled = false;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = false;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
-                btnTestBooking.Enabled = false;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
             else if (session.role == "Teacher")
             {
-                btnDeleteAll.Enabled = false;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
-                btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
             else if (session.role == "Admin")
             {
-                btnDeleteAll.Enabled = true;
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
                 btnLogOut.Enabled = true;
                 btnHomeLogin.Enabled = false;
-                btnTestBooking.Enabled = true;
                 btnNewUser.Enabled = true;
                 btnEditProfile.Enabled = true;
             }
@@ -279,6 +271,10 @@ namespace Main_RBS
             {
                 Debug.WriteLine("Detected F5 key");
                 refreshForm();
+            }
+            if(e.KeyCode == Keys.F12)
+            {
+                new frmDebug().ShowDialog();
             }
         }
 

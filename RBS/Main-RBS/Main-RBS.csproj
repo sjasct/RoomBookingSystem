@@ -67,6 +67,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmDebug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDebug.Designer.cs">
+      <DependentUpon>frmDebug.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEditUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="miscClasses.cs" />
+    <EmbeddedResource Include="frmDebug.resx">
+      <DependentUpon>frmDebug.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditUser.resx">
       <DependentUpon>frmEditUser.cs</DependentUpon>
     </EmbeddedResource>
