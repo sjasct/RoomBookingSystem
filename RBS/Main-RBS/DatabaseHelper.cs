@@ -65,7 +65,7 @@ namespace Main_RBS
 
                         string convertedDT = Convert.ToDateTime(dr["Date"].ToString()).ToShortDateString();
 
-                        string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), dr["UserID"].ToString(), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
+                        string[] list = new string[] { dr["RoomID"].ToString(), convertedDT, dr["Period"].ToString(), getUsername(Convert.ToInt32(dr["UserID"])), dr["TimeBooked"].ToString(), dr["Id"].ToString(), dr["Notes"].ToString() };
 
                         ListViewItem li = new ListViewItem(list);
 
