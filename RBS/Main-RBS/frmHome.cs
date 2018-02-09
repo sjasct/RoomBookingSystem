@@ -276,6 +276,49 @@ namespace Main_RBS
             {
                 new frmDebug().ShowDialog();
             }
+            if(e.KeyCode == Keys.NumPad1)
+            {
+                user user = db.getUser(1);
+
+                session.loggedIn = true;
+                session.userID = user.id;
+                session.username = user.username;
+                session.name = new string[] { user.firstname, user.secondname };
+                session.role = user.role;
+                session.email = user.email;
+                refreshForm();
+
+                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            }
+            if (e.KeyCode == Keys.NumPad2)
+            {
+                user user = db.getUser(3);
+
+                session.loggedIn = true;
+                session.userID = user.id;
+                session.username = user.username;
+                session.name = new string[] { user.firstname, user.secondname };
+                session.role = user.role;
+                session.email = user.email;
+                refreshForm();
+
+                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            }
+            if (e.KeyCode == Keys.NumPad3)
+            {
+                user user = db.getUser(2);
+
+                session.loggedIn = true;
+                session.userID = user.id;
+                session.username = user.username;
+                session.name = new string[] { user.firstname, user.secondname };
+                session.role = user.role;
+                session.email = user.email;
+                refreshForm();
+
+                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            }
+
         }
 
         private void btnNewBook_Click(object sender, EventArgs e)
