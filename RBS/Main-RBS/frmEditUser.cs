@@ -60,6 +60,7 @@ namespace Main_RBS
             db = new DatabaseHelper();
             if (tempVars.editUserId != -1)
             {
+                this.Text = "Edit user";
                 newUserMode = false;
                 userID = tempVars.editUserId;
                 user = db.getUser(userID);
@@ -68,12 +69,12 @@ namespace Main_RBS
 
                 txtName1.Text = user.firstname;
                 txtName2.Text = user.secondname;
-                txtEmail.Text = user.email;
                 bxRoleList.Text = user.role;
                 txtUsername.Text = user.username;
             }
             else
             {
+                this.Text = "New User";
                 newUserMode = true;
                 btnDeleteUser.Enabled = false;
                 bxRoleList.Enabled = true;
@@ -119,7 +120,7 @@ namespace Main_RBS
                 {
                     try
                     {
-                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Email, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", txtName1.Text, txtName2.Text, txtPass1.Text, txtEmail.Text, bxRoleList.Text, txtUsername.Text);
+                        string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", txtName1.Text, txtName2.Text, txtPass1.Text, bxRoleList.Text, txtUsername.Text);
                         //MessageBox.Show(cmd);
                         db.miscAction(cmd);
                         this.Close();
@@ -134,11 +135,10 @@ namespace Main_RBS
                     givenPassword = user.password;
                     try
                     {
-                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, txtEmail.Text, bxRoleList.Text, txtUsername.Text);
+                        db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, bxRoleList.Text, txtUsername.Text);
                         if (session.userID == userID)
                         {
                             session.name = new string[] { txtName1.Text, txtName2.Text };
-                            session.email = txtEmail.Text;
                         }
                         this.Close();
                     }
@@ -161,6 +161,21 @@ namespace Main_RBS
             db.miscAction(cmd);
 
             this.Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bxRoleList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

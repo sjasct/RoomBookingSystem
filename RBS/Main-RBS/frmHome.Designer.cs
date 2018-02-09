@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            WeekPlanner.DataColumns dataColumns2 = new WeekPlanner.DataColumns();
+            WeekPlanner.DataColumns dataColumns1 = new WeekPlanner.DataColumns();
             this.btnNewBook = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +59,6 @@
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label6 = new System.Windows.Forms.Label();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.btnNewUser = new System.Windows.Forms.Button();
@@ -67,12 +66,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.calDTPick = new System.Windows.Forms.DateTimePicker();
             this.btnDayLeft = new System.Windows.Forms.Button();
             this.btnDayRight = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.numRoomSelect = new System.Windows.Forms.NumericUpDown();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.calDTPick = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -291,8 +290,7 @@
             this.columnHeader15,
             this.columnHeader16,
             this.columnHeader8,
-            this.columnHeader17,
-            this.columnHeader18});
+            this.columnHeader17});
             this.listUsers.FullRowSelect = true;
             this.listUsers.GridLines = true;
             this.listUsers.HideSelection = false;
@@ -323,11 +321,6 @@
             // 
             this.columnHeader17.Text = "Role";
             this.columnHeader17.Width = 120;
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "Email";
-            this.columnHeader18.Width = 200;
             // 
             // label6
             // 
@@ -362,7 +355,7 @@
             // calAllBookings
             // 
             this.calAllBookings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(98)))), ((int)(((byte)(128)))));
-            this.calAllBookings.Columns = dataColumns2;
+            this.calAllBookings.Columns = dataColumns1;
             this.calAllBookings.CurrentDate = new System.DateTime(2018, 2, 7, 14, 21, 33, 182);
             this.calAllBookings.DatesIntervalMode = WeekPlanner.WeekPlannerMode.Daily;
             this.calAllBookings.DayCount = 7;
@@ -428,6 +421,14 @@
             this.tabPage2.Text = "Calendar View";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // calDTPick
+            // 
+            this.calDTPick.Location = new System.Drawing.Point(455, 4);
+            this.calDTPick.Name = "calDTPick";
+            this.calDTPick.Size = new System.Drawing.Size(200, 20);
+            this.calDTPick.TabIndex = 32;
+            this.calDTPick.ValueChanged += new System.EventHandler(this.calDTPick_ValueChanged);
+            // 
             // btnDayLeft
             // 
             this.btnDayLeft.Location = new System.Drawing.Point(661, 4);
@@ -489,14 +490,6 @@
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // calDTPick
-            // 
-            this.calDTPick.Location = new System.Drawing.Point(455, 4);
-            this.calDTPick.Name = "calDTPick";
-            this.calDTPick.Size = new System.Drawing.Size(200, 20);
-            this.calDTPick.TabIndex = 32;
-            this.calDTPick.ValueChanged += new System.EventHandler(this.calDTPick_ValueChanged);
             // 
             // frmHome
             // 
@@ -566,7 +559,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.Button btnEditProfile;

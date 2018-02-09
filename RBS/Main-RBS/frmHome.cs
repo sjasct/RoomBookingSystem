@@ -122,7 +122,7 @@ namespace Main_RBS
         {
             try
             {
-                string userdata = String.Format("Username: {0}\nName: {1} {2}\nrole: {3}\nEmail: {4}\nID: {5}", session.username, session.name[0], session.name[1], session.role, session.email, session.userID);
+                string userdata = String.Format("Username: {0}\nName: {1} {2}\nrole: {3}\n\nID: {4}", session.username, session.name[0], session.name[1], session.role, session.userID);
                 MessageBox.Show(userdata);
             }
             catch (System.NullReferenceException)
