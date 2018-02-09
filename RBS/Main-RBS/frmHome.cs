@@ -20,6 +20,9 @@ namespace Main_RBS
 
             calAllBookings.Columns.Add("clmPeriod", "Period", 100);
             refreshForm();
+
+
+            calDTPick.MinDate = Convert.ToDateTime("02/01/1970");
         }
 
         public void rePopCalndar(int roomID)
@@ -52,10 +55,10 @@ namespace Main_RBS
                     WeekPlannerItem item = new WeekPlannerItem();
                     item.StartDate = bk.date;
                     item.EndDate = bk.date;
-                    item.Subject = bk.UserID.ToString();
                     item.BackColor = System.Drawing.Color.Red;
                     item.bookingid = bk.id;
                     item.userid = bk.UserID;
+                    item.Subject = db.getUsername(item.userid);
                     ic.Add(item);
                 }
 
@@ -470,6 +473,11 @@ namespace Main_RBS
         private void btnDayLeft_Click(object sender, EventArgs e)
         {
             calAllBookings.CurrentDate = calAllBookings.CurrentDate.AddDays(-1);
+        }
+
+        private void calDTPick_ValueChanged(object sender, EventArgs e)
+        {
+            calAllBookings.CurrentDate = calDTPick.Value;
         }
     }
 }

@@ -116,16 +116,41 @@
             0,
             0,
             0});
+            this.txtRoom.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtRoom.Name = "txtRoom";
             this.txtRoom.Size = new System.Drawing.Size(38, 20);
             this.txtRoom.TabIndex = 13;
+            this.txtRoom.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtPeriod
             // 
             this.txtPeriod.Location = new System.Drawing.Point(54, 67);
+            this.txtPeriod.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.txtPeriod.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(38, 20);
             this.txtPeriod.TabIndex = 14;
+            this.txtPeriod.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtPeriod.ValueChanged += new System.EventHandler(this.txtPeriod_ValueChanged);
             // 
             // btnDeleteBook

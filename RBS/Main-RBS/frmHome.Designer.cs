@@ -78,6 +78,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numRoomSelect = new System.Windows.Forms.NumericUpDown();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.calDTPick = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -483,6 +484,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.calDTPick);
             this.tabPage2.Controls.Add(this.btnDayLeft);
             this.tabPage2.Controls.Add(this.btnDayRight);
             this.tabPage2.Controls.Add(this.label7);
@@ -557,6 +559,14 @@
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // calDTPick
+            // 
+            this.calDTPick.Location = new System.Drawing.Point(455, 4);
+            this.calDTPick.Name = "calDTPick";
+            this.calDTPick.Size = new System.Drawing.Size(200, 20);
+            this.calDTPick.TabIndex = 32;
+            this.calDTPick.ValueChanged += new System.EventHandler(this.calDTPick_ValueChanged);
             // 
             // frmHome
             // 
@@ -652,6 +662,7 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnDayLeft;
         private System.Windows.Forms.Button btnDayRight;
+        private System.Windows.Forms.DateTimePicker calDTPick;
     }
 }
 

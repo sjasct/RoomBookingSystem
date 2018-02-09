@@ -253,6 +253,24 @@ namespace Main_RBS
             }
         }
 
+        public string getUsername(int userid)
+        {
+
+            using (connection = new SqlConnection(getCString()))
+            {
+                connection.Open();
+
+                string command = String.Format("SELECT Username FROM tblUsers WHERE Id = {0}", userid.ToString());
+                Debug.WriteLine(String.Format("Sending SQL command: {0}", command));
+
+                SqlCommand logincommand = new SqlCommand(command, connection);
+
+                string name = (string)logincommand.ExecuteScalar();
+               
+                return name;
+            }
+        }
+
         public bool checkBookingExists(string date, int period, int room, int editId = -1)
         {
             try
