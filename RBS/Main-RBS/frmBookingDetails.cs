@@ -9,9 +9,10 @@ namespace Main_RBS
         // sets the global vars for this class
         private booking book;
 
-        private DatabaseHelper db;
+        private clDB db;
         private int editID;
         private bool modeEdit;
+        private clHelper help;
 
         public frmBookingDetails()
         {
@@ -32,11 +33,13 @@ namespace Main_RBS
                 {
                     // update the booking
                     db.updateBooking(editID, Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                    help.refreshHomeForm();
                 }
                 else
                 {
                     // insert the booking
                     db.insertBooking(Convert.ToInt32(txtRoom.Value), date, Convert.ToInt32(txtPeriod.Value), session.userID, txtNotes.Text);
+                    help.refreshHomeForm();
                 }
 
                 // close the form
@@ -53,7 +56,8 @@ namespace Main_RBS
         private void frmNewBook_Load(object sender, EventArgs e)
         {
             // creates new instance of the databasehelper object
-            db = new DatabaseHelper();
+            db = new clDB();
+            help = new clHelper();
 
             // defaults edit mode to false
             modeEdit = false;
@@ -117,6 +121,7 @@ namespace Main_RBS
                 {
                     // execute command with the miscAction method
                     db.miscAction(cmd);
+                    help.refreshHomeForm();
                 }
                 catch (Exception ex)
                 {

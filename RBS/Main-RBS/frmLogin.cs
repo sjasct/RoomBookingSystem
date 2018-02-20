@@ -6,7 +6,9 @@ namespace Main_RBS
     public partial class frmLogin : Form
     {
         // creates global db variable
-        private DatabaseHelper db;
+        private clDB db;
+
+        private clHelper helper;
 
         public frmLogin()
         {
@@ -41,6 +43,8 @@ namespace Main_RBS
                 session.email = loginData.email;
                 session.loggedIn = true;
 
+                helper.refreshHomeForm();
+
                 // close form
                 this.Close();
             }
@@ -58,7 +62,8 @@ namespace Main_RBS
         private void frmLogin_Load(object sender, EventArgs e)
         {
             // creates instance of databasehelper on db
-            db = new DatabaseHelper();
+            db = new clDB();
+            helper = new clHelper();
 
             // empties error message label
             lblLoginError.Text = String.Empty;
