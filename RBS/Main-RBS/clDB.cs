@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Main_RBS
 {
-    public class DatabaseHelper
+    public class clDB
     {
         private string connectionString;
 

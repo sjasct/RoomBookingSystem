@@ -8,19 +8,18 @@ namespace Main_RBS
 {
     public partial class frmHome : Form
     {
-        private DatabaseHelper db;
+        private clDB db;
 
         private void frmMainTemp_Load(object sender, EventArgs e)
         {
             Debug.WriteLine("Loading main form..");
-            db = new DatabaseHelper();
+            db = new clDB();
             popAllBookings();
             session.userID = -1;
             tempVars.editBookingId = -1;
 
             calAllBookings.Columns.Add("clmPeriod", "Period", 100);
             refreshForm();
-
 
             calDTPick.MinDate = Convert.ToDateTime("02/01/1970");
         }
@@ -118,7 +117,6 @@ namespace Main_RBS
             loginForm.ShowDialog();
         }
 
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             try
@@ -137,7 +135,7 @@ namespace Main_RBS
             refreshForm();
         }
 
-        private void refreshForm()
+        public void refreshForm()
         {
             rePopCalndar(Convert.ToInt32(numRoomSelect.Value));
             Debug.WriteLine("Refreshing form..");
@@ -273,11 +271,11 @@ namespace Main_RBS
                 Debug.WriteLine("Detected F5 key");
                 refreshForm();
             }
-            if(e.KeyCode == Keys.F12)
+            if (e.KeyCode == Keys.F12)
             {
                 new frmDebug().ShowDialog();
             }
-            if(e.KeyCode == Keys.NumPad1)
+            if (e.KeyCode == Keys.NumPad1)
             {
                 user user = db.getUser(1);
 
@@ -319,7 +317,6 @@ namespace Main_RBS
 
                 Debug.WriteLine(String.Format("Logged in as {0}", session.username));
             }
-
         }
 
         private void btnNewBook_Click(object sender, EventArgs e)

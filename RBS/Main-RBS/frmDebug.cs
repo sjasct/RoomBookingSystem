@@ -7,7 +7,7 @@ namespace Main_RBS
     public partial class frmDebug : Form
     {
         // creates instance of databasehelper
-        private DatabaseHelper db;
+        private clDB db;
 
         public frmDebug()
         {
@@ -101,7 +101,7 @@ namespace Main_RBS
         private void frmDebug_Load(object sender, EventArgs e)
         {
             // create new instance of the database helper
-            db = new DatabaseHelper();
+            db = new clDB();
         }
     }
 }

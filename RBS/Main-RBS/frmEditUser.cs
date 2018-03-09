@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Main_RBS
 {
     public partial class frmEditUser : Form
     {
-        private DatabaseHelper db;
+        private clDB db;
         private int userID;
         private user user;
         private bool newUserMode;
+        private clHelper helper;
 
         public frmEditUser()
         {
@@ -58,7 +59,8 @@ namespace Main_RBS
                 }
             }
 
-            db = new DatabaseHelper();
+            helper = new clHelper();
+            db = new clDB();
             if (tempVars.editUserId != -1)
             {
                 this.Text = "Edit user";
@@ -117,7 +119,7 @@ namespace Main_RBS
             }
 
             // CHECK: username length
-            if(txtUsername.Text.Length >= 20)
+            if (txtUsername.Text.Length >= 20)
             {
                 MessageBox.Show("The username should be 20 characters or less!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -130,6 +132,9 @@ namespace Main_RBS
                     string cmd = String.Format("INSERT INTO tblUsers (FirstName, SecondName, Password, Role, Username) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", txtName1.Text, txtName2.Text, txtPass1.Text, bxRoleList.Text, txtUsername.Text);
                     //MessageBox.Show(cmd);
                     db.miscAction(cmd);
+
+                    helper.refreshHomeForm();
+
                     this.Close();
                 }
                 catch (Exception ex)
@@ -147,6 +152,9 @@ namespace Main_RBS
                     {
                         session.name = new string[] { txtName1.Text, txtName2.Text };
                     }
+
+                    helper.refreshHomeForm();
+
                     this.Close();
                 }
                 catch (Exception ex)
@@ -154,7 +162,6 @@ namespace Main_RBS
                     MessageBox.Show("An unexpected error occured. \nDetails: " + ex.ToString(), "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
@@ -167,22 +174,21 @@ namespace Main_RBS
 
             db.miscAction(cmd);
 
+            helper.refreshHomeForm();
+
             this.Close();
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
-
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-
         }
 
         private void bxRoleList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
