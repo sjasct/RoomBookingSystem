@@ -25,6 +25,7 @@ namespace Main_RBS
             calDTPick.MinDate = Convert.ToDateTime("02/01/1970");
         }
 
+        
         public void rePopCalndar(int roomID)
         {
             DateTime earlyDate = Convert.ToDateTime("01/01/1970");
@@ -338,8 +339,8 @@ namespace Main_RBS
         private void listAllBookings_ItemActivate(object sender, EventArgs e)
         {
             int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
-            int editUserId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[3].Text);
-            if (editUserId == session.userID || session.role == "Admin")
+            string editUserId = listAllBookings.SelectedItems[0].SubItems[3].Text;
+            if (editUserId == session.username || session.role == "Admin")
             {
                 tempVars.editBookingId = editBookingId;
                 new frmBookingDetails().ShowDialog();
@@ -455,8 +456,8 @@ namespace Main_RBS
             try
             {
                 int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
-                int editUserId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[3].Text);
-                if (editUserId == session.userID || session.role == "Admin")
+                string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
+                if (editUserId == session.username || session.role == "Admin")
                 {
                     tempVars.editBookingId = editBookingId;
                     new frmBookingDetails().ShowDialog();
