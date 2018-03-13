@@ -87,7 +87,7 @@ namespace Main_RBS
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string givenPassword;
+            string givenPassword = null;
 
             // CHECK: password match
             if (!String.IsNullOrEmpty(txtPass1.Text))
@@ -144,7 +144,11 @@ namespace Main_RBS
             }
             else
             {
-                givenPassword = user.password;
+                if (String.IsNullOrEmpty(givenPassword))
+                {
+                    givenPassword = user.password;
+                }
+
                 try
                 {
                     db.updateUser(userID, txtName1.Text, txtName2.Text, givenPassword, bxRoleList.Text, txtUsername.Text);

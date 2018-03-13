@@ -12,6 +12,8 @@ namespace Main_RBS
 
         private void frmMainTemp_Load(object sender, EventArgs e)
         {
+            calAllBookings.ItemDatesChanged += CalAllBookings_ItemDatesChanged;
+
             Debug.WriteLine("Loading main form..");
             db = new clDB();
             popAllBookings();
@@ -34,6 +36,7 @@ namespace Main_RBS
             //calAllBookings.CurrentDate = earlyDate;
 
             calAllBookings.CurrentDate = DateTime.Now.Date;
+
 
             for (int n = 1; n < 6; n++)
             {
@@ -66,6 +69,11 @@ namespace Main_RBS
                 cr["clmPeriod"].Data.Add(String.Format("Period {0}", n.ToString()));
                 calAllBookings.Rows.Add(cr, ic);
             }
+        }
+
+        private void CalAllBookings_ItemDatesChanged(object sender, WeekPlannerItemEventArgs e)
+        {
+            refreshForm();
         }
 
         public frmHome()
