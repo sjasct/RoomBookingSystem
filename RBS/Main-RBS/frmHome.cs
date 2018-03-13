@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -12,7 +13,14 @@ namespace Main_RBS
 
         private void frmMainTemp_Load(object sender, EventArgs e)
         {
+            
             calAllBookings.ItemDatesChanged += CalAllBookings_ItemDatesChanged;
+            Debug.WriteLine(frmHome.DefaultFont.FontFamily);
+            calAllBookings.ItemTextFont = new Font("Microsoft Sans Serif", 10, FontStyle.Regular, GraphicsUnit.Pixel);
+            calAllBookings.HeaderColumnsFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
+            calAllBookings.GridTextFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
+            calAllBookings.HeaderDatesFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
+
 
             Debug.WriteLine("Loading main form..");
             db = new clDB();
@@ -24,6 +32,7 @@ namespace Main_RBS
             refreshForm();
 
             calDTPick.MinDate = Convert.ToDateTime("02/01/1970");
+
         }
 
         
@@ -32,7 +41,6 @@ namespace Main_RBS
             DateTime earlyDate = Convert.ToDateTime("01/01/1970");
 
             calAllBookings.Calendar.Rows.Clear();
-
             //calAllBookings.CurrentDate = earlyDate;
 
             calAllBookings.CurrentDate = DateTime.Now.Date;
