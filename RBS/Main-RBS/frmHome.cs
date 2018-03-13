@@ -145,6 +145,8 @@ namespace Main_RBS
 
         public void refreshForm()
         {
+            Stopwatch refreshTime = new Stopwatch();
+            refreshTime.Start();
             rePopCalndar(Convert.ToInt32(numRoomSelect.Value));
             Debug.WriteLine("Refreshing form..");
             // Header
@@ -219,6 +221,8 @@ namespace Main_RBS
             popAllBookings();
             popOwnBookings();
             popUsers();
+            refreshTime.Stop();
+            Debug.WriteLine(String.Format("Took {0} milliseconds to refresh", refreshTime.ElapsedMilliseconds.ToString()));
         }
 
         private void frmMainTemp_Activated(object sender, EventArgs e)
