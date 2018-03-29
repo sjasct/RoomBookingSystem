@@ -59,6 +59,18 @@ namespace Main_RBS
             db = new clDB();
             help = new clHelper();
 
+            if (tempVars.bookingMode == tempVars.modes.View)
+            {
+                foreach (Control c in this.Controls)
+                {
+                    if (c is TextBox || c is Button)
+                    {
+                        c.Enabled = false;
+                        // TODO: fix for datetime picker and numselect
+                    }
+                }
+            }
+
             // defaults edit mode to false
             modeEdit = false;
 

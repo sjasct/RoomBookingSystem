@@ -19,6 +19,14 @@ namespace Main_RBS
     {
         static public int editBookingId { get; set; }
         static public int editUserId { get; set; }
+        static public modes userMode { get; set; }
+        static public modes bookingMode { get; set; }
+
+        public enum modes
+        {
+            Edit,
+            View
+        }
     }
 
     // class structure that can hold login data

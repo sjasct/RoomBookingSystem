@@ -331,15 +331,18 @@ namespace Main_RBS
         {
             int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
             string editUserId = listAllBookings.SelectedItems[0].SubItems[3].Text;
+            tempVars.editBookingId = editBookingId;
+
             if (editUserId == session.username || session.role == user.roles.Admin)
             {
-                tempVars.editBookingId = editBookingId;
-                new frmBookingDetails().ShowDialog();
+                tempVars.bookingMode = tempVars.modes.Edit;
             }
             else
             {
-                MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tempVars.bookingMode = tempVars.modes.View;
             }
+
+            new frmBookingDetails().ShowDialog();
         }
 
         private void listAllBookings_SelectedIndexChanged(object sender, EventArgs e)
@@ -391,16 +394,19 @@ namespace Main_RBS
         {
             int editUserId = Convert.ToInt32(listUsers.SelectedItems[0].SubItems[0].Text);
 
+            tempVars.editUserId = editUserId;
+
             if (session.userID == editUserId || session.role == user.roles.Admin)
             {
-                tempVars.editUserId = editUserId;
-
-                new frmEditUser().ShowDialog();
+                tempVars.userMode = tempVars.modes.Edit;
             }
             else
             {
-                MessageBox.Show("You do not have permission to edit other users!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tempVars.userMode = tempVars.modes.View;
             }
+
+            new frmEditUser().ShowDialog();
+
         }
 
         private void btnEditProfile_Click(object sender, EventArgs e)
@@ -421,15 +427,19 @@ namespace Main_RBS
             {
                 int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
                 string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
+                tempVars.editBookingId = editBookingId;
+
                 if (editUserId == session.username || session.role == user.roles.Admin)
                 {
-                    tempVars.editBookingId = editBookingId;
-                    new frmBookingDetails().ShowDialog();
+                    tempVars.bookingMode = tempVars.modes.Edit;
                 }
                 else
                 {
-                    MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tempVars.bookingMode = tempVars.modes.View;
                 }
+
+                new frmBookingDetails().ShowDialog();
+
             }
             catch (Exception ex)
             {
@@ -443,17 +453,20 @@ namespace Main_RBS
 
         private void calAllBookings_ItemClick(object sender, WeekPlannerItemEventArgs e)
         {
-            int editBookingId = e.Item.bookingid;
-            int editUserId = e.Item.userid;
-            if (editUserId == session.userID || session.role == user.roles.Admin)
+            int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
+            string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
+            tempVars.editBookingId = editBookingId;
+
+            if (editUserId == session.username || session.role == user.roles.Admin)
             {
-                tempVars.editBookingId = editBookingId;
-                new frmBookingDetails().ShowDialog();
+                tempVars.bookingMode = tempVars.modes.Edit;
             }
             else
             {
-                MessageBox.Show("You do not have permission to edit this booking!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tempVars.bookingMode = tempVars.modes.View;
             }
+
+            new frmBookingDetails().ShowDialog();
         }
 
         private void label3_Click(object sender, EventArgs e)

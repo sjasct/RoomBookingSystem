@@ -39,6 +39,18 @@ namespace Main_RBS
 
         private void frmEditUser_Load(object sender, EventArgs e)
         {
+
+            if(tempVars.userMode == tempVars.modes.View)
+            {
+                foreach(Control c in this.Controls)
+                {
+                    if(c is TextBox || c is Button)
+                    {
+                        c.Enabled = false;
+                    }
+                }
+            }
+
             btnDeleteUser.Enabled = false;
 
             bxRoleList.Items.Add("Admin");
