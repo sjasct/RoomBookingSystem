@@ -46,7 +46,7 @@ namespace Main_RBS
             bxRoleList.Items.Add("Student");
             bxRoleList.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            if (session.role != "Admin")
+            if (session.role != user.roles.Admin)
             {
                 bxRoleList.Enabled = false;
             }
@@ -72,7 +72,20 @@ namespace Main_RBS
 
                 txtName1.Text = user.firstname;
                 txtName2.Text = user.secondname;
-                bxRoleList.Text = user.role;
+                switch(user.role){
+                    case(user.roles.Admin):
+                        bxRoleList.Text = "Admin";
+                        break;
+                    case (user.roles.Teacher):
+                        bxRoleList.Text = "Teacher";
+                        break;
+                    case (user.roles.Student):
+                        bxRoleList.Text = "Student";
+                        break;
+                    default:
+                        bxRoleList.Text = "Student";
+                        break;
+                }
                 txtUsername.Text = user.username;
             }
             else

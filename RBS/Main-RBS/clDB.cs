@@ -227,7 +227,21 @@ namespace Main_RBS
                     returnedData.userID = reader.GetInt32(0);
                     returnedData.username = reader.GetString(1);
                     returnedData.name = new string[] { reader.GetString(2), reader.GetString(3) };
-                    returnedData.role = reader.GetString(5);
+                    switch (reader.GetString(5))
+                    {
+                        case "Admin":
+                            returnedData.role = user.roles.Admin;
+                            break;
+                        case "Teacher":
+                            returnedData.role = user.roles.Teacher;
+                            break;
+                        case "Student":
+                            returnedData.role = user.roles.Student;
+                            break;
+                        default:
+                            returnedData.role = user.roles.Student;
+                            break;
+                    }
                 }
             }
 
@@ -441,7 +455,22 @@ namespace Main_RBS
                     user.firstname = reader.GetString(2);
                     user.secondname = reader.GetString(3);
                     user.password = reader.GetString(4);
-                    user.role = reader.GetString(5);
+
+                    switch (reader.GetString(5))
+                    {
+                        case "Admin":
+                            user.role = user.roles.Admin;
+                            break;
+                        case "Teacher":
+                            user.role = user.roles.Teacher;
+                            break;
+                        case "Student":
+                            user.role = user.roles.Student;
+                            break;
+                        default:
+                            user.role = user.roles.Student;
+                            break;
+                    }
                 }
             }
 

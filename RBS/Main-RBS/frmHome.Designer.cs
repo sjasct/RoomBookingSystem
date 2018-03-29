@@ -53,7 +53,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.listUsers = new System.Windows.Forms.ListView();
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 13);
             this.label1.TabIndex = 1;
@@ -100,9 +99,8 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 12);
+            this.label3.Location = new System.Drawing.Point(9, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 5;
@@ -111,7 +109,6 @@
             // 
             // btnHomeLogin
             // 
-            this.btnHomeLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnHomeLogin.Location = new System.Drawing.Point(12, 97);
             this.btnHomeLogin.Name = "btnHomeLogin";
             this.btnHomeLogin.Size = new System.Drawing.Size(114, 23);
@@ -122,7 +119,6 @@
             // 
             // btnShowID
             // 
-            this.btnShowID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnShowID.Location = new System.Drawing.Point(132, 97);
             this.btnShowID.Name = "btnShowID";
             this.btnShowID.Size = new System.Drawing.Size(114, 23);
@@ -134,7 +130,7 @@
             // lblUserHeader
             // 
             this.lblUserHeader.AutoSize = true;
-            this.lblUserHeader.Location = new System.Drawing.Point(252, 9);
+            this.lblUserHeader.Location = new System.Drawing.Point(249, 9);
             this.lblUserHeader.Name = "lblUserHeader";
             this.lblUserHeader.Size = new System.Drawing.Size(76, 13);
             this.lblUserHeader.TabIndex = 10;
@@ -143,7 +139,6 @@
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLogOut.Location = new System.Drawing.Point(12, 68);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(114, 23);
@@ -156,7 +151,7 @@
             // 
             this.listAllBookings.Alignment = System.Windows.Forms.ListViewAlignment.Default;
             this.listAllBookings.AllowColumnReorder = true;
-            this.listAllBookings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listAllBookings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.listAllBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmRoomID,
             this.clmDate,
@@ -170,7 +165,7 @@
             this.listAllBookings.HideSelection = false;
             this.listAllBookings.Location = new System.Drawing.Point(10, 28);
             this.listAllBookings.Name = "listAllBookings";
-            this.listAllBookings.Size = new System.Drawing.Size(751, 187);
+            this.listAllBookings.Size = new System.Drawing.Size(748, 187);
             this.listAllBookings.TabIndex = 13;
             this.listAllBookings.UseCompatibleStateImageBehavior = false;
             this.listAllBookings.View = System.Windows.Forms.View.Details;
@@ -210,7 +205,7 @@
             // 
             // listOwnBookings
             // 
-            this.listOwnBookings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listOwnBookings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.listOwnBookings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -224,7 +219,7 @@
             this.listOwnBookings.HideSelection = false;
             this.listOwnBookings.Location = new System.Drawing.Point(7, 234);
             this.listOwnBookings.Name = "listOwnBookings";
-            this.listOwnBookings.Size = new System.Drawing.Size(751, 187);
+            this.listOwnBookings.Size = new System.Drawing.Size(748, 187);
             this.listOwnBookings.TabIndex = 15;
             this.listOwnBookings.UseCompatibleStateImageBehavior = false;
             this.listOwnBookings.View = System.Windows.Forms.View.Details;
@@ -264,28 +259,19 @@
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 218);
+            this.label4.Location = new System.Drawing.Point(9, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Your Bookings";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-191, 107);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Login as:";
-            // 
             // listUsers
             // 
-            this.listUsers.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.listUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader15,
             this.columnHeader16,
@@ -296,7 +282,7 @@
             this.listUsers.HideSelection = false;
             this.listUsers.Location = new System.Drawing.Point(20, 640);
             this.listUsers.Name = "listUsers";
-            this.listUsers.Size = new System.Drawing.Size(767, 140);
+            this.listUsers.Size = new System.Drawing.Size(764, 140);
             this.listUsers.TabIndex = 23;
             this.listUsers.UseCompatibleStateImageBehavior = false;
             this.listUsers.View = System.Windows.Forms.View.Details;
@@ -333,7 +319,6 @@
             // 
             // btnEditProfile
             // 
-            this.btnEditProfile.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEditProfile.Location = new System.Drawing.Point(132, 68);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Size = new System.Drawing.Size(114, 23);
@@ -354,6 +339,8 @@
             // 
             // calAllBookings
             // 
+            this.calAllBookings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calAllBookings.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(98)))), ((int)(((byte)(128)))));
             this.calAllBookings.Columns = dataColumns1;
             this.calAllBookings.CurrentDate = new System.DateTime(2018, 2, 7, 14, 21, 33, 182);
@@ -383,12 +370,14 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(16, 162);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(775, 459);
+            this.tabControl1.Size = new System.Drawing.Size(772, 459);
             this.tabControl1.TabIndex = 29;
             // 
             // tabPage1
@@ -400,7 +389,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(767, 433);
+            this.tabPage1.Size = new System.Drawing.Size(764, 433);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "List View";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -423,6 +412,7 @@
             // 
             // calDTPick
             // 
+            this.calDTPick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.calDTPick.Location = new System.Drawing.Point(455, 4);
             this.calDTPick.Name = "calDTPick";
             this.calDTPick.Size = new System.Drawing.Size(200, 20);
@@ -431,6 +421,7 @@
             // 
             // btnDayLeft
             // 
+            this.btnDayLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDayLeft.Location = new System.Drawing.Point(661, 4);
             this.btnDayLeft.Name = "btnDayLeft";
             this.btnDayLeft.Size = new System.Drawing.Size(47, 23);
@@ -441,6 +432,7 @@
             // 
             // btnDayRight
             // 
+            this.btnDayRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDayRight.Location = new System.Drawing.Point(714, 4);
             this.btnDayRight.Name = "btnDayRight";
             this.btnDayRight.Size = new System.Drawing.Size(47, 23);
@@ -480,12 +472,13 @@
             0,
             0});
             this.numRoomSelect.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numRoomSelect.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.numRoomSelect_PreviewKeyDown);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(703, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(252, 39);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(92, 23);
+            this.btnRefresh.Size = new System.Drawing.Size(78, 23);
             this.btnRefresh.TabIndex = 8;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -495,14 +488,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 811);
+            this.ClientSize = new System.Drawing.Size(804, 811);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnNewUser);
             this.Controls.Add(this.btnEditProfile);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listUsers);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.lblUserHeader);
             this.Controls.Add(this.btnShowID);
@@ -551,7 +543,6 @@
 		private System.Windows.Forms.ColumnHeader clmBookingMade;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader clmId;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader clmNotes;
         private System.Windows.Forms.ColumnHeader columnHeader7;

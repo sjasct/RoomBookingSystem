@@ -5,11 +5,12 @@ namespace Main_RBS
     // global class that holds the current user session
     public static class session
     {
+
         static public Boolean loggedIn { get; set; }
         static public int userID { get; set; }
         static public string username { get; set; }
         static public string[] name { get; set; }
-        static public string role { get; set; }
+        public static user.roles role { get; set; }
         static public string email { get; set; }
     }
 
@@ -27,7 +28,7 @@ namespace Main_RBS
         public int userID { get; set; }
         public string username { get; set; }
         public string[] name { get; set; }
-        public string role { get; set; }
+        public user.roles role { get; set; }
         public string email { get; set; }
     }
 
@@ -45,11 +46,19 @@ namespace Main_RBS
     // class structure that can hold user data
     public class user
     {
+        public enum roles
+        {
+            Admin,
+            Teacher,
+            Student,
+            None
+        }
+
         public int id { get; set; }
         public string username { get; set; }
         public string firstname { get; set; }
         public string secondname { get; set; }
-        public string role { get; set; }
+        public roles role { get; set; }
         public string email { get; set; }
         public string password { get; set; }
     }

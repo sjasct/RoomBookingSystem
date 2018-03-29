@@ -95,7 +95,7 @@ namespace Main_RBS
 
             // if user has permission to edit booking (either booked themselves or they're an admin
 
-            if (book != null && (book.UserID == session.userID || session.role == "Admin"))
+            if (book != null && (book.UserID == session.userID || session.role == user.roles.Admin))
             {
                 // enable ability to delete booking
                 btnDeleteBook.Enabled = true;

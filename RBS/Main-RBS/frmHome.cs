@@ -13,25 +13,31 @@ namespace Main_RBS
 
         private void frmMainTemp_Load(object sender, EventArgs e)
         {
-            
+
+            db = new clDB();
+
             calAllBookings.ItemDatesChanged += CalAllBookings_ItemDatesChanged;
-            Debug.WriteLine(frmHome.DefaultFont.FontFamily);
             calAllBookings.ItemTextFont = new Font("Microsoft Sans Serif", 10, FontStyle.Regular, GraphicsUnit.Pixel);
             calAllBookings.HeaderColumnsFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
             calAllBookings.GridTextFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
             calAllBookings.HeaderDatesFont = new Font("Microsoft Sans Serif", 10, FontStyle.Bold, GraphicsUnit.Pixel);
-
-
-            Debug.WriteLine("Loading main form..");
-            db = new clDB();
-            popAllBookings();
-            session.userID = -1;
-            tempVars.editBookingId = -1;
-
             calAllBookings.Columns.Add("clmPeriod", "Period", 100);
-            refreshForm();
+            calAllBookings.CurrentDate = DateTime.Now.Date;
 
             calDTPick.MinDate = Convert.ToDateTime("02/01/1970");
+
+            Debug.WriteLine("Loading main form..");
+
+            session.loggedIn = false;
+            session.role = user.roles.None;
+            session.userID = -1;
+
+            tempVars.editBookingId = -1;
+
+            btnRefresh.Image = null;
+            btnRefresh.Text = "Refresh";
+
+            refreshForm();
 
         }
 
@@ -41,10 +47,7 @@ namespace Main_RBS
             DateTime earlyDate = Convert.ToDateTime("01/01/1970");
 
             calAllBookings.Calendar.Rows.Clear();
-            //calAllBookings.CurrentDate = earlyDate;
-
-            calAllBookings.CurrentDate = DateTime.Now.Date;
-
+            
 
             for (int n = 1; n < 6; n++)
             {
@@ -177,7 +180,7 @@ namespace Main_RBS
             }
 
             // buttons
-            if (string.IsNullOrEmpty(session.role))
+            if (session.loggedIn == false || session.role == user.roles.None)
             {
                 btnNewBook.Enabled = false;
                 btnLogOut.Enabled = false;
@@ -186,7 +189,7 @@ namespace Main_RBS
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = false;
             }
-            else if (session.role == "Student")
+            else if (session.role == user.roles.Student)
             {
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = false;
@@ -195,7 +198,7 @@ namespace Main_RBS
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
-            else if (session.role == "Teacher")
+            else if (session.role == user.roles.Teacher)
             {
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
@@ -204,7 +207,7 @@ namespace Main_RBS
                 btnNewUser.Enabled = false;
                 btnEditProfile.Enabled = true;
             }
-            else if (session.role == "Admin")
+            else if (session.role == user.roles.Admin)
             {
                 btnShowID.Enabled = true;
                 btnNewBook.Enabled = true;
@@ -249,7 +252,7 @@ namespace Main_RBS
                 session.userID = -1;
                 session.username = null;
                 session.name = new string[] { "", "" };
-                session.role = null;
+                session.role = user.roles.None;
                 session.email = null;
                 success = true;
             }
@@ -297,46 +300,17 @@ namespace Main_RBS
             }
             if (e.KeyCode == Keys.NumPad1)
             {
-                user user = db.getUser(1);
-
-                session.loggedIn = true;
-                session.userID = user.id;
-                session.username = user.username;
-                session.name = new string[] { user.firstname, user.secondname };
-                session.role = user.role;
-                session.email = user.email;
-                refreshForm();
-
-                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+                loginAsUser(db.getUser(1));
             }
             if (e.KeyCode == Keys.NumPad2)
             {
-                user user = db.getUser(3);
-
-                session.loggedIn = true;
-                session.userID = user.id;
-                session.username = user.username;
-                session.name = new string[] { user.firstname, user.secondname };
-                session.role = user.role;
-                session.email = user.email;
-                refreshForm();
-
-                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+                loginAsUser(db.getUser(3));
             }
             if (e.KeyCode == Keys.NumPad3)
             {
-                user user = db.getUser(2);
-
-                session.loggedIn = true;
-                session.userID = user.id;
-                session.username = user.username;
-                session.name = new string[] { user.firstname, user.secondname };
-                session.role = user.role;
-                session.email = user.email;
-                refreshForm();
-
-                Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+                loginAsUser(db.getUser(2));
             }
+
         }
 
         private void btnNewBook_Click(object sender, EventArgs e)
@@ -357,7 +331,7 @@ namespace Main_RBS
         {
             int editBookingId = Convert.ToInt32(listAllBookings.SelectedItems[0].SubItems[5].Text);
             string editUserId = listAllBookings.SelectedItems[0].SubItems[3].Text;
-            if (editUserId == session.username || session.role == "Admin")
+            if (editUserId == session.username || session.role == user.roles.Admin)
             {
                 tempVars.editBookingId = editBookingId;
                 new frmBookingDetails().ShowDialog();
@@ -372,64 +346,37 @@ namespace Main_RBS
         {
         }
 
-        private void btnLoginSelf_Click(object sender, EventArgs e)
+        private void loginAsUser(user u)
         {
-            user user = db.getUser(1);
-
             session.loggedIn = true;
-            session.userID = user.id;
-            session.username = user.username;
-            session.name = new string[] { user.firstname, user.secondname };
-            session.role = user.role;
-            session.email = user.email;
+            session.userID = u.id;
+            session.username = u.username;
+            session.name = new string[] { u.firstname, u.secondname };
+            session.role = u.role;
+            session.email = u.email;
             refreshForm();
 
             Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+        }
+
+        private void btnLoginSelf_Click(object sender, EventArgs e)
+        {
+            loginAsUser(db.getUser(1));
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            user user = db.getUser(8);
-
-            session.loggedIn = true;
-            session.userID = user.id;
-            session.username = user.username;
-            session.name = new string[] { user.firstname, user.secondname };
-            session.role = user.role;
-            session.email = user.email;
-            refreshForm();
-
-            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            loginAsUser(db.getUser(8));
         }
 
         private void btnLoginBranton_Click(object sender, EventArgs e)
         {
-            user user = db.getUser(2);
-
-            session.loggedIn = true;
-            session.userID = user.id;
-            session.username = user.username;
-            session.name = new string[] { user.firstname, user.secondname };
-            session.role = user.role;
-            session.email = user.email;
-            refreshForm();
-
-            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            loginAsUser(db.getUser(2));
         }
 
         private void btnLoginHood_Click(object sender, EventArgs e)
         {
-            user user = db.getUser(3);
-
-            session.loggedIn = true;
-            session.userID = user.id;
-            session.username = user.username;
-            session.name = new string[] { user.firstname, user.secondname };
-            session.role = user.role;
-            session.email = user.email;
-            refreshForm();
-
-            Debug.WriteLine(String.Format("Logged in as {0}", session.username));
+            loginAsUser(db.getUser(3));
         }
 
         private void listOwnBookings_SelectedIndexChanged(object sender, EventArgs e)
@@ -444,7 +391,7 @@ namespace Main_RBS
         {
             int editUserId = Convert.ToInt32(listUsers.SelectedItems[0].SubItems[0].Text);
 
-            if (session.userID == editUserId || session.role == "Admin")
+            if (session.userID == editUserId || session.role == user.roles.Admin)
             {
                 tempVars.editUserId = editUserId;
 
@@ -474,7 +421,7 @@ namespace Main_RBS
             {
                 int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
                 string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
-                if (editUserId == session.username || session.role == "Admin")
+                if (editUserId == session.username || session.role == user.roles.Admin)
                 {
                     tempVars.editBookingId = editBookingId;
                     new frmBookingDetails().ShowDialog();
@@ -498,7 +445,7 @@ namespace Main_RBS
         {
             int editBookingId = e.Item.bookingid;
             int editUserId = e.Item.userid;
-            if (editUserId == session.userID || session.role == "Admin")
+            if (editUserId == session.userID || session.role == user.roles.Admin)
             {
                 tempVars.editBookingId = editBookingId;
                 new frmBookingDetails().ShowDialog();
@@ -535,6 +482,11 @@ namespace Main_RBS
         private void calDTPick_ValueChanged(object sender, EventArgs e)
         {
             calAllBookings.CurrentDate = calDTPick.Value;
+        }
+
+        private void numRoomSelect_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
         }
     }
 }
