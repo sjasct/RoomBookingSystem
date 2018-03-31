@@ -453,8 +453,10 @@ namespace Main_RBS
 
         private void calAllBookings_ItemClick(object sender, WeekPlannerItemEventArgs e)
         {
-            int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
-            string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
+            //int editBookingId = Convert.ToInt32(listOwnBookings.SelectedItems[0].SubItems[5].Text);
+            int editBookingId = e.Item.bookingid;
+            //string editUserId = listOwnBookings.SelectedItems[0].SubItems[3].Text;
+            string editUserId = db.getUsername(e.Item.userid);
             tempVars.editBookingId = editBookingId;
 
             if (editUserId == session.username || session.role == user.roles.Admin)

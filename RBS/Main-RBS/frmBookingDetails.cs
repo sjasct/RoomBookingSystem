@@ -63,10 +63,9 @@ namespace Main_RBS
             {
                 foreach (Control c in this.Controls)
                 {
-                    if (c is TextBox || c is Button)
+                    if (c is TextBox || c is Button || c is NumericUpDown || c is DateTimePicker)
                     {
                         c.Enabled = false;
-                        // TODO: fix for datetime picker and numselect
                     }
                 }
             }
