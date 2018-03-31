@@ -69,10 +69,17 @@ namespace Main_RBS
                     WeekPlannerItem item = new WeekPlannerItem();
                     item.StartDate = bk.date;
                     item.EndDate = bk.date;
-                    item.BackColor = System.Drawing.Color.Red;
                     item.bookingid = bk.id;
                     item.userid = bk.UserID;
                     item.Subject = db.getUsername(item.userid);
+                    if (bk.UserID == session.userID)
+                    {
+                        item.BackColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        item.BackColor = System.Drawing.Color.CadetBlue;
+                    }
                     ic.Add(item);
                 }
 
