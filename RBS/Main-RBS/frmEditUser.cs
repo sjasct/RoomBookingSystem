@@ -144,9 +144,9 @@ namespace Main_RBS
             }
 
             // CHECK: username length
-            if (txtUsername.Text.Length >= 20)
+            if (txtUsername.Text.Length > 15)
             {
-                MessageBox.Show("The username should be 20 characters or less!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The username should be 15 characters or less!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
