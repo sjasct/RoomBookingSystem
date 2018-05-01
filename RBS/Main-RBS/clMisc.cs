@@ -22,6 +22,7 @@ namespace Main_RBS
         static public modes userMode { get; set; }
         static public modes bookingMode { get; set; }
 
+        // different modes that forms can be opened in, used for the userMode and bookingMode vars above
         public enum modes
         {
             Edit,
@@ -54,6 +55,8 @@ namespace Main_RBS
     // class structure that can hold user data
     public class user
     {
+
+        // roles that users are able to have
         public enum roles
         {
             Admin,
